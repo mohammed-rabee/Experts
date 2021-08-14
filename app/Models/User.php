@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Teacher;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -37,22 +38,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Teacher
-    public function programs() {
-        return $this->belongsToMany(YearProgram::class, 'teaches');
+    public function student(){
+        return $this->hasOne(Student::class,'user_id');
     }
 
-    public function sections() {
-        return $this->belongsToMany(Section::class, 'teaches');
+    public function teacher(){
+        return $this->hasOne(Teacher::class,'user_id');
     }
-
-    // Student
-
-    public function programs() {
-        return $this->belongsToMany(YearProgram::class, 'registers');
-    }
-
-    public function sections() {
-        return $this->belongsToMany(Section::class, 'registers');
-    }
+    
 }

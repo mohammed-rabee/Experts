@@ -7,19 +7,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Section extends Model
 {
-    //
-
+    // teachers
     public function programs() {
-        return $this->belongsTo(YearProgram::class);
-    }
-
-    public function students() {
-        return $this->belongToMany(Student::class, 'registers');
+        return $this->belongsToMany(MajorPrograms::class, 'teachers');
     }
 
     public function teachers() {
         return $this->BelongsToMany(Teacher::class, 'teaches');
     }
+
+    // students
+    public function students() {
+        return $this->belongToMany(Student::class, 'registers');
+    }
+
+    
 
     // ask about teacher assign to section
     // answered that you choose from the teacher assigned to program
