@@ -16,12 +16,13 @@ class Student extends Model
         return $this->belongto(User::class,'user_id');
     }
 
-    // Student
-    public function programs() {
-        return $this->belongsToMany(YearProgram::class, 'registers');
+    // program
+    public function majorProgram() {
+        return $this->belongsTo(MajorPrograms::class);
     }
 
-    public function sections() {
-        return $this->belongsToMany(Section::class, 'registers');
+    // the part where user register a program
+    public function teachs() {
+        return $this->belongsToMany(Teach::class, 'registers', 'teach_id', 'student_id');
     }
 }

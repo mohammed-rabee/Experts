@@ -9,17 +9,23 @@ class MajorPrograms extends Model
 {
     use HasFactory;
 
-    // teachers
-    public function teachers() {
-        return $this->belongsToMany(Teacher::class, 'teaches');
+    // many to many class
+    public function major() {
+        return $this->belongsTo(Major::class,'major_id');
     }
-    public function sections() {
-        return $this->belongsToMany(Section::class, 'teaches');
+
+    public function program() {
+        return $this->belongsTo(Program::class,'program_id');
     }
 
     // students
     public function students() {
-        return $this->belongsToMany(Student::class , 'registers');
+        return $this->hasMany(Student::class);
+    }
+
+    // section
+    public function sections() {
+        return $this->hasMany(Section::class);
     }
 
     
