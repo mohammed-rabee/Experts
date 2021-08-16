@@ -16,13 +16,11 @@ class CreateTeachesTable extends Migration
         Schema::create('teaches', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('yearProgramId')->references('id')->on('year_programs')->onDelete('cascade');
-            $table->integer('teacherId')->references('id')->on('teachers')->onDelete('cascade');
-            $table->integer('sectionId')->references('id')->on('sections')->onDelete('cascade');
+            $table->integer('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->integer('section_id')->references('id')->on('sections')->onDelete('cascade');
 
-            $table->double('currentPayment');
-            $table->double('leftPayment');
-            $table->double('overallPayment');
+            // already enrolled
+            $table->integer('numberOfStudent');
 
             $table->timestamps();
         });

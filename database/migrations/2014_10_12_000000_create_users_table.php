@@ -19,17 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
 
+            $table->string('username')->unique();
+            $table->string('password');
 
             $table->string('email')->unique();
-            $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
 
             $table->integer('age');
             $table->string('mobile')->unique();
-            
-            $table->string('password');
-
-            $table->integer('yearId')->references('id')->on('years')->onDelete('cascade');
 
             $table->rememberToken();
 

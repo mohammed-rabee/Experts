@@ -15,6 +15,10 @@ class CreateMajorProgramsTable extends Migration
     {
         Schema::create('major_programs', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('major_id')->references('id')->on('majors')->onDelete('cascade');
+            $table->integer('program_id')->references('id')->on('programs')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

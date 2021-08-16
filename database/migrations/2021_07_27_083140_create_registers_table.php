@@ -17,9 +17,8 @@ class CreateRegistersTable extends Migration
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('yearProgramId')->references('id')->on('year_programs')->onDelete('cascade');
-            $table->integer('studentId')->references('id')->on('students')->onDelete('cascade');
-            $table->integer('sectionId')->references('id')->on('sections')->onDelete('cascade');
+            $table->integer('teaches_id')->references('id')->on('teaches')->onDelete('cascade');
+            $table->integer('student_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->double('currentPayment');
             $table->double('leftPayment');

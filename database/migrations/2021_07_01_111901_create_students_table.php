@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionsTable extends Migration
+class CreateStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('teaches_id')->reference('id')->on('teaches')->OnDelete('cascade');
-
-            $table->date('time');
-            $table->text('url');
-            $table->text('annoncment');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('major_program_id')->references('id')->on('major_programs')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -33,6 +30,6 @@ class CreateSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('students');
     }
 }

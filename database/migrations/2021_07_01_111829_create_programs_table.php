@@ -16,15 +16,28 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
 
-            $table->text('code');
-            $table->text('name');
+            $table->text('name')->unique();
+            $table->text('code')->unique();
+            
             $table->longText('description');
+
+            // student number in all section
             $table->integer('student_number');
-            $table->integer('ad_student_number');
+
+            // fake student number in all section
+            $table->integer('student_number_fake');
+
+            // total number of student ever enrolled in this program
+            $table->integer('student_previous_number');
+
+            // actual rate
             $table->decimal('rate');
-            $table->decimal('ad_rate');
+
+            // fake rate
+            $table->decimal('rate_fake');
+
             $table->decimal('cost');
-            $table->integer('discount');
+            $table->decimal('discount');
 
             $table->timestamps();
         });
