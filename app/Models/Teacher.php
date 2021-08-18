@@ -8,7 +8,7 @@ class Teacher extends Model
 {
     // user type
     public function user() {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->morphOne(User::class,'userable');
     }
 
     // section

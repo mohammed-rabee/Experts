@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             $table->integer('age');
             $table->string('mobile')->unique();
 
+            $table->unsignedInteger('userable_id');
+            $table->string('userable_type');
+
             $table->rememberToken();
 
             $table->timestamps();

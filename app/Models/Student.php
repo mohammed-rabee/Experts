@@ -13,7 +13,7 @@ class Student extends Model
     // }
 
     public function user() {
-        return $this->belongto(User::class,'user_id');
+        return $this->morphOne(User::class,'userable');
     }
 
     // program
