@@ -25,8 +25,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
 
-            $table->integer('age');
+            $table->date('birthDate')->nullable();
+            $table->integer('age')->nullable();
             $table->string('mobile')->unique();
+            $table->string('gander')->nullable();
 
             $table->unsignedInteger('userable_id');
             $table->string('userable_type');

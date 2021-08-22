@@ -16,8 +16,8 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('major_program_id')->references('id')->on('major_programs')->onDelete('cascade');
+            // $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('major_program_id')->references('id')->on('major_programs')->onDelete('cascade')->nullable();
 
             $table->timestamps();
         });

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Faker\Provider\cs_CZ\PhoneNumber;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+use function PHPSTORM_META\type;
 
 class RegisterController extends Controller
 {
@@ -55,7 +58,11 @@ class RegisterController extends Controller
             'lname'        => ['required', 'string', 'max:255'],
             'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'     => ['required', 'string', 'min:8', 'confirmed'],
-            'phone'        => ['required|min:11|numeric'],
+            'phone'        => ['required', 'min:11', 'numeric'],
+            'gander'       => ['required', 'string'],
+            'day'          => ['required', 'string'],
+            'month'        => ['required', 'string'],
+            'year'         => ['required', 'string'],
         ]);
     }
 
@@ -67,12 +74,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'fname'        => $data['fname'],
-            'lanme'        => $data['lname'],
-            'email'        => $data['email'],
-            'password'     => Hash::make($data['password']),
-            'phone'        => $data['mobile']
+        // $day    = $data['day'];
+        // $month  = $data['month'];
+        // $year   = $data['year'];
+        // $birth_date = $year + '-' + $month + '-' + $day;
+        $student = Student::create();
+
+        return $student->user->create([
+            'fname'         => $data['fname'],
+            'lanme'         => $data['lname'],
+
+            'username'      => $data['email'],
+            'password'      => Hash::make($data['password']),
+
+            'email'         => $data['email'],
+            'phone'         => $data['mobile'],
+            'gander'        => $data['gander'],
+            'userable_id'   => $student->id,
+            // 'birthDate'    => $birth_date
         ]);
     }
 }
