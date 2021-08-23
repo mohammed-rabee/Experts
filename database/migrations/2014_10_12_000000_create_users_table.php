@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
 
             $table->date('birthDate')->nullable();
             $table->integer('age')->nullable();
-            $table->string('mobile')->unique()->nullable();
-            $table->string('gander')->nullable();
+            $table->string('phone')->unique();
+            $table->string('gander');
 
             $table->morphs('userable');
 

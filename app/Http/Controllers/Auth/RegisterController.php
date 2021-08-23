@@ -80,11 +80,29 @@ class RegisterController extends Controller
         // $month  = $data['month'];
         // $year   = $data['year'];
         // $birth_date = $year + '-' + $month + '-' + $day;
-        $student = Teacher::create();
+        $student = Student::create();
 
-        $student = Teacher::find($student->id);
+        // $student = Teacher::find($student->id);
 
-        return User::Create([
+        // $user = new User;
+
+        // $user->fname    = $data['fname'];
+        // $user->lname    = $data['lname'];
+
+        // $user->username      = $data['email'];
+        // $user->password      = Hash::make($data['password']);
+
+        // $user->email        = $data['email'];
+        // $user->phone         = $data['phone'];
+        // $user->gander        = $data['gender'];
+
+        // dd($user);
+
+        // return $student->user()->save($user);
+
+        // remember that user should select his major 
+        // and colleage department so the rigster login can be compplete
+        return $student->user()->create([
             'fname'         => $data['fname'],
             'lanme'         => $data['lname'],
 
@@ -93,10 +111,8 @@ class RegisterController extends Controller
 
             'email'         => $data['email'],
             'phone'         => $data['phone'],
-            'gander'        => $data['gender'],
-            'userable_type' => (Teacher::class).tostring(),
-            'userable_id'   => $student->id,
-            // 'birthDate'    => $birth_date
+            'gander'        => $data['gender']
+
         ]);
     }
 }
