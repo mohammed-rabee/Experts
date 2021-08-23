@@ -14,7 +14,7 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
 
             // $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('major_program_id')->references('id')->on('major_programs')->onDelete('cascade')->nullable();

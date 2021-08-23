@@ -27,11 +27,10 @@ class CreateUsersTable extends Migration
 
             $table->date('birthDate')->nullable();
             $table->integer('age')->nullable();
-            $table->string('mobile')->unique();
+            $table->string('mobile')->unique()->nullable();
             $table->string('gander')->nullable();
 
-            $table->unsignedInteger('userable_id');
-            $table->string('userable_type');
+            $table->morphs('userable');
 
             $table->rememberToken();
 

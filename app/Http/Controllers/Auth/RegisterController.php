@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Faker\Provider\cs_CZ\PhoneNumber;
@@ -58,11 +59,12 @@ class RegisterController extends Controller
             'lname'        => ['required', 'string', 'max:255'],
             'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'     => ['required', 'string', 'min:8', 'confirmed'],
-            'phone'        => ['required', 'min:11', 'numeric'],
-            'gander'       => ['required', 'string'],
-            'day'          => ['required', 'string'],
-            'month'        => ['required', 'string'],
-            'year'         => ['required', 'string'],
+            'phone'        => ['required', 'numeric'],
+            'gender'       => ['required', 'string'],
+            'day'          => ['required', 'numeric'],
+            'month'        => ['required', 'numeric'],
+            'year'         => ['required', 'numeric'],
+
         ]);
     }
 
@@ -78,9 +80,11 @@ class RegisterController extends Controller
         // $month  = $data['month'];
         // $year   = $data['year'];
         // $birth_date = $year + '-' + $month + '-' + $day;
-        $student = Student::create();
+        $student = Teacher::create();
 
-        return $student->user->create([
+        $student = Teacher::find($student->id);
+
+        return User::Create([
             'fname'         => $data['fname'],
             'lanme'         => $data['lname'],
 
@@ -88,8 +92,9 @@ class RegisterController extends Controller
             'password'      => Hash::make($data['password']),
 
             'email'         => $data['email'],
-            'phone'         => $data['mobile'],
-            'gander'        => $data['gander'],
+            'phone'         => $data['phone'],
+            'gander'        => $data['gender'],
+            'userable_type' => (Teacher::class).tostring(),
             'userable_id'   => $student->id,
             // 'birthDate'    => $birth_date
         ]);

@@ -64,9 +64,9 @@
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <input id="mobile" type="number" class="form-control" name="mobile" required autocomplete="mobile" placeholder="Mobile Number">
+                                <input id="phone" type="number" class="form-control" name="phone" required autocomplete="phone" placeholder="Phone Number">
                                 
-                                @error('mobile')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -91,7 +91,8 @@
 
                         <div class="form-group row">
                             <div class="col-md-4">
-                                <select aria-label="اليوم" name="birthday_day" id="day" title="اليوم" class="form-control">
+                                <select name="day" id="day" class="form-control" value="" required="">
+                                    <option value="">Day</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -126,7 +127,8 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select aria-label="الشهر" name="birthday_month" id="month" title="الشهر" class="form-control">
+                                <select name="month" id="month" class="form-control" value="" required="">
+                                    <option value="">Mon</option>
                                     <option value="1">يناير</option>
                                     <option value="2">فبراير</option>
                                     <option value="3">مارس</option>
@@ -142,7 +144,8 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <select aria-label="السنة" name="birthday_year" id="year" title="السنة" class="form-control">
+                                <select name="year" id="year" class="form-control" value="" required="">
+                                    <option value="">Year</option>
                                     <option value="2021">2021</option>
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
