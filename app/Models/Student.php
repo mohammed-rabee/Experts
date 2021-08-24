@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    protected $guard = 'student';
+
     //
     // public function sessions () {
     //     return $this->belongsToMany(Session::class,'Students_Sessions', 'user_id', 'session_id');

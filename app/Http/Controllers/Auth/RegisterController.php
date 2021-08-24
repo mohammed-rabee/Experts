@@ -44,6 +44,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:teacher');
+        $this->middleware('guest:student');
     }
 
     /**
@@ -80,7 +83,6 @@ class RegisterController extends Controller
         // $month  = $data['month'];
         // $year   = $data['year'];
         // $birth_date = $year + '-' + $month + '-' + $day;
-        $student = Student::create();
 
         // $student = Teacher::find($student->id);
 
@@ -102,6 +104,8 @@ class RegisterController extends Controller
 
         // remember that user should select his major 
         // and colleage department so the rigster login can be compplete
+
+        $student = Student::create();
         return $student->user()->create([
             'fname'         => $data['fname'],
             'lanme'         => $data['lname'],
