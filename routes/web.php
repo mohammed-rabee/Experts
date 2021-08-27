@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashBoardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -33,7 +34,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashBoardHome',[DashBoardController::class, 'index'])->name('dashBoardHome');
     
 });
-
-Route::get('/dashboardTest', function(){return view('layouts.dashboard');})->name('dashboardTest');
-
-
