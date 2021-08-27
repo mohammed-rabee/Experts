@@ -44,9 +44,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:admin');
-        $this->middleware('guest:teacher');
-        $this->middleware('guest:student');
+        // $this->middleware('guest:admin');
+        // $this->middleware('guest:teacher');
+        // $this->middleware('guest:student');
     }
 
     /**
@@ -79,6 +79,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         // $day    = $data['day'];
         // $month  = $data['month'];
         // $year   = $data['year'];

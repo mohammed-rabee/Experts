@@ -41,6 +41,7 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
         //
+        return College::craete($request->all());
     }
 
     /**
