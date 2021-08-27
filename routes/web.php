@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashBoardController;
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', function(){
-    return view('layouts.dashboard');
+
+
+Route::middleware(['auth'])->group(function () {
+
+    // Student & Teacher
+    Route::get('/siteHome',[SiteController::class, 'index'])->name('siteHome');
+
+    // Admin
+    Route::get('/dashBoardHome',[DashBoardController::class, 'index'])->name('dashBoardHome');
+    
 });
+
+Route::get('/dashboardTest', function(){return view('layouts.dashboard');})->name('dashboardTest');
+
+

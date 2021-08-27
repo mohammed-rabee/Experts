@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\College;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
-class CollegeController extends Controller
+class SiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,6 @@ class CollegeController extends Controller
     public function index()
     {
         //
-        $Colleges = College::get();
-        return view('dashboard.colleges.index')->with('colleges',$Colleges);
     }
 
     /**
@@ -28,8 +26,6 @@ class CollegeController extends Controller
     public function create()
     {
         //
-        return view('dashboard.colleges.create');
-
     }
 
     /**
@@ -41,16 +37,15 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
         //
-        return College::craete($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function show(College $college)
+    public function show(Program $program)
     {
         //
     }
@@ -58,10 +53,10 @@ class CollegeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function edit(College $college)
+    public function edit(Program $program)
     {
         //
     }
@@ -70,10 +65,10 @@ class CollegeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, College $college)
+    public function update(Request $request, Program $program)
     {
         //
     }
@@ -81,10 +76,10 @@ class CollegeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function destroy(College $college)
+    public function destroy(Program $program)
     {
         //
     }
