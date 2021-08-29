@@ -19,6 +19,32 @@
     <link rel='stylesheet' href={{ asset('/assets/css/material-dashboard.css?v=2.1.0') }} />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel='stylesheet' href={{ asset('/assets/demo/demo.css') }} />
+    <style>
+        .accordion {
+          color: #444;
+          cursor: pointer;
+          padding: 18%;
+          width: 100%;
+          border: none;
+          text-align: left;
+          outline: none;
+          font-size: 15px;
+          transition: 0.4s;
+        }
+        
+        .active, .accordion:hover {
+          background-color: #9c27b0;
+        }
+        
+        .panel {
+          padding: 0% 18%;
+          background-color: #3C4858;
+          padding-left: 18%;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.2s ease-out;
+        }
+        </style>
 </head>
 
 <body class="dark-edition">
@@ -31,28 +57,42 @@
             Tip 2: you can also add an image using data-image tag
         -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">Creative Tim</a>
+                <a href="*" class="simple-text logo-normal">Experts+ Admin Panel</a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link dropdown-toggle"data-toggle="dropdown" role="button"
-                        aria-haspopup="true" aria-expanded="true">
-                            <span class="nav-label">Colleges</span>
+                    <li class="nav-item">
+                        <a class="nav-link accordion">
                             <i class="material-icons">dashboard</i>
+                            <p>Department</p>
                         </a>
-                        
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Add College</a></li>
-                            <li><a href="#">List Colleges</a></li>
-                            <li><a href="#">Update Colleges</a></li>
+                        <ul class="panel">
+                            <li><a href="#">Add Department</a></li>
+                            <li><a href="#">List Department</a></li>
+                            <li><a href="#">Update Department</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./user.html">
-                            <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                        <a class="nav-link accordion">
+                            <i class="material-icons">dashboard</i>
+                            <p>Colleges</p>
                         </a>
+                        <ul class="panel">
+                            <li><a href="#">Add College</a></li>
+                            <li><a href="#">List College</a></li>
+                            <li><a href="#">Update College</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link accordion">
+                            <i class="material-icons">dashboard</i>
+                            <p>Majors</p>
+                        </a>
+                        <ul class="panel">
+                            <li><a href="#">Add Major</a></li>
+                            <li><a href="#">List Major</a></li>
+                            <li><a href="#">Update Majors</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -250,6 +290,21 @@
             md.initDashboardPageCharts();
 
         });
+    </script>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
     </script>
 </body>
 
