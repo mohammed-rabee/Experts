@@ -51,13 +51,34 @@
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="black"
             data-image="{{ asset('/assets/img/sidebar-2.jpg') }}">
-            <!--
-            Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-    
-            Tip 2: you can also add an image using data-image tag
-        -->
+
             <div class="logo">
                 <a href="*" class="simple-text logo-normal">Experts+ Admin Panel</a>
+            </div>
+            <div class="">
+                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="javascript:;" id="navbarDropdownProfile"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">person</i>
+                                        <p class="d-lg-none d-md-block">
+                                            Account
+                                        </p>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                                        <a class="dropdown-item" href="#">Profile</a>
+                                        <a class="dropdown-item" href="#">Settings</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Log out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
@@ -197,6 +218,15 @@
                 </ul>
             </div>
         </div>
+        <div class="main-panel">
+            
+            <div class="content">
+                <div class="container-fluid">
+
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src={{ asset('/assets/js/core/jquery.min.js') }}></script>

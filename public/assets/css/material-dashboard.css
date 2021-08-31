@@ -15259,7 +15259,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar .nav {
-  margin-top: 20px;
+  /* margin-top: 10px; */
   display: block;
 }
 
