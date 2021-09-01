@@ -16,7 +16,7 @@ class CollegeController extends Controller
     public function index()
     {
         //
-        $Colleges = College::get();
+        $Colleges = College::all();
         return view('dashboard.colleges.index')->with('colleges',$Colleges);
     }
 
@@ -28,7 +28,7 @@ class CollegeController extends Controller
     public function create()
     {
         //
-        return view('dashboard.colleges.create');
+        return view('dashboard.colleges.add');
 
     }
 

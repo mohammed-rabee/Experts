@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CollegeController;
 use App\Http\Controllers\Dashboard\DashBoardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Site\SiteController;
+use App\Models\College;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,17 +22,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/college/add' , [CollegeController::class, 'create'])->name('addCollege');
+Route::post('/college/add', [CollegeController::class, 'store'])->name('storeCollege');
 
-Route::middleware(['auth'])->group(function () {
 
-    // Student & Teacher
-    Route::get('/siteHome',[SiteController::class, 'index'])->name('siteHome');
+// Route::middleware(['auth'])->group(function () {
 
-    // Admin
-    Route::get('/dashBoardHome',[DashBoardController::class, 'index'])->name('dashBoardHome');
+//     // Student & Teacher
+//     Route::get('/siteHome',[SiteController::class, 'index'])->name('siteHome');
+
+//     // Admin
+//     Route::get('/dashBoardHome',[DashBoardController::class, 'index'])->name('dashBoardHome');
     
-});
+// });
