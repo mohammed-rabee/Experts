@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->id();
 
             $table->integer('collegeId')->references('id')->on('colleges')->onDelete('cascade');
-            $table->string('name');
+            $table->string('name')->unique();
 
             $table->timestamps();
         });

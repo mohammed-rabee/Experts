@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\College;
+use Exception;
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
@@ -17,7 +18,7 @@ class CollegeController extends Controller
     {
         //
         $Colleges = College::all();
-        return view('dashboard.colleges.index')->with('colleges',$Colleges);
+        return view('dashboard.colleges.index' , ['colleges' => $Colleges]);
     }
 
     /**
@@ -28,7 +29,7 @@ class CollegeController extends Controller
     public function create()
     {
         //
-        return view('dashboard.colleges.add');
+        return view('dashboard.colleges.create');
 
     }
 
@@ -41,7 +42,19 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
         //
-        return College::craete($request->all());
+        try {
+            College::create($request->all());
+            return redirect()->route('college.index')
+            ->withErrors([
+                'message' => 'College created successfully.',
+                'class'   => 'alert-success'
+            ]);
+        } catch (Exception $e) {
+            return back()->withErrors([
+                'message' => 'College name already registered',
+                'class'   => 'alert-danger'
+            ]);
+        }   
     }
 
     /**
@@ -64,6 +77,7 @@ class CollegeController extends Controller
     public function edit(College $college)
     {
         //
+        return view('dashboard.colleges.edit', compact('college'));
     }
 
     /**
@@ -76,6 +90,22 @@ class CollegeController extends Controller
     public function update(Request $request, College $college)
     {
         //
+        try {
+
+            $college->update($request->all());
+            return redirect()->route('college.index')
+            ->withErrors([
+                'message' => 'College created successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+
+            return back()->withErrors([
+                'message' => 'You need to choose another name , college name already been taken',
+                'class'   => 'alert-danger'
+            ]);
+        }
     }
 
     /**
@@ -87,5 +117,22 @@ class CollegeController extends Controller
     public function destroy(College $college)
     {
         //
+        try {
+
+            $college->delete();
+            return redirect()->route('college.index')
+            ->withErrors([
+                'message' => 'College created successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+
+            return back()->withErrors([
+                'message' => 'You need to choose another name , college name already been taken',
+                'class'   => 'alert-danger'
+            ]);
+
+        }
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\College;
+use App\Models\Major;
 use Illuminate\Http\Request;
 
-class CollegeController2 extends Controller
+class MajorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +16,8 @@ class CollegeController2 extends Controller
     public function index()
     {
         //
+        $Majors = Major::all();
+        return view('dashboard.major.index')->with('majors',$Majors);
     }
 
     /**
@@ -26,6 +28,7 @@ class CollegeController2 extends Controller
     public function create()
     {
         //
+        return view('dashboard.major.add');
     }
 
     /**
@@ -42,10 +45,10 @@ class CollegeController2 extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Major  $major
      * @return \Illuminate\Http\Response
      */
-    public function show(College $college)
+    public function show(Major $major)
     {
         //
     }
@@ -53,10 +56,10 @@ class CollegeController2 extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Major  $major
      * @return \Illuminate\Http\Response
      */
-    public function edit(College $college)
+    public function edit(Major $major)
     {
         //
     }
@@ -65,10 +68,10 @@ class CollegeController2 extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Major  $major
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, College $college)
+    public function update(Request $request, Major $major)
     {
         //
     }
@@ -76,10 +79,10 @@ class CollegeController2 extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\College  $college
+     * @param  \App\Models\Major  $major
      * @return \Illuminate\Http\Response
      */
-    public function destroy(College $college)
+    public function destroy(Major $major)
     {
         //
     }

@@ -17,7 +17,7 @@ class CreateMajorsTable extends Migration
             $table->id();
 
             $table->integer('departmentId')->references('id')->on('departments')->onDelete('cascade');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('discount');
             $table->integer('numberOfYears');
 

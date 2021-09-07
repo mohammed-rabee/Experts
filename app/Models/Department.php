@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     //
+    protected $fillable = [
+        'collegeId','name',
+    ];
+    
     public function college() {
         return $this->belongsTo(College::class);
     }
