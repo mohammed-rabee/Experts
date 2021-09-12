@@ -12,7 +12,7 @@
           <div class="alert {{ $errors->first('class') }}" role="alert">
             <strong>Whoops!</strong> <br><br>
             <ul>
-              @foreach ($errors->all() $error)
+              @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
               @endforeach
             </ul>

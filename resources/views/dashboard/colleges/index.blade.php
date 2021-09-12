@@ -14,8 +14,7 @@
                         @if ($errors->any())
                         <div class="alert {{ $errors->first('class') }}" role="alert">
                             <ul>
-                                {{ dd($erross->all())}}
-                                @foreach ($errors->all() $error)
+                                @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                                 @endforeach
                             </ul>

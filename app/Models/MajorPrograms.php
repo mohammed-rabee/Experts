@@ -10,13 +10,13 @@ class MajorPrograms extends Model
     use HasFactory;
 
     // many to many class
-    public function major() {
-        return $this->belongsTo(Major::class,'major_id');
-    }
+    // public function major() {
+    //     return $this->belongsTo(Major::class,'major_id');
+    // }
 
-    public function program() {
-        return $this->belongsTo(Program::class,'program_id');
-    }
+    // public function program() {
+    //     return $this->belongsTo(Program::class,'program_id');
+    // }
 
     // students
     public function students() {
