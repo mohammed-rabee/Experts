@@ -6,18 +6,29 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Add College</h4>
+          <h4 class="card-title">Add Department</h4>
           {{-- <p class="card-category">Complete your profile</p> --}}
+          @if ($errors->any())
+          <div class="alert {{ $errors->first('class') }}" role="alert">
+            <strong>Whoops!</strong> <br><br>
+            <ul>
+              @if($errors->has('message'))
+              <li>{{ $errors->first('message') }}</li>
+              @endif
+            </ul>
+          </div>
+          @endif
         </div>
         <div class="card-body">
-          <form action="{{ route('Department.store') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('department.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <div class="col-md-5">
                 <div class="form-group">
-                  <option class="bmd-label-floating">Select A College</option>
-                  <select class="form-control" name="collegeId" id="collegeId">
-                    @foreach($college as $college)
+                  <label class="bmd-label-floating">College Name</label>
+                  <select class="form-control" name="collegeId" id="collegeId" required>
+                    <option value="" class="bmd-label-floating"> choose college</option>
+                    @foreach($colleges as $college)
                     <option value="{{$college->id}}">{{$college->name}}</option>
                     @endforeach
                   </select>
@@ -28,13 +39,12 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label class="bmd-label-floating">Department Name</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}">
+                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" required>
                 </div>
               </div>
             </div>
             <button type="submit" class="btn btn-primary pull-right">Add Department</button>
-            <div class="clearfix">
-            </div>
+            <div class="clearfix"></div>
           </form>
         </div>
       </div>

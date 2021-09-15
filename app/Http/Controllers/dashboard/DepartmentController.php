@@ -9,86 +9,86 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
-        $Departments = Department::all();
-        return view('dashboard.department.index')->with('departments',$Departments);
+        $departments = Department::all();
+        return view('dashboard.department.index' , ['departments' => $departments]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
-        $colleges = College::all(['id','name']);
-        return view('dashboard.department.add')->with('college',$colleges);
+        $colleges = College::all();
+        return view('dashboard.department.create',[ 'colleges' => $colleges]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
-
-        Department::create($request->all());
-        return redirect()->route('home');
+        try {
+            Department::create($request->all());
+            return redirect()->route('department.index')
+            ->withErrors([
+                'message' => 'Department created successfully.',
+                'class'   => 'alert-success'
+            ]);
+        } catch (Exception $e) {
+            return back()->withErrors([
+                'message' => 'Department name already registered',
+                'class'   => 'alert-danger'
+            ]);
+        }   
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department $department)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Department $department)
     {
         //
+        return view('dashboard.department.edit', compact('department'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Department $department)
     {
         //
+        try {
+
+            $department->update($request->all());
+            return redirect()->route('department.index')
+            ->withErrors([
+                'message' => 'Department created successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+
+            return back()->withErrors([
+                'message' => 'You need to choose another name , department name already been taken',
+                'class'   => 'alert-danger'
+            ]);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Department $department)
     {
         //
+        try {
+
+            $department->delete();
+            return redirect()->route('department.index')
+            ->withErrors([
+                'message' => 'Department Deleted successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+
+            return back()->withErrors([
+                'message' => 'You need to choose another name , department name already been taken',
+                'class'   => 'alert-danger'
+            ]);
+
+        }
     }
 }

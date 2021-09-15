@@ -58,17 +58,6 @@ class CollegeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\College  $college
-     * @return \Illuminate\Http\Response
-     */
-    public function show(College $college)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\College  $college
