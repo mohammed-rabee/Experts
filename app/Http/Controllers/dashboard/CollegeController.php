@@ -122,7 +122,7 @@ class CollegeController extends Controller
             $college->delete();
             return redirect()->route('college.index')
             ->withErrors([
-                'message' => 'College created successfully.',
+                'message' => 'College Deleted successfully.',
                 'class'   => 'alert-success'
             ]);
 
