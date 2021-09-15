@@ -3,87 +3,91 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Major;
 use Illuminate\Http\Request;
 
 class MajorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
-        $Majors = Major::all();
-        return view('dashboard.major.index')->with('majors',$Majors);
+        $majors = Major::all();
+        return view('dashboard.major.index' , ['majors' => $majors]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
-        return view('dashboard.major.add');
+        $departments = Department::all();
+        return view('dashboard.major.create',[ 'departments' => $departments]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
+        try {
+            Major::create($request->all());
+            return redirect()->route('major.index')
+            ->withErrors([
+                'message' => 'Major created successfully.',
+                'class'   => 'alert-success'
+            ]);
+        } catch (Exception $e) {
+            return back()->withErrors([
+                'message' => 'Major name already registered',
+                'class'   => 'alert-danger'
+            ]);
+        }   
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Major  $major
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Major $major)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Major  $major
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Major $major)
     {
         //
+        return view('dashboard.major.edit', compact('Major'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Major  $major
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Major $major)
     {
         //
+        try {
+
+            $major->update($request->all());
+            return redirect()->route('major.index')
+            ->withErrors([
+                'message' => 'Major created successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+
+            return back()->withErrors([
+                'message' => 'You need to choose another name , Major name already been taken',
+                'class'   => 'alert-danger'
+            ]);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Major  $major
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Major $major)
     {
         //
+        try {
+
+            $major->delete();
+            return redirect()->route('major.index')
+            ->withErrors([
+                'message' => 'Major Deleted successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+
+            return back()->withErrors([
+                'message' => 'You need to choose another name , Major name already been taken',
+                'class'   => 'alert-danger'
+            ]);
+
+        }
     }
 }

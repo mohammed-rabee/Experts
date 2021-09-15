@@ -6,8 +6,8 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Departments</h4>
-                    <p class="card-category"> Here you can see a list of all Departments in the system</p>
+                    <h4 class="card-title ">Majors</h4>
+                    <p class="card-category"> Here you can see a list of all Majors in the system</p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">
@@ -20,29 +20,29 @@
                             </ul>
                         </div>
                         @endif
-                        
-                        <a href="{{ route('department.create') }}" style="padding-top: 1.5%">
-                            <span class="btn btn-primary">Add Department</span>
+
+                        <a href="{{ route('major.create') }}" style="padding-top: 1.5%">
+                            <span class="btn btn-primary">Add Major</span>
                         </a>
                         <br>
                         <br>
-                        
+
                         <table class="table table-bordered">
                             <thead class=" text-primary">
                                 <th>ID</th>
-                                <th>Department Name</th>
+                                <th>Major Name</th>
                                 <th>Control</th>
                             </thead>
                             <tbody>
-                                @foreach ($departments as $department)
+                                @foreach ($majors as $major)
                                 <tr>
-                                    <td>{{ $department->id }}</td>
-                                    <td>{{ $department->name }}</td>
+                                    <td>{{ $major->id }}</td>
+                                    <td>{{ $major->name }}</td>
                                     <td>
-                                        <form action="{{ route('department.delete',$department->id) }}" method="POST">
+                                        <form action="{{ route('department.delete',$major->id) }}" method="POST">
 
                                             <a class="btn btn-primary"
-                                                href="{{ route('department.edit', $department->id) }}">Edit</a>
+                                                href="{{ route('department.edit', $major->id) }}">Edit</a>
 
                                             @csrf
                                             @method('delete')

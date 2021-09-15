@@ -20,6 +20,12 @@
                             </ul>
                         </div>
                         @endif
+
+                        <a href="{{ route('college.create') }}" style="padding-top: 1.5%">
+                            <span class="btn btn-primary">Add College</span>
+                        </a>
+                        <br>
+                        <br>
                         
                         <table class="table table-bordered">
                             <thead class=" text-primary">
