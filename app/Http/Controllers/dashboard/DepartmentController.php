@@ -14,14 +14,14 @@ class DepartmentController extends Controller
     {
         //
         $departments = Department::all();
-        return view('dashboard.department.index' , ['departments' => $departments]);
+        return view('dashboard.department.index', ['departments' => $departments]);
     }
 
     public function create()
     {
         //
         $colleges = College::all();
-        return view('dashboard.department.create',[ 'colleges' => $colleges]);
+        return view('dashboard.department.create', [ 'colleges' => $colleges]);
 
     }
 

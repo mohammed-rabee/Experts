@@ -114,6 +114,46 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#programs" aria-expanded="fales">
+              <i class="material-icons">dashboard</i>
+              <p>Programs<b class="caret"></b></p>
+            </a>
+            <div class="collapse pl-5" id="programs">
+              <ul class="nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ route('program.create') }}">
+                    <span class="sidebar-normal">Add Program</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('program.index') }}">
+                    <span class="sidebar-normal">List Program</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#section" aria-expanded="fales">
+              <i class="material-icons">dashboard</i>
+              <p>Sections<b class="caret"></b></p>
+            </a>
+            <div class="collapse pl-5" id="section">
+              <ul class="nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ route('department.create') }}">
+                    <span class="sidebar-normal">Add Section</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('department.index') }}">
+                    <span class="sidebar-normal">List Section</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#teacher" aria-expanded="fales">
               <i class="material-icons">dashboard</i>
               <p>Teachers<b class="caret"></b></p>
@@ -148,26 +188,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('department.index') }}">
                     <span class="sidebar-normal">List Student</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#section" aria-expanded="fales">
-              <i class="material-icons">dashboard</i>
-              <p>Sections<b class="caret"></b></p>
-            </a>
-            <div class="collapse pl-5" id="section">
-              <ul class="nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ route('department.create') }}">
-                    <span class="sidebar-normal">Add Section</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('department.index') }}">
-                    <span class="sidebar-normal">List Section</span>
                   </a>
                 </li>
               </ul>

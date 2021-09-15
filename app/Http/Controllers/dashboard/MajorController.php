@@ -13,14 +13,14 @@ class MajorController extends Controller
     {
         //
         $majors = Major::all();
-        return view('dashboard.major.index' , ['majors' => $majors]);
+        return view('dashboard.major.index', ['majors' => $majors]);
     }
 
     public function create()
     {
         //
         $departments = Department::all();
-        return view('dashboard.major.create',[ 'departments' => $departments]);
+        return view('dashboard.major.create', [ 'departments' => $departments]);
 
     }
 
@@ -45,7 +45,7 @@ class MajorController extends Controller
     public function edit(Major $major)
     {
         //
-        return view('dashboard.major.edit', compact('Major'));
+        return view('dashboard.major.edit', compact('major'));
     }
 
     public function update(Request $request, Major $major)

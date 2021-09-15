@@ -18,7 +18,7 @@ class CollegeController extends Controller
     {
         //
         $Colleges = College::all();
-        return view('dashboard.colleges.index' , ['colleges' => $Colleges]);
+        return view('dashboard.colleges.index', ['colleges' => $Colleges]);
     }
 
     /**
@@ -91,7 +91,7 @@ class CollegeController extends Controller
         } catch (Exception $e) {
 
             return back()->withErrors([
-                'message' => 'You need to choose another name , college name already been taken',
+                'message' => 'You need to choose another name , College name already been taken',
                 'class'   => 'alert-danger'
             ]);
         }
@@ -118,7 +118,7 @@ class CollegeController extends Controller
         } catch (Exception $e) {
 
             return back()->withErrors([
-                'message' => 'You need to choose another name , college name already been taken',
+                'message' => 'You need to choose another name , College name already been taken',
                 'class'   => 'alert-danger'
             ]);
 
