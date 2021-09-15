@@ -8,6 +8,6 @@ class Program extends Model
 {
     //
     public function majors() {
-        return $this->belongsToMany(Major::class, 'major_programs', 'major_id', 'program_id');
+        return $this->belongsToMany(Major::class, 'major_programs', 'program_id', 'major_id');
     }
 }

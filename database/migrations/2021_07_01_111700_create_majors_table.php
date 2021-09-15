@@ -16,7 +16,9 @@ class CreateMajorsTable extends Migration
         Schema::create('majors', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('departmentId')->references('id')->on('departments')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id')->unsigned();
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+
             $table->string('name')->unique();
             $table->integer('discount');
             $table->integer('numberOfYears');

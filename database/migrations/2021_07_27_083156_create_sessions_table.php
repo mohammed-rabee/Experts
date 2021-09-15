@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectionsTable extends Migration
+class CreateSessionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('sessions', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('major_program_id')->references('id')->on('major_programs')->onDelete('cascade');
+            $table->unsignedBigInteger('teaches_id')->unsigned();
+            $table->foreign('teaches_id')->references('id')->on('teaches')->onDelete('cascade');
 
-            // number of studen can be enrolled
-            $table->integer('maxNumberOfStudent');
+            $table->date('time');
+            $table->text('url');
+            $table->text('annoncment');
 
             $table->timestamps();
         });
@@ -32,6 +34,6 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('sessions');
     }
 }

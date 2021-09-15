@@ -8,7 +8,7 @@ class Session extends Model
 {
     //
 
-    public function taughtSection() {
+    public function teach() {
         return $this->belongsTo(Teach::class);
     }
 

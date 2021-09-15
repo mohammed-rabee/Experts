@@ -19,12 +19,12 @@ class Student extends Model
     }
 
     // program
-    public function majorProgram() {
-        return $this->belongsTo(MajorPrograms::class);
+    public function major() {
+        return $this->belongsTo(Major::class);
     }
 
     // the part where user register a program
-    public function teachs() {
-        return $this->belongsToMany(Teach::class, 'registers', 'teach_id', 'student_id');
+    public function sections() {
+        return $this->belongsToMany(Section::class, 'registers', 'student_id', 'section_id');
     }
 }

@@ -18,10 +18,10 @@ class MajorPrograms extends Model
     //     return $this->belongsTo(Program::class,'program_id');
     // }
 
-    // students
-    public function students() {
-        return $this->hasMany(Student::class);
-    }
+    // // students
+    // public function students() {
+    //     return $this->hasMany(Student::class);
+    // }
 
     // section
     public function sections() {

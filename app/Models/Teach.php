@@ -16,9 +16,9 @@ class Teach extends Model
     // }
 
     // the part where user register a program
-    public function students() {
-        return $this->belongsToMany(Student::class, 'registers', 'teach_id', 'student_id');
-    }
+    // public function students() {
+    //     return $this->belongsToMany(Student::class, 'registers', 'teach_id', 'student_id');
+    // }
 
     // the part where teacher create sessions for section
     public function sessions() {
