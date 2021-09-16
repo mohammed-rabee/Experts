@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
   <div class="container-fluid">
-    <div class="col-md-12">
+    <div class="col-md-9" style="padding-left: 20%">
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title">Add Major</h4>
@@ -47,16 +47,16 @@
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Discount</label>
-                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ old('discount') }}" required>
+                  <label class="bmd-label-floating">Number of Years</label>
+                  <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ old('numberOfYears') }}" required>
                 </div>
               </div>
             </div>
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Number of Years</label>
-                  <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ old('numberOfYears') }}" required>
+                  <label class="bmd-label-floating">Discount Precentage</label>
+                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ old('discount') }}" required>
                 </div>
               </div>
             </div>

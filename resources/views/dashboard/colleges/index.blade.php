@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <div class="col-md-20">
+        <div class="col-md-9" style="padding-left: 20%">
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Colleges</h4>
@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>{{ $college->id }}</td>
                                     <td>{{ $college->name }}</td>
-                                    <td>
+                                    <td align="center">
                                         {{-- <a href="{{ route('College.edit', ['id'=> $college->id]) }}"
                                         class="btn btn-primary waves-effect waves-light btn-xs">
                                         Edit

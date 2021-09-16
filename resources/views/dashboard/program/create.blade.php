@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
   <div class="container-fluid">
-    <div class="col-md-12">
+    <div class="col-md-9" style="padding-left: 20%">
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title">Add Program</h4>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body">
-          <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('program.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <div class="col-md-6">
@@ -46,27 +46,27 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Program code</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="code" id="code" value="{{ old('code') }}" required>
+                  <input class="form-control" type="text" minlength="4" maxlength="10" name="code" id="code" value="{{ old('code') }}" required>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Student Number</label>
-                  <input class="form-control" type="number" name="fakeNumber" id="fakeNumber" value="{{ old('fakeNumber') }}" required>
+                  <input class="form-control" type="number" name="student_number_fake" id="student_number_fake" value="{{ old('student_number_fake') }}" required>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake previous enrollment number</label>
-                  <input class="form-control" type="number" name="fakePreviousNumber" id="fakePreviousNumber" value="{{ old('fakePreviousNumber') }}" required>
+                  <input class="form-control" type="number" name="student_previous_number_enrolled_fake" id="student_previous_number_enrolled_fake" value="{{ old('student_previous_number_enrolled_fake') }}" required>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Rate</label>
-                  <input class="form-control" type="number" min="0" max="5" name="fakerate" id="fakerate" value="{{ old('fakerate') }}" required>
+                  <input class="form-control" type="number" min="0" max="5" name="rate_fake" id="fakerate" value="{{ old('rate_fake') }}" required>
                 </div>
               </div>
             </div>
@@ -75,9 +75,23 @@
                 <div class="form-group">
                   <label>Program Description</label>
                   <div class="form-group">
-                    <label class="bmd-label-floating"> Wrtie the programe description here</label>
-                    <textarea class="form-control" rows="10" minlength="10" maxlength="100" name="description" id="description" value="{{ old('description') }}" required></textarea>
+                    <label class="bmd-label-floating"> Write the programe description here</label>
+                    <textarea class="form-control" rows="8" minlength="10" maxlength="100" name="description" id="description" value="{{ old('description') }}" required></textarea>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Cost</label>
+                  <input class="form-control" type="number" min="0" max="5000" name="cost" id="cost" value="{{ old('cost') }}" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Discount Precentage</label>
+                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ old('discount') }}" required>
                 </div>
               </div>
             </div>

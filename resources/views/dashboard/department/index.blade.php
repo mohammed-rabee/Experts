@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <div class="col-md-20">
+        <div class="col-md-9" style="padding-left: 20%">
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Departments</h4>
@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>{{ $department->id }}</td>
                                     <td>{{ $department->name }}</td>
-                                    <td>
+                                    <td align="center">
                                         <form action="{{ route('department.delete',$department->id) }}" method="POST">
 
                                             <a class="btn btn-primary"
