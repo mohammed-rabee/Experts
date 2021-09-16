@@ -26,27 +26,14 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="bmd" style="padding-top: 1.5%">Major Name</label>
-                  <select class="form-control" style="padding-top: 2.5%" name="majorId" id="majorId" required>
-                    <option value="" class="bmd-label-floating">Choose Major Name</option>
-                    @foreach($majors as $major)
-                    <option value="{{$major->id}}">{{$major->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
                   <label class="bmd-label-floating">Program Name</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" required>
+                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Program code</label>
-                  <input class="form-control" type="text" minlength="4" maxlength="10" name="code" id="code" value="{{ old('code') }}" required>
+                  <input class="form-control" type="text" minlength="4" maxlength="10" name="code" id="code" value="{{ old('code') }}" >
                 </div>
               </div>
             </div>
@@ -54,19 +41,19 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Student Number</label>
-                  <input class="form-control" type="number" name="student_number_fake" id="student_number_fake" value="{{ old('student_number_fake') }}" required>
+                  <input class="form-control" type="number" name="student_number_fake" id="student_number_fake" value="{{ old('student_number_fake') }}" >
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake previous enrollment number</label>
-                  <input class="form-control" type="number" name="student_previous_number_enrolled_fake" id="student_previous_number_enrolled_fake" value="{{ old('student_previous_number_enrolled_fake') }}" required>
+                  <input class="form-control" type="number" name="student_previous_number_enrolled_fake" id="student_previous_number_enrolled_fake" value="{{ old('student_previous_number_enrolled_fake') }}" >
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Rate</label>
-                  <input class="form-control" type="number" min="0" max="5" name="rate_fake" id="fakerate" value="{{ old('rate_fake') }}" required>
+                  <input class="form-control" type="number" min="0" max="5" name="rate_fake" id="fakerate" value="{{ old('rate_fake') }}" >
                 </div>
               </div>
             </div>
@@ -76,7 +63,7 @@
                   <label>Program Description</label>
                   <div class="form-group">
                     <label class="bmd-label-floating"> Write the programe description here</label>
-                    <textarea class="form-control" rows="8" minlength="10" maxlength="100" name="description" id="description" value="{{ old('description') }}" required></textarea>
+                    <textarea class="form-control" rows="8" minlength="10" maxlength="100" name="description" id="description" value="{{ old('description') }}" ></textarea>
                   </div>
                 </div>
               </div>
@@ -85,13 +72,32 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Cost</label>
-                  <input class="form-control" type="number" min="0" max="5000" name="cost" id="cost" value="{{ old('cost') }}" required>
+                  <input class="form-control" type="number" min="0" max="5000" name="cost" id="cost" value="{{ old('cost') }}" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Discount Precentage</label>
-                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ old('discount') }}" required>
+                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ old('discount') }}" >
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-bottom: 10%">
+              <div class="col-md-12">
+                <div class="form-group">
+                  {{-- <label class="bmd" style="padding-top: 1.5%">Major Name</label> --}}
+                  <select class="selectpicker" style="padding-top: 2.5%" name="major_id[]" id="major_id" multiple="multiple" >
+                    {{-- <option value="" class="bmd-label-floating">Choose Major Name</option> --}}
+                    @foreach($majors as $major)
+                    <option value="{{$major->id}}">{{$major->name}}</option>
+                    @endforeach
+                  </select>
+                  <select class="selectpicker" multiple data-live-search="true">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Barbecue</option>
+                  </select>
+                  
                 </div>
               </div>
             </div>

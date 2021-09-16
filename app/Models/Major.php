@@ -19,7 +19,7 @@ class Major extends Model
     }
 
     public function programs() {
-        return $this->belongsToMany(Program::class , 'major_programs', 'major_id', 'program_id');
+        return $this->belongsToMany(Program::class , 'major_programs', 'major_id', 'program_id')->withTimestamps();
     } 
 
 }

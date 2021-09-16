@@ -25,6 +25,6 @@ class Student extends Model
 
     // the part where user register a program
     public function sections() {
-        return $this->belongsToMany(Section::class, 'registers', 'student_id', 'section_id');
+        return $this->belongsToMany(Section::class, 'registers', 'student_id', 'section_id')->withTimestamps();
     }
 }
