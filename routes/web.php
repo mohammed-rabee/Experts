@@ -53,12 +53,12 @@ Route::put('/major/{major}'                , [MajorController::class, 'update'])
 Route::delete('/major/{major}'             , [MajorController::class, 'destroy'])->name('major.delete');
 
 
-Route::get('/major'                        , [ProgramController::class, 'index'])->name('major.index');
-Route::get('/program/create'               , [ProgramController::class, 'create'])->name('major.create');
-Route::post('/major'                       , [ProgramController::class, 'store'])->name('major.store');
-Route::get('/program/{program}/edit'       , [ProgramController::class, 'edit'])->name('major.edit');
-Route::put('/program/{program}'            , [ProgramController::class, 'update'])->name('major.update');
-Route::delete('/program/{program}'         , [ProgramController::class, 'destroy'])->name('major.delete');
+Route::get('/program'                      , [ProgramController::class, 'index'])->name('program.index');
+Route::get('/program/create'               , [ProgramController::class, 'create'])->name('program.create');
+Route::post('/program'                     , [ProgramController::class, 'store'])->name('program.store');
+Route::get('/program/{program}/edit'       , [ProgramController::class, 'edit'])->name('program.edit');
+Route::put('/program/{program}'            , [ProgramController::class, 'update'])->name('program.update');
+Route::delete('/program/{program}'         , [ProgramController::class, 'destroy'])->name('program.delete');
 
 
 

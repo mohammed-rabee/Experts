@@ -27,6 +27,7 @@ class MajorController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
         try {
             Major::create($request->all());
             return redirect()->route('major.index')

@@ -19,7 +19,7 @@
           </div>
           @endif
         </div>
-        <div class="card-body">
+        <div class="card-body" style="padding-top: 1.5%">
           <form action="{{ route('department.update' , $department->id )}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')

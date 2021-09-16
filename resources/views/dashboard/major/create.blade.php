@@ -19,15 +19,16 @@
           </div>
           @endif
         </div>
-        <div class="card-body">
+
+        <div class="card-body" style="padding-top: 1.5%">
           <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label class="bmd-label-floating">Department Name</label>
-                  <select class="form-control" name="collegeId" id="collegeId" required>
-                    <option value="" class="bmd-label-floating"> choose Department</option>
+                  <label class="bmd" style="padding-top: 1.5%">Department Name</label>
+                  <select class="form-control" style="padding-top: 2.5%" name="department_id" id="department_id" required>
+                    <option value="" class="bmd-label-floating">Choose Department Name</option>
                     @foreach($departments as $department)
                     <option value="{{$department->id}}">{{$department->name}}</option>
                     @endforeach
@@ -35,15 +36,34 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-5">
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Major Name</label>
                   <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" required>
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Add Major</button>
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Discount</label>
+                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ old('discount') }}" required>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Number of Years</label>
+                  <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ old('numberOfYears') }}" required>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary pull-left">Add Major</button>
+            <a href="{{ route('major.index') }}" style="float: right;">
+              <span class="btn btn-primary">All Majors</span>
+            </a>
             <div class="clearfix"></div>
           </form>
         </div>

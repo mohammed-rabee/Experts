@@ -9,7 +9,7 @@
                     <h4 class="card-title ">Majors</h4>
                     <p class="card-category"> Here you can see a list of all Majors in the system</p>
                 </div>
-                <div class="card-body" style="padding-top: 1.5%">
+                <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">
                         @if ($errors->any())
                         <div class="alert {{ $errors->first('class') }}" role="alert">
@@ -31,8 +31,6 @@
                             <thead class=" text-primary">
                                 <th>ID</th>
                                 <th>Major Name</th>
-                                <th>Discount</th>
-                                <th>Study Years</th>
                                 <th>Control</th>
                             </thead>
                             <tbody>
@@ -40,13 +38,11 @@
                                 <tr>
                                     <td>{{ $major->id }}</td>
                                     <td>{{ $major->name }}</td>
-                                    <td>{{ $major->discount }}</td>
-                                    <td>{{ $major->numberOfYears }}</td>
                                     <td>
-                                        <form action="{{ route('major.delete',$major->id) }}" method="POST">
+                                        <form action="{{ route('department.delete',$major->id) }}" method="POST">
 
                                             <a class="btn btn-primary"
-                                                href="{{ route('major.edit', $major->id) }}">Edit</a>
+                                                href="{{ route('department.edit', $major->id) }}">Edit</a>
 
                                             @csrf
                                             @method('delete')

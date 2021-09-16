@@ -28,7 +28,10 @@ class CreateProgramsTable extends Migration
             $table->integer('student_number_fake');
 
             // total number of student ever enrolled in this program
-            $table->integer('student_previous_number');
+            $table->integer('student_previous_number_enrolled');
+
+            // fake total number of student ever enrolled in this program
+            $table->integer('student_previous_number_enrolled_fake');
 
             // actual rate
             $table->decimal('rate');

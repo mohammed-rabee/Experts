@@ -20,7 +20,7 @@ class CreateMajorsTable extends Migration
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
             $table->string('name')->unique();
-            $table->integer('discount');
+            $table->double('discount');
             $table->integer('numberOfYears');
 
             $table->timestamps();

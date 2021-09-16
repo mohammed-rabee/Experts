@@ -19,15 +19,31 @@
           </div>
           @endif
         </div>
-        <div class="card-body">
+        <div class="card-body" style="padding-top: 1.5%">
           <form action="{{ route('major.update' , $major->id )}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="row">
-              <div class="col-md-5">
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Major Name</label>
                   <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ $major->name }}" required>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Discount</label>
+                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ $major->discount }}" required>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Number of Years</label>
+                  <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ $major->numberOfYears }}" required>
                 </div>
               </div>
             </div>

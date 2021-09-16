@@ -19,18 +19,22 @@
           </div>
           @endif
         </div>
+        
         <div class="card-body">
           <form action="{{ route('College.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
-              <div class="col-md-5">
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">College Name</label>
                   <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" required>
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-right">Add College</button>
+            <button type="submit" class="btn btn-primary pull-left">Add College</button>
+            <a href="{{ route('college.index') }}" style="float: right;">
+              <span class="btn btn-primary">All Colleges</span>
+            </a>
             <div class="clearfix"></div>
           </form>
         </div>

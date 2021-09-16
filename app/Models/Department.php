@@ -8,7 +8,7 @@ class Department extends Model
 {
     //
     protected $fillable = [
-        'collegeId','name',
+        'college_id','name',
     ];
     
     public function college() {

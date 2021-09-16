@@ -16,8 +16,8 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('collegeId')->unsigned();
-            $table->foreign('collegeId')->references('id')->on('colleges')->onDelete('cascade');
+            $table->unsignedBigInteger('college_id')->unsigned();
+            $table->foreign('college_id')->references('id')->on('colleges')->onDelete('cascade');
 
             $table->string('name')->unique();
 
