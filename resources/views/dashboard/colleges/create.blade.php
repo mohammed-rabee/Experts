@@ -31,10 +31,10 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-left">Add College</button>
-            <a href="{{ route('college.index') }}" style="float: right;">
-              <span class="btn btn-primary">All Colleges</span>
+            <a href="{{ route('college.index') }}">
+              <span class="btn btn-light pull-left">All Colleges</span>
             </a>
+            <button type="submit" class="btn btn-primary pull-right">Add College</button>
             <div class="clearfix"></div>
           </form>
         </div>

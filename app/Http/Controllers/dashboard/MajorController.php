@@ -46,7 +46,10 @@ class MajorController extends Controller
     public function edit(Major $major)
     {
         //
-        return view('dashboard.major.edit', compact('major'));
+        $departments = $major->department;
+        $otherDepartments = Department::all()->whereNotIn('id', $departments->id);
+
+        return view('dashboard.major.edit', compact('major', 'otherDepartments'));
     }
 
     public function update(Request $request, Major $major)

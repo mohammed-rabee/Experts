@@ -44,10 +44,13 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-left">Add Department</button>
-            <a href="{{ route('department.index') }}" style="float: right;">
-              <span class="btn btn-primary">All Departments</span>
+
+            <a href="{{ route('department.index') }}">
+              <span class="btn btn-light pull-left">All Departments</span>
             </a>
+
+            <button type="submit" class="btn btn-primary pull-right">Add Department</button>
+
             <div class="clearfix"></div>
           </form>
         </div>

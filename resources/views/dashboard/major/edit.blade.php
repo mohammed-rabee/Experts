@@ -23,6 +23,19 @@
           <form action="{{ route('major.update' , $major->id )}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
+            <div class="row" style="padding-top: 1.5%;padding-bottom: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd" style="padding-top: 1.2%">College Name</label>
+                  <select class="form-control" style="padding-top: 2.5%" name="college_id" id="college_id" required>
+                    <option value="" class="bmd-label-floating">Choose College Name</option>
+                    @foreach($otherDepartments as $department)
+                    <option value="{{$department->id}}">{{$department->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
@@ -47,6 +60,9 @@
                 </div>
               </div>
             </div>
+            <a href="{{ route('major.index') }}">
+              <span class="btn btn-light pull-left">Beck</span>
+            </a>
             <button type="submit" class="btn btn-primary pull-right">Edit Major</button>
             <div class="clearfix"></div>
           </form>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <div class="col-md-9" style="padding-left: 20%">
+        <div class="col-md-10" style="padding-left: 20%">
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Majors</h4>
@@ -33,6 +33,7 @@
                                 <th>Major Name</th>
                                 <th>Study Years</th>
                                 <th>Discount Precentage</th>
+                                <th>Department Name</th>
                                 <th>Control</th>
                             </thead>
                             <tbody>
@@ -42,6 +43,7 @@
                                     <td>{{ $major->name }}</td>
                                     <td>{{ $major->numberOfYears }}</td>
                                     <td>{{ $major->discount }}</td>
+                                    <th>{{ $major->department->name }}</th>
                                     <td align="center">
                                         <form action="{{ route('major.delete',$major->id) }}" method="POST">
 

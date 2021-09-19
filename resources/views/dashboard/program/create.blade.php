@@ -23,7 +23,7 @@
         <div class="card-body">
           <form action="{{ route('program.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Program Name</label>
@@ -37,7 +37,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 1.5%">
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Student Number</label>
@@ -57,7 +57,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="padding-top: 1.5%">
+            <div class="row" style="padding-top: 2.5%">
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Program Description</label>
@@ -68,7 +68,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Cost</label>
@@ -82,29 +82,23 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="padding-bottom: 10%">
+            <div class="row" style="padding-top: 2.5%">
               <div class="col-md-12">
-                <div class="form-group">
-                  {{-- <label class="bmd" style="padding-top: 1.5%">Major Name</label> --}}
-                  <select class="selectpicker" style="padding-top: 2.5%" name="major_id[]" id="major_id" multiple="multiple" >
-                    {{-- <option value="" class="bmd-label-floating">Choose Major Name</option> --}}
-                    @foreach($majors as $major)
-                    <option value="{{$major->id}}">{{$major->name}}</option>
-                    @endforeach
-                  </select>
-                  <select class="selectpicker" multiple data-live-search="true">
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Barbecue</option>
-                  </select>
-                  
-                </div>
+                <label class="bmd" style="padding-top: 2%">Available Majors :</label><br/>
+                <select class="selectpicker col-md-12" multiple data-live-search="true" name="major_id[]" id="major_id">
+                  @foreach($majors as $major)
+                  <option value="{{$major->id}}">{{$major->name}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-left">Add Program</button>
-            <a href="{{ route('program.index') }}" style="float: right;">
-              <span class="btn btn-primary">All Programs</span>
+            
+            <a href="{{ route('program.index') }}">
+              <span class="btn btn-light pull-left">All Programs</span>
             </a>
+
+            <button type="submit" class="btn btn-primary pull-right">Add Program</button>
+
             <div class="clearfix"></div>
           </form>
         </div>

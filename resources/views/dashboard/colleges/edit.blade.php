@@ -19,11 +19,11 @@
           </div>
           @endif
         </div>
-        <div class="card-body" style="padding-top: 1.5%">
+        <div class="card-body" style="padding-top: 3%">
           <form action="{{ route('college.update' , $college->id )}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="row">
+            <div class="rows">
               <div class="col-md-5">
                 <div class="form-group">
                   <label class="bmd-label-floating">College Name</label>
@@ -31,6 +31,9 @@
                 </div>
               </div>
             </div>
+            <a href="{{ route('college.index') }}">
+              <span class="btn btn-light pull-left">Beck</span>
+            </a>
             <button type="submit" class="btn btn-primary pull-right">Edit College</button>
             <div class="clearfix"></div>
           </form>

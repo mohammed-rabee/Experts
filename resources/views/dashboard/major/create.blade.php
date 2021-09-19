@@ -60,10 +60,13 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary pull-left">Add Major</button>
-            <a href="{{ route('major.index') }}" style="float: right;">
-              <span class="btn btn-primary">All Majors</span>
+            
+            <a href="{{ route('major.index') }}">
+              <span class="btn btn-light pull-left">All Majors</span>
             </a>
+
+            <button type="submit" class="btn btn-primary pull-right">Add Major</button>
+
             <div class="clearfix"></div>
           </form>
         </div>

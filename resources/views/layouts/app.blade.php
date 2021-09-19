@@ -31,12 +31,33 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="../../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/material-dashboard.css">
+
+
+  <!--this is for multi dropdown select-->
+  <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+
+  
+
+  {{-- <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> --}}
+  
+  {{-- <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  
+  <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script> --}}
+  
+
+  
   {{-- <script src="../../node_modules/remodal/dist/remodal.min.js"></script> --}}
   {{-- <link rel="stylesheet" href="../../node_modules/remodal/dist/remodal.css">
   <link rel="stylesheet" href="../../node_modules/remodal/dist/remodal-default-theme.css">
 
   <script src="../../node_modules/remodal/dist/remodal.min.js"></script> --}}
+  
 
 </head>
 
@@ -360,6 +381,7 @@
   <script src="../../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../../assets/js/material-dashboard.js?v=2.1.0"></script>
+  {{-- <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script> --}}
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script>
     $(document).ready(function() {
@@ -557,5 +579,4 @@
 }, 3200);
 </script>
 </body>
-
 </html>

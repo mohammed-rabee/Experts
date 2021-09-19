@@ -31,6 +31,7 @@
                             <thead class=" text-primary">
                                 <th>ID</th>
                                 <th>Department Name</th>
+                                <th>College Name</th>
                                 <th>Control</th>
                             </thead>
                             <tbody>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>{{ $department->id }}</td>
                                     <td>{{ $department->name }}</td>
+                                    <td>{{ $department->college->name }}</td>
                                     <td align="center">
                                         <form action="{{ route('department.delete',$department->id) }}" method="POST">
 

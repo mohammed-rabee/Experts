@@ -24,6 +24,19 @@
             @csrf
             @method('put')
             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd" style="padding-top: 1.2%">College Name</label>
+                  <select class="form-control" style="padding-top: 2.5%" name="college_id" id="college_id" required>
+                    <option value="" class="bmd-label-floating">Choose College Name</option>
+                    @foreach($otherColleges as $college)
+                    <option value="{{$college->id}}">{{$college->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-5">
                 <div class="form-group">
                   <label class="bmd-label-floating">Department Name</label>
@@ -31,6 +44,9 @@
                 </div>
               </div>
             </div>
+            <a href="{{ route('department.index') }}">
+              <span class="btn btn-light pull-left">Beck</span>
+            </a>
             <button type="submit" class="btn btn-primary pull-right">Edit Department</button>
             <div class="clearfix"></div>
           </form>
