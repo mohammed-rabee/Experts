@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
   <div class="container-fluid">
-    <div class="col-md-9" style="padding-left: 20%">
+    <div class="col-md-10" style="padding-left: 17%">
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title">Add Major</h4>
