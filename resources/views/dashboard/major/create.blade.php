@@ -23,19 +23,7 @@
         <div class="card-body" style="padding-top: 1.5%">
           <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd" style="padding-top: 1.5%">Department Name</label>
-                  <select class="form-control" style="padding-top: 2.5%" name="department_id" id="department_id" required>
-                    <option value="" class="bmd-label-floating">Choose Department Name</option>
-                    @foreach($departments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
+            
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
@@ -60,12 +48,31 @@
                 </div>
               </div>
             </div>
-            
-            <a href="{{ route('major.index') }}">
-              <span class="btn btn-light pull-left">All Majors</span>
-            </a>
+            <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
+              <div class="col-md-6">
+                <div class="form-group" style="padding-top: 2%">
+                  <label class="bmd">Department Name</label>
+                  <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="department_id" id="department_id" required>
+                    <option value=""></option>
+                    @foreach($departments as $department)
+                    <option value="{{$department->id}}">{{$department->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary pull-right">Add Major</button>
+            <div class="row" style="padding-top: 2%">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <a href="{{ route('major.index') }}">
+                    <span class="btn btn-light pull-left">All Majors</span>
+                  </a>
+      
+                  <button type="submit" class="btn btn-primary pull-right">Add Major</button>
+                </div>
+              </div>
+            </div>
 
             <div class="clearfix"></div>
           </form>

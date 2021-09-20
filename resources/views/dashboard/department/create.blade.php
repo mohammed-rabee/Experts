@@ -23,19 +23,6 @@
         <div class="card-body">
           <form action="{{ route('department.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd" style="padding-top: 1.5%">College Name</label>
-                  <select class="form-control" style="padding-top: 2.5%" name="college_id" id="college_id" required>
-                    <option value="" class="bmd-label-floating">Choose College Name</option>
-                    @foreach($colleges as $college)
-                    <option value="{{$college->id}}">{{$college->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
@@ -45,12 +32,31 @@
               </div>
             </div>
 
-            <a href="{{ route('department.index') }}">
-              <span class="btn btn-light pull-left">All Departments</span>
-            </a>
+            <div class="row" style="padding-top: 2.5%;">
+              <div class="col-md-6">
+                <div class="form-group" style="padding-top: 2%">
+                  <label class="bmd">College Name</label>
+                  <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" style="padding-top: 2.5%" name="college_id" id="college_id" required>
+                    <option value=""></option>
+                    @foreach($colleges as $college)
+                    <option value="{{$college->id}}">{{$college->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary pull-right">Add Department</button>
-
+            <div class="row" style="padding-top: 2%">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <a href="{{ route('department.index') }}">
+                    <span class="btn btn-light pull-left">All Departments</span>
+                  </a>
+      
+                  <button type="submit" class="btn btn-primary pull-right">Add Department</button>
+                </div>
+              </div>
+            </div>
             <div class="clearfix"></div>
           </form>
         </div>

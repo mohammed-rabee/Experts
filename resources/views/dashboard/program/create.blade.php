@@ -53,7 +53,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Rate</label>
-                  <input class="form-control" type="number" min="0" max="5" name="rate_fake" id="fakerate" value="{{ old('rate_fake') }}" >
+                  <input class="form-control" type="number" min="0" max="5" name="rate_fake" id="rate_fake" value="{{ old('rate_fake') }}" >
                 </div>
               </div>
             </div>
@@ -85,20 +85,25 @@
             <div class="row" style="padding-top: 2.5%">
               <div class="col-md-12">
                 <label class="bmd" style="padding-top: 2%">Available Majors :</label><br/>
-                <select class="selectpicker col-md-12" multiple data-live-search="true" name="major_id[]" id="major_id">
+                <select class="selectpicker col-md-12" data-style="btn btn-primary" multiple data-live-search="true" name="major_id[]" id="major_id" required>
                   @foreach($majors as $major)
                   <option value="{{$major->id}}">{{$major->name}}</option>
                   @endforeach
                 </select>
               </div>
             </div>
-            
-            <a href="{{ route('program.index') }}">
-              <span class="btn btn-light pull-left">All Programs</span>
-            </a>
 
-            <button type="submit" class="btn btn-primary pull-right">Add Program</button>
-
+            <div class="row" style="padding-top: 2%">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <a href="{{ route('program.index') }}">
+                    <span class="btn btn-light pull-left">All Programs</span>
+                  </a>
+      
+                  <button type="submit" class="btn btn-primary pull-right">Add Program</button>
+                </div>
+              </div>
+            </div>
             <div class="clearfix"></div>
           </form>
         </div>

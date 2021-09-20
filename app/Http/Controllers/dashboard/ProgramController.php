@@ -64,7 +64,12 @@ class ProgramController extends Controller
         //
         try {
 
-            $program->update($request->all());
+            $program->update($request->all() + [
+                'student_number'                   => 0,
+                'student_previous_number_enrolled' => 0,
+                'rate'                             => 0
+            ]);
+            $program->majors()->attach(array_values($request->major_id));
             return redirect()->route('program.index')
             ->withErrors([
                 'message' => 'Program created successfully.',

@@ -31,11 +31,19 @@
                 </div>
               </div>
             </div>
-            <a href="{{ route('college.index') }}">
-              <span class="btn btn-light pull-left">All Colleges</span>
-            </a>
-            <button type="submit" class="btn btn-primary pull-right">Add College</button>
-            <div class="clearfix"></div>
+            
+            <div class="row" style="padding-top: 2%">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <a href="{{ route('college.index') }}">
+                    <span class="btn btn-light pull-left">All Colleges</span>
+                  </a>
+                  <button type="submit" class="btn btn-primary pull-right">Add College</button>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            
           </form>
         </div>
       </div>
