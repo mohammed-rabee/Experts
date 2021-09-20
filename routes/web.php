@@ -4,6 +4,9 @@ use App\Http\Controllers\Dashboard\CollegeController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\MajorController;
 use App\Http\Controllers\Dashboard\ProgramController;
+use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\StudentController;
+use App\Http\Controllers\Dashboard\TeacherController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +63,29 @@ Route::get('/program/{program}/edit'       , [ProgramController::class, 'edit'])
 Route::put('/program/{program}'            , [ProgramController::class, 'update'])->name('program.update');
 Route::delete('/program/{program}'         , [ProgramController::class, 'destroy'])->name('program.delete');
 
+
+Route::get('/section'                      , [SectionController::class, 'index'])->name('section.index');
+Route::get('/section/create'               , [SectionController::class, 'create'])->name('section.create');
+Route::post('/section'                     , [SectionController::class, 'store'])->name('section.store');
+Route::get('/section/{section}/edit'       , [SectionController::class, 'edit'])->name('section.edit');
+Route::put('/section/{section}'            , [SectionController::class, 'update'])->name('section.update');
+Route::delete('/section/{section}'         , [sectionController::class, 'destroy'])->name('section.delete');
+
+
+Route::get('/teacher'                      , [TeacherController::class, 'index'])->name('teacher.index');
+Route::get('/teacher/create'               , [TeacherController::class, 'create'])->name('teacher.create');
+Route::post('/teacher'                     , [TeacherController::class, 'store'])->name('teacher.store');
+Route::get('/teacher/{teacher}/edit'       , [TeacherController::class, 'edit'])->name('teacher.edit');
+Route::put('/teacher/{teacher}'            , [TeacherController::class, 'update'])->name('teacher.update');
+Route::delete('/teacher/{teacher}'         , [TeacherController::class, 'destroy'])->name('teacher.delete');
+
+
+Route::get('/student'                      , [StudentController::class, 'index'])->name('student.index');
+Route::get('/student/create'               , [StudentController::class, 'create'])->name('student.create');
+Route::post('/student'                     , [StudentController::class, 'store'])->name('student.store');
+Route::get('/student/{student}/edit'       , [StudentController::class, 'edit'])->name('student.edit');
+Route::put('/student/{student}'            , [StudentController::class, 'update'])->name('student.update');
+Route::delete('/student/{student}'         , [StudentController::class, 'destroy'])->name('student.delete');
 
 
 // Route::middleware(['auth'])->group(function () {

@@ -19,6 +19,8 @@ class CreateSectionsTable extends Migration
             $table->unsignedBigInteger('major_program_id')->unsigned();
             $table->foreign('major_program_id')->references('id')->on('major_programs')->onDelete('cascade');
 
+            // $table->string('name');
+
             // number of studen can be enrolled
             $table->integer('maxNumberOfStudent');
 
