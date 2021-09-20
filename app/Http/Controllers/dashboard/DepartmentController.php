@@ -46,9 +46,13 @@ class DepartmentController extends Controller
     public function edit(Department $department)
     {
         //
-        $colleges = $department->college;
-        $otherColleges = College::all()->whereNotIn('id', $colleges->id);
-        return view('dashboard.department.edit', compact('department', 'otherColleges'));
+        // $colleges = $department->college;
+        // $otherColleges = College::all()->whereNotIn('id', $colleges->id);
+
+        $colleges = College::all();
+        $keys   = array($department->college->id);
+
+        return view('dashboard.department.edit', compact('department', 'colleges', 'keys'));
     }
 
     public function update(Request $request, Department $department)

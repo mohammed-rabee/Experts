@@ -50,15 +50,13 @@ class ProgramController extends Controller
     public function edit(Program $program)
     {
         //
-        $majors = $program->majors;
-        $ids = array();
-        foreach($majors as $major) {
-            $ids[] = $major->id;
-        }
+        // $majors = $program->majors;
+        $majors = Major::all();
+        $keys   = $program->majors->modelKeys();
 
-        $otherMajors = Major::all()->whereNotIn('id', array_values($ids));
+        // $otherMajors = Major::all()->whereNotIn('id', array_values($majors->modelKeys()));
         
-        return view('dashboard.program.edit', compact('program', 'majors', 'otherMajors'));
+        return view('dashboard.program.edit', compact('program', 'majors', 'keys'));
     }
 
     public function update(Request $request, Program $program)

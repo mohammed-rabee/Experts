@@ -19,23 +19,10 @@
           </div>
           @endif
         </div>
-        <div class="card-body" style="padding-top: 1.5%">
+        <div class="card-body" style="padding-top: 2%">
           <form action="{{ route('major.update' , $major->id )}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="row" style="padding-top: 1.5%;padding-bottom: 1.5%">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd" style="padding-top: 1.2%">College Name</label>
-                  <select class="form-control" style="padding-top: 2.5%" name="college_id" id="college_id" required>
-                    <option value="" class="bmd-label-floating">Choose College Name</option>
-                    @foreach($otherDepartments as $department)
-                    <option value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
@@ -58,6 +45,20 @@
                   <label class="bmd-label-floating">Number of Years</label>
                   <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ $major->numberOfYears }}" required>
                 </div>
+              </div>
+            </div>
+            <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
+              <div class="col-md-12">
+                <label class="bmd" style="padding-top: 2%">Major Departments: </label><br/>
+                <select class="selectpicker col-md-12" data-style="btn btn-primary" data-live-search="true" name="department_id" id="department_id">
+                  @foreach($departments as $department)
+                  @if(in_array($department->id, $keys))
+                  <option value="{{$department->id}}" selected>{{$department->name}}</option>
+                  @else
+                  <option value="{{$department->id}}">{{$department->name}}</option>
+                  @endif
+                  @endforeach
+                </select>
               </div>
             </div>
             <a href="{{ route('major.index') }}">

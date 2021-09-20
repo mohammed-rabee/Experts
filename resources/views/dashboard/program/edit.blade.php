@@ -20,10 +20,10 @@
           @endif
         </div>
 
-        <div class="card-body">
+        <div class="card-body" style="padding-top: 2%">
           <form action="{{ route('program.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Program Name</label>
@@ -37,7 +37,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 1.5%">
               <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Fake Student Number</label>
@@ -82,18 +82,22 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
+            <div class="row " style="padding-top: 1.5%;padding-bottom: 5%">
               <div class="col-md-12">
-                <label class="bmd" style="padding-top: 2%">Program currently belnog to the following majors :</label><br/>
-                <select class="selectpicker col-md-12" multiple data-live-search="true" name="major_id[]" id="major_id">
+                <label class="bmd" style="padding-top: 2%">Program Majors :</label><br/>
+                <select class="selectpicker col-md-12" data-style="btn btn-primary" multiple data-live-search="true" name="major_id[]" id="major_id">
                   @foreach($majors as $major)
+                  @if(in_array($major->id, $keys))
                   <option value="{{$major->id}}" selected>{{$major->name}}</option>
+                  @else
+                  <option value="{{$major->id}}">{{$major->name}}</option>
+                  @endif
                   @endforeach
                 </select>
               </div>
             </div>
             
-            <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
+            {{-- <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
               <div class="col-md-12">
                 <label class="bmd" style="padding-top: 2%">Available Majors :</label><br/>
                 <select class="selectpicker col-md-12" multiple data-live-search="true" name="major_id[]" id="major_id">
@@ -102,7 +106,7 @@
                   @endforeach
                 </select>
               </div>
-            </div>
+            </div> --}}
             
             <a href="{{ route('program.index') }}">
               <span class="btn btn-light pull-left">All Programs</span>
