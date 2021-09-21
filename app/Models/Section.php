@@ -18,12 +18,12 @@ class Section extends Model
 
     // teachers
     public function teachers() {
-        return $this->BelongsToMany(Teacher::class, 'teaches', 'section_id', 'teacher_id')->withTimestamps();
+        return $this->BelongsToMany(User::class, 'teaches', 'section_id', 'teacher_id')->withTimestamps();
     }
 
     // students
     public function students() {
-        return $this->BelongsToMany(Student::class, 'teaches', 'section_id', 'student_id')->withTimestamps();
+        return $this->BelongsToMany(User::class, 'teaches', 'section_id', 'student_id')->withTimestamps();
     }
 
 }

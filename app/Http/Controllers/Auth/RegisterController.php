@@ -106,8 +106,8 @@ class RegisterController extends Controller
         // remember that user should select his major 
         // and colleage department so the rigster login can be compplete
 
-        $student = Student::create();
-        return $student->user()->create([
+        // $student = Student::create();
+        return User::create([
             'fname'         => $data['fname'],
             'lanme'         => $data['lname'],
 
