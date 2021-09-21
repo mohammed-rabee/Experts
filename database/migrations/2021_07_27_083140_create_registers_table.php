@@ -21,7 +21,7 @@ class CreateRegistersTable extends Migration
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
             $table->unsignedBigInteger('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->double('currentPayment');
             $table->double('leftPayment');

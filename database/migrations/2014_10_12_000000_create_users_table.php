@@ -30,8 +30,6 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('gander');
 
-            $table->morphs('userable');
-
             $table->rememberToken();
 
             $table->timestamps();

@@ -17,7 +17,7 @@ class CreateTeachesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('teacher_id')->unsigned();
-            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
