@@ -31,7 +31,7 @@
                             <thead class=" text-primary">
                                 <th>ID</th>
                                 <th>Section Name</th>
-                                {{-- <th>Program Name</th> --}}
+                                <th>Program Name</th>
                                 <th>Max number of students</th>
                                 
                                 <th>Control</th>
@@ -40,8 +40,8 @@
                                 @foreach ($sections as $section)
                                 <tr>
                                     <td>{{ $section->id }}</td>
-                                    {{-- <td>{{ $section->name }}</td> --}}
-                                    <td>{{ $section->majorProgram->name }}</td>
+                                    <td>{{ $section->name }}</td>
+                                    <td>{{ $section->programName }}</td>
                                     <td>{{ $section->maxNumberOfStudent }}</td>
 
                                     <td>

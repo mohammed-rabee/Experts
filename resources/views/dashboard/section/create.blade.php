@@ -24,30 +24,30 @@
           <form action="{{ route('section.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
-            {{-- <div class="row" style="padding-bottom: 1.5%">
-              <div class="col-md-6">
+            <div class="row" style="padding-bottom: 1.5%">
+              <div class="col-md-8">
                 <div class="form-group">
                   <label class="bmd-label-floating">Section Name</label>
                   <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" required>
                 </div>
               </div>
-            </div> --}}
+            </div>
             <div class="row" style="padding-bottom: 1.5%">
-              <div class="col-md-7">
+              <div class="col-md-8">
                 <div class="form-group">
                   <label class="bmd-label-floating">Max Number Of Students</label>
                   <input class="form-control" type="number" min="0" max="60" name="maxNumberOfStudent" id="maxNumberOfStudent" value="{{ old('maxNumberOfStudent') }}" required>
                 </div>
               </div>
             </div>
-            <div class="row" style="padding-top: 1.5%;padding-bottom: 1%">
+            {{-- <div class="row" style="padding-top: 1.5%;padding-bottom: 1%">
               <div class="col-md-9">
                 <div class="form-group" style="padding-top: 2%">
                   <label class="bmd">Programs</label>
                 </div>
               </div>
-            </div>
-            @foreach($programs as $program)
+            </div> --}}
+            {{-- @foreach($programs as $program)
             <div class="row">
               <div class="col-md-10">
                 <select class="selectpicker col-md-5" data-style="btn btn-primary" name="major_program_id" id="major_program_id" required>
@@ -62,13 +62,20 @@
                 </select>
               </div>
             </div>
-            @endforeach
-            
-                  
-                  
-                  
-                  
-                
+            @endforeach --}}
+            <div class="row" style="padding-top: 1.5%;padding-bottom: 2.5%">
+              <div class="col-md-8">
+                <div class="form-group" style="padding-top: 2%">
+                  <label class="bmd">Programs</label>
+                  <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="major_program_id" id="major_program_id" required>
+                    <option value=""></option>
+                    @foreach($programs as $program)
+                    <option value="{{$program->id}}">Program Name: { {{$program->programName}} }, Major Name: { {{ $program->majorName }} }</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
 
             <div class="row" style="padding-top: 2%">
               <div class="col-md-12">

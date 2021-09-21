@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Section extends Model
 {
     protected $fillable = [
-        'maxNumberOfStudent', 'major_program_id'
+        'name', 'maxNumberOfStudent', 'major_program_id'
     ];
 
     // major Program
