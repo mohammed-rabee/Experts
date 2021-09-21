@@ -40,8 +40,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function userable(){
-        return $this->morphTo();
+    // user the part where user register a program
+    public function register() {
+        return $this->belongsToMany(Section::class, 'registers', 'student_id', 'section_id')->withTimestamps();
+    }
+
+    // teacher section
+    public function teach() {
+        return $this->belongsToMany(Section::class, 'teaches', 'teacher_id', 'section_id')->withTimestamps();
     }
     
 }
