@@ -177,15 +177,15 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#teachers" aria-expanded="fales">
-              <i class="material-icons">dashboard</i>
-              <p>Teachers<b class="caret"></b></p>
+            <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="fales">
+              <i class="material-icons">person</i>
+              <p>Users<b class="caret"></b></p>
             </a>
-            <div class="collapse pl-5" id="teachers">
+            <div class="collapse pl-5" id="users">
               <ul class="nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="{{ route('teacher.create') }}">
-                    <span class="sidebar-normal">Add Teacher</span>
+                  <a class="nav-link" href="{{ route('user.create') }}">
+                    <span class="sidebar-normal">Add User</span>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -193,10 +193,15 @@
                     <span class="sidebar-normal">List Teacher</span>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('student.index') }}">
+                    <span class="sidebar-normal">List Student</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#students" aria-expanded="fales">
               <i class="material-icons">dashboard</i>
               <p>Students<b class="caret"></b></p>
@@ -215,7 +220,7 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>
@@ -386,9 +391,13 @@
   {{-- <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script> --}}
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
   <script type="text/javascript">
     $('.date').datepicker({  
-       format: 'mm-dd-yyyy'
+      dateFormat: 'yy-mm-dd',
+      changeYear: true,
+      changeMonth: true,
+      showAnim: "fold"
      });  
   </script> 
   <script>

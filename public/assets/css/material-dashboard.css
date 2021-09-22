@@ -22078,3 +22078,8 @@ fieldset[disabled][disabled] .dark-edition .has-error .form-control,
     transform: scale(0.75);
   }
 }
+
+.ui-datepicker {
+  font-size: 5%;
+  z-index: 10000 !important;
+  }

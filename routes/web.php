@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\ProgramController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\StudentController;
 use App\Http\Controllers\Dashboard\TeacherController;
+use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,14 @@ Route::post('/section'                     , [SectionController::class, 'store']
 Route::get('/section/{section}/edit'       , [SectionController::class, 'edit'])->name('section.edit');
 Route::put('/section/{section}'            , [SectionController::class, 'update'])->name('section.update');
 Route::delete('/section/{section}'         , [sectionController::class, 'destroy'])->name('section.delete');
+
+
+Route::get('/user'                         , [UserController::class, 'index'])->name('user.index');
+Route::get('/user/create'                  , [UserController::class, 'create'])->name('user.create');
+Route::post('/user'                        , [UserController::class, 'store'])->name('user.store');
+Route::get('/user/{user}/edit'             , [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{user}'                  , [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{user}'               , [UserController::class, 'destroy'])->name('user.delete');
 
 
 Route::get('/teacher'                      , [TeacherController::class, 'index'])->name('teacher.index');

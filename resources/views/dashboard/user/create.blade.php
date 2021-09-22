@@ -6,7 +6,7 @@
     <div class="col-md-10" style="padding-left: 17%">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Add Program</h4>
+          <h4 class="card-title">Add User</h4>
           {{-- <p class="card-category">Complete your profile</p> --}}
           @if ($errors->any())
           <div class="alert {{ $errors->first('class') }}" role="alert">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="card-body">
-          <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
@@ -52,35 +52,43 @@
               </div>
             </div>
             <div class="row" style="padding-top: 1.5%">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Email :</label>
                   <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" >
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Phone :</label>
                   <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone') }}" >
                 </div>
               </div>
-              <div class="col-md-4">
-                <label class="bmd" style="padding-top: 2%">Gander :</label><br/>
-                <select class="selectpicker col-md-4" data-style="btn btn-primary" name="gander" id="gander">
-                  <option disabled> -- Select Gender -- </option>
+              
+            </div>
+            <div class="row" style="padding-top: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Birthday :</label>
+                  <input class="form-control date" type="text" name="birthDate" id="birthDate" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                {{-- <label class="bmd" style="padding-top: 2%">Gander :</label><br/> --}}
+                <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
+                  {{-- <option disabled selected> -- Select Gender -- </option> --}}
+                  <option value="" disabled selected>Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
-              </div>
-            </div>
-            <div class="row" style="padding-top: 2.5%">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Age :</label>
-                  <div class="form-group">
-                    <label class="bmd-label-floating"> Write the programe description here</label>
-                    <textarea class="form-control" rows="8" minlength="10" maxlength="100" name="birthDate" id="birthDate" value="{{ old('birthDate') }}" ></textarea>
-                  </div>
+                <select class="selectpicker" data-style="btn btn-primary" name="rule" id="rule" >
+                  {{-- <option disabled selected> -- Select User Type -- </option> --}}
+                  <option value="" disabled selected>Role</option>
+                  @foreach($roles as $role)
+                  <option value="{{ $role->id }}">{{ $role->name }}</option>
+                  @endforeach
+                </select>
                 </div>
               </div>
             </div>
@@ -88,11 +96,11 @@
             <div class="row" style="padding-top: 2%">
               <div class="col-md-12">
                 <div class="form-group">
-                  <a href="{{ route('teacher.index') }}">
-                    <span class="btn btn-light pull-left">All Teachers</span>
+                  <a href="{{ route('user.index') }}">
+                    <span class="btn btn-light pull-left">All User</span>
                   </a>
       
-                  <button type="submit" class="btn btn-primary pull-right">Add Teacher</button>
+                  <button type="submit" class="btn btn-primary pull-right">Add User</button>
                 </div>
               </div>
             </div>
