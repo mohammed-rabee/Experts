@@ -52,44 +52,25 @@
               </div>
             </div>
             <div class="row" style="padding-top: 1.5%">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Email :</label>
                   <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" >
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="bmd-label-floating">Phone :</label>
                   <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone') }}" >
                 </div>
               </div>
-              
-            </div>
-            <div class="row" style="padding-top: 1.5%">
-              <div class="col-md-3">
-                {{-- <label class="bmd" style="padding-top: 2%">Gander :</label><br/> --}}
-                <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander">
-                  {{-- <option disabled selected> -- Select Gender -- </option> --}}
-                  <option value=""></option>
+              <div class="col-md-4">
+                <label class="bmd" style="padding-top: 2%">Gander :</label><br/>
+                <select class="selectpicker col-md-4" data-style="btn btn-primary" name="gander" id="gander">
+                  <option disabled> -- Select Gender -- </option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
-              </div>
-              <div class="col-md-3">
-                <select class="selectpicker" data-style="btn btn-primary" name="rule" id="rule">
-                  {{-- <option disabled selected> -- Select User Type -- </option> --}}
-                  <option value=""></option>
-                  @foreach($roles as $role)
-                  <option value="{{ $role->id }}">{{ $role->name }}</option>
-                  @endforeach
-                </select>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <input class='input-group date' id='datetimepicker'>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="row" style="padding-top: 2.5%">

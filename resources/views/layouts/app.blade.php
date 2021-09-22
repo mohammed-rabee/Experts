@@ -57,6 +57,8 @@
   <link rel="stylesheet" href="../../node_modules/remodal/dist/remodal-default-theme.css">
 
   <script src="../../node_modules/remodal/dist/remodal.min.js"></script> --}}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
   
 
 </head>
@@ -383,6 +385,12 @@
   <script src="{{ asset('assets/js/material-dashboard.js') }}"></script>
   {{-- <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script> --}}
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+    $('.date').datepicker({  
+       format: 'mm-dd-yyyy'
+     });  
+  </script> 
   <script>
     $(document).ready(function() {
           $().ready(function() {

@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Major;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -63,6 +64,18 @@ class DatabaseSeeder extends Seeder
             'name'          => 'science-1-',
             'discount'      => 0.0,
             'numberOfYears' => 5
+        ]);
+
+        Role::create([
+            'name'          => 'admin',
+        ]);
+
+        Role::create([
+            'name'          => 'teacher',
+        ]);
+
+        Role::create([
+            'name'          => 'student',
         ]);
 
         // DB::table('colleges')->insert([
