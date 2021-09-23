@@ -49,6 +49,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->birthDate }}</td>
+                                    <td>test</td>
                                 
                                     <td>
                                         <form action="{{ route('user.delete',$user->id) }}" method="POST">

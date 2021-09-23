@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         //
         $users = User::with('roles')->get();
-        dd($users);
+        // dd($users);
         return view('dashboard.user.index', ['users' => $users]);
     }
 
@@ -29,6 +29,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        dd($request);
         try {
 
             $brithdate = Carbon::parse($request->birthDate);
@@ -38,7 +39,7 @@ class UserController extends Controller
             $user = User::create($request->all() + [
                 'age' => $age
             ]);
-            $user->assignRole('super-admin');
+            $user->assignRole($request->role);
 
             return redirect()->route('user.index')
             ->withErrors([
