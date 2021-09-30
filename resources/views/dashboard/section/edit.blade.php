@@ -23,7 +23,7 @@
         <div class="card-body" style="padding-top: 1.5%">
           <form action="{{ route('section.update', $section->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
+            @method('put')
             <div class="row" style="padding-bottom: 1.5%">
               <div class="col-md-8">
                 <div class="form-group">
@@ -62,7 +62,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <a href="{{ route('section.index') }}">
-                    <span class="btn btn-light pull-left">All Sections</span>
+                    <span class="btn btn-light pull-left">Cancel</span>
                   </a>
       
                   <button type="submit" class="btn btn-primary pull-right">Edit Section</button>

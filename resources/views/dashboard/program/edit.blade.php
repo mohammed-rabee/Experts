@@ -110,7 +110,7 @@
             </div> --}}
             
             <a href="{{ route('program.index') }}">
-              <span class="btn btn-light pull-left">All Programs</span>
+              <span class="btn btn-light pull-left">Cancel</span>
             </a>
 
             <button type="submit" class="btn btn-primary pull-right">Add Program</button>

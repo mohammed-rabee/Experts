@@ -62,7 +62,7 @@
               </div>
             </div>
             <a href="{{ route('major.index') }}">
-              <span class="btn btn-light pull-left">Beck</span>
+              <span class="btn btn-light pull-left">Cancel</span>
             </a>
             <button type="submit" class="btn btn-primary pull-right">Edit Major</button>
             <div class="clearfix"></div>

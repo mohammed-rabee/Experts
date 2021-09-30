@@ -46,7 +46,7 @@
               </div>
             </div>
             <a href="{{ route('department.index') }}">
-              <span class="btn btn-light pull-left">Beck</span>
+              <span class="btn btn-light pull-left">Cancel</span>
             </a>
             <button type="submit" class="btn btn-primary pull-right">Edit Department</button>
             <div class="clearfix"></div>

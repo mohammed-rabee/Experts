@@ -29,7 +29,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request->role);
         try {
 
             $brithdate = Carbon::parse($request->birthDate);
@@ -39,6 +39,7 @@ class UserController extends Controller
             $user = User::create($request->all() + [
                 'age' => $age
             ]);
+            
             $user->assignRole($request->role);
 
             return redirect()->route('user.index')
@@ -54,16 +55,11 @@ class UserController extends Controller
         }   
     }
 
-    public function edit(User $teacher)
+    public function edit(User $user)
     {
-        //
-        // $majors = $program->majors;
-        // $majors = Major::all();
-        // $keys   = $program->majors->modelKeys();
-
-        // $otherMajors = Major::all()->whereNotIn('id', array_values($majors->modelKeys()));
-        
-        return view('dashboard.program.edit', compact('program', 'majors', 'keys'));
+        $userRoles = $user->roles->modelKeys();
+        $allRoles = Role::all();
+        return view('dashboard.user.edit', compact('user', 'userRoles', 'allRoles'));
     }
 
     public function update(Request $request, User $user)
@@ -72,11 +68,12 @@ class UserController extends Controller
         try {
 
             $user->update($request->all());
+            $user->assignRole($request->role);
 
             // $program->majors()->attach(array_values($request->major_id));
-            return redirect()->route('teacher.index')
+            return redirect()->route('user.index')
             ->withErrors([
-                'message' => 'Teacher created successfully.',
+                'message' => 'User updated successfully.',
                 'class'   => 'alert-success'
             ]);
 
@@ -89,15 +86,15 @@ class UserController extends Controller
         }
     }
 
-    public function destroy(Program $program)
+    public function destroy(User $user)
     {
         //
         try {
 
-            $program->delete();
-            return redirect()->route('teacher.index')
+            $user->delete();
+            return redirect()->route('user.index')
             ->withErrors([
-                'message' => 'Teacher Deleted successfully.',
+                'message' => 'User Deleted successfully.',
                 'class'   => 'alert-success'
             ]);
 
