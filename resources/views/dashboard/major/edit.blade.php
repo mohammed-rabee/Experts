@@ -61,8 +61,8 @@
                 </select>
               </div>
             </div>
-            <a href="{{ route('major.index') }}">
-              <span class="btn btn-light pull-left">Cancel</span>
+            <a href="{{ URL::previous() }}">
+              <span class="btn btn-light pull-left">Back</span>
             </a>
             <button type="submit" class="btn btn-primary pull-right">Edit Major</button>
             <div class="clearfix"></div>

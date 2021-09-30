@@ -31,8 +31,8 @@
                 </div>
               </div>
             </div>
-            <a href="{{ route('college.index') }}">
-              <span class="btn btn-light pull-left">Beck</span>
+            <a href="{{ URL::previous() }}">
+              <span class="btn btn-light pull-left">Back</span>
             </a>
             <button type="submit" class="btn btn-primary pull-right">Edit College</button>
             <div class="clearfix"></div>

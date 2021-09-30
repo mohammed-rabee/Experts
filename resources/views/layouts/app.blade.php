@@ -31,13 +31,20 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link rel="stylesheet" href="../../assets/css/material-dashboard.css">
+  <link rel="stylesheet" href="{{ asset('assets/css/material-dashboard.css') }}">
+  <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
 
-
+  
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
+  <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/bootstrap-selectpicker.js') }}"></script>
+  
   <!--this is for multi dropdown select-->
-  <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+  {{-- <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css"> --}}
+  
+  {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script> --}}
+  
 
   
 
@@ -57,8 +64,10 @@
   <link rel="stylesheet" href="../../node_modules/remodal/dist/remodal-default-theme.css">
 
   <script src="../../node_modules/remodal/dist/remodal.min.js"></script> --}}
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+  {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> --}}
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datepicker.css') }}">
+  
   
 
 </head>
@@ -189,13 +198,18 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.index') }}">
+                    <span class="sidebar-normal">Admins</span>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ route('teacher.index') }}">
-                    <span class="sidebar-normal">List Teacher</span>
+                    <span class="sidebar-normal">Teacher</span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('student.index') }}">
-                    <span class="sidebar-normal">List Student</span>
+                    <span class="sidebar-normal">Student</span>
                   </a>
                 </li>
               </ul>
@@ -377,7 +391,7 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+  
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap-material-design.min.js') }}"></script>
   
@@ -390,6 +404,7 @@
   <script src="{{ asset('assets/js/material-dashboard.js') }}"></script>
   {{-- <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script> --}}
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
   <script type="text/javascript">
@@ -400,6 +415,7 @@
       showAnim: "fold"
      });  
   </script> 
+  
   <script>
     $(document).ready(function() {
           $().ready(function() {

@@ -96,8 +96,8 @@
             <div class="row" style="padding-top: 2%">
               <div class="col-md-12">
                 <div class="form-group">
-                  <a href="{{ route('user.index') }}">
-                    <span class="btn btn-light pull-left">All User</span>
+                  <a href="{{ URL::previous() }}">
+                    <span class="btn btn-light pull-left">Back</span>
                   </a>
       
                   <button type="submit" class="btn btn-primary pull-right">Add User</button>

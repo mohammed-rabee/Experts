@@ -45,8 +45,8 @@
                 </select>
               </div>
             </div>
-            <a href="{{ route('department.index') }}">
-              <span class="btn btn-light pull-left">Cancel</span>
+            <a href="{{ URL::previous() }}">
+              <span class="btn btn-light pull-left">Back</span>
             </a>
             <button type="submit" class="btn btn-primary pull-right">Edit Department</button>
             <div class="clearfix"></div>

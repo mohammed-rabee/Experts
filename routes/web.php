@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CollegeController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\MajorController;
@@ -95,6 +96,14 @@ Route::post('/student'                     , [StudentController::class, 'store']
 Route::get('/student/{student}/edit'       , [StudentController::class, 'edit'])->name('student.edit');
 Route::put('/student/{student}'            , [StudentController::class, 'update'])->name('student.update');
 Route::delete('/student/{student}'         , [StudentController::class, 'destroy'])->name('student.delete');
+
+
+Route::get('/admin'                        , [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/create'                 , [AdminController::class, 'create'])->name('admin.create');
+Route::post('/admin'                       , [AdminController::class, 'store'])->name('admin.store');
+Route::get('/admin/{admin}/edit'           , [AdminController::class, 'edit'])->name('admin.edit');
+Route::put('/admin/{admin}'                , [AdminController::class, 'update'])->name('admin.update');
+Route::delete('/admin/{admin}'             , [AdminController::class, 'destroy'])->name('admin.delete');
 
 
 // Route::middleware(['auth'])->group(function () {
