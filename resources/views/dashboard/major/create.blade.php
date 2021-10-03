@@ -51,9 +51,9 @@
             <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
               <div class="col-md-6">
                 <div class="form-group" style="padding-top: 2%">
-                  <label class="bmd">Department Name</label>
-                  <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="department_id" id="department_id" required>
-                    <option value=""></option>
+                  <label class="bmd">Available Departments :</label>
+                  <select class="form-control selectpicker col-md-12" data-live-search="true" data-style="btn btn-primary" name="department_id" id="department_id" required>
+                    <option value="" disabled selected>Choose Department</option>
                     @foreach($departments as $department)
                     <option value="{{$department->id}}">{{$department->name}}</option>
                     @endforeach

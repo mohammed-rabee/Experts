@@ -35,9 +35,9 @@
             <div class="row" style="padding-top: 2.5%;">
               <div class="col-md-6">
                 <div class="form-group" style="padding-top: 2%">
-                  <label class="bmd">College Name</label>
+                  <label class="bmd">Available Colleges :</label>
                   <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" style="padding-top: 2.5%" name="college_id" id="college_id" required>
-                    <option value=""></option>
+                    <option value="" disabled selected>Choose College</option>
                     @foreach($colleges as $college)
                     <option value="{{$college->id}}">{{$college->name}}</option>
                     @endforeach

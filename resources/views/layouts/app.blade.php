@@ -87,7 +87,7 @@
         <ul class="nav">
           <li class="nav-item active">
             <a class="nav-link" data-toggle="collapse" href="#Colleges" aria-expanded="false">
-              <i class="material-icons">dashboard</i>
+              <i class="material-icons">store</i>
               <p>Colleges<b class="caret"></b></p>
             </a>
             <div class="collapse pl-5" id="Colleges">
@@ -147,7 +147,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#programs" aria-expanded="fales">
-              <i class="material-icons">dashboard</i>
+              <i class="material-icons">work</i>
               <p>Programs<b class="caret"></b></p>
             </a>
             <div class="collapse pl-5" id="programs">
@@ -167,7 +167,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#sections" aria-expanded="fales">
-              <i class="material-icons">dashboard</i>
+              <i class="material-icons">class</i>
               <p>Sections<b class="caret"></b></p>
             </a>
             <div class="collapse pl-5" id="sections">

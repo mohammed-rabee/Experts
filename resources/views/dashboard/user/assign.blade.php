@@ -70,8 +70,14 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <a class="btn btn-success" href="{{ route('teacher.assign', $user->id) }}">Assign New Programs</a>
-                                        <a class="btn btn-light" href="{{ route('teacher.editAssign', $user->id) }}">Edit Assigned Programs</a>
+                                        <form action="{{ route('user.delete',$user->id) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-success show_confirm">Assign New Programs</button>
+                                            
+                                            <a class="btn btn-light"
+                                                href="{{ route('user.edit', $user->id) }}">Edit Assigned Programs</a>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

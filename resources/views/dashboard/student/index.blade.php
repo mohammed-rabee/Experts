@@ -39,6 +39,7 @@
                                 {{-- <th>Type</th> --}}
                                 
                                 <th>Control</th>
+                                <th>Program assgin</th>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
@@ -67,6 +68,10 @@
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger show_confirm">Delete</button>
                                         </form>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success" href="{{ route('student.assign', $user->id) }}">Assign New Programs</a>
+                                        <a class="btn btn-light" href="{{ route('student.editAssign', $user->id) }}">Edit Assigned Programs</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -66,9 +66,9 @@
             <div class="row" style="padding-top: 1.5%;padding-bottom: 2.5%">
               <div class="col-md-8">
                 <div class="form-group" style="padding-top: 2%">
-                  <label class="bmd">Programs</label>
+                  <label class="bmd">Available Programs</label>
                   <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="major_program_id" id="major_program_id" required>
-                    <option value=""></option>
+                    <option value="" disabled selected>Choose Programs : </option>
                     @foreach($programs as $program)
                     <option value="{{$program->id}}">Program Name: { {{$program->programName}} }, Major Name: { {{ $program->majorName }} }</option>
                     @endforeach

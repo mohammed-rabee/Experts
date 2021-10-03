@@ -22083,3 +22083,6 @@ fieldset[disabled][disabled] .dark-edition .has-error .form-control,
   font-size: 5%;
   z-index: 10000 !important;
   }
+/* select option[selected]{
+    background-color: #999999 !important;
+} */

@@ -51,6 +51,7 @@
               <div class="col-md-12">
                 <label class="bmd" style="padding-top: 2%">Major Departments: </label><br/>
                 <select class="selectpicker col-md-12" data-style="btn btn-primary" data-live-search="true" name="department_id" id="department_id">
+                  <option value="" disabled>Choose Department</option>
                   @foreach($departments as $department)
                   @if(in_array($department->id, $keys))
                   <option value="{{$department->id}}" selected>{{$department->name}}</option>

@@ -33,8 +33,9 @@
             </div>
             <div class="row" style="padding-top: 1.5%;padding-bottom: 5%">
               <div class="col-md-12">
-                <label class="bmd" style="padding-top: 2%">Department College : </label><br/>
+                <label class="bmd" style="padding-top: 2%"> Colleges : </label><br/>
                 <select class="selectpicker col-md-12" data-style="btn btn-primary" multiple data-live-search="true" name="college_id" id="college_id">
+                  <option value="" disabled>Choose College</option>
                   @foreach($colleges as $college)
                   @if(in_array($college->id, $keys))
                   <option value="{{$college->id}}" selected>{{$college->name}}</option>

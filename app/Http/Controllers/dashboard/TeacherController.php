@@ -17,4 +17,16 @@ class TeacherController extends Controller
         return view('dashboard.teacher.index', ['users' => $teachers]);
     }
 
+    public function assignClass(User $user) {
+
+        return view('dashboard.user.assign', compact('user'));
+
+    }
+    
+    public function editAssignClass(User $user) {
+
+        return view('dashboard.user.editAssign', compact('user'));
+
+    }
+
 }

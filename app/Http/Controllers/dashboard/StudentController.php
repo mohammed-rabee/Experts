@@ -15,4 +15,16 @@ class StudentController extends Controller
         $students =  User::role('student')->get();
         return view('dashboard.student.index', ['users' => $students]);
     }
+
+    public function assignClass(User $user) {
+
+        return view('dashboard.user.assign', compact('user'));
+
+    }
+    
+    public function editAssignClass(User $user) {
+
+        return view('dashboard.user.editAssign', compact('user'));
+
+    }
 }
