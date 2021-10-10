@@ -16,7 +16,7 @@ class UserController extends Controller
         //
         $users = User::with('roles')->get();
         // dd($users);
-        return view('dashboard.user.index', ['users' => $users]);
+        return view('dashboard.user.create', ['users' => $users]);
     }
 
     public function create()
@@ -42,7 +42,7 @@ class UserController extends Controller
             
             $user->assignRole($request->role);
 
-            return redirect()->route('user.index')
+            return redirect()->route('user.create')
             ->withErrors([
                 'message' => 'User created successfully.',
                 'class'   => 'alert-success'
@@ -71,7 +71,7 @@ class UserController extends Controller
             $user->assignRole($request->role);
 
             // $program->majors()->attach(array_values($request->major_id));
-            return redirect()->route('user.index')
+            return redirect()->route('user.create')
             ->withErrors([
                 'message' => 'User updated successfully.',
                 'class'   => 'alert-success'
@@ -92,7 +92,7 @@ class UserController extends Controller
         try {
 
             $user->delete();
-            return redirect()->route('user.index')
+            return redirect()->route('user.create')
             ->withErrors([
                 'message' => 'User Deleted successfully.',
                 'class'   => 'alert-success'

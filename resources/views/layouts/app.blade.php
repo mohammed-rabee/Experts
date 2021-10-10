@@ -203,13 +203,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('teacher.index') }}">
-                    <span class="sidebar-normal">Teacher</span>
+                  <a class="nav-link" href="{{ route('student.index') }}">
+                    <span class="sidebar-normal">Student</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('student.index') }}">
-                    <span class="sidebar-normal">Student</span>
+                  <a class="nav-link" href="{{ route('teacher.index') }}">
+                    <span class="sidebar-normal">Teacher</span>
                   </a>
                 </li>
               </ul>

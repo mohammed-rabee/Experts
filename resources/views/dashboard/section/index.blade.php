@@ -32,6 +32,7 @@
                                 <th>ID</th>
                                 <th>Section Name</th>
                                 <th>Program Name</th>
+                                <th>Major Name</th>
                                 <th>Max number of students</th>
                                 
                                 <th>Control</th>
@@ -42,6 +43,7 @@
                                     <td>{{ $section->id }}</td>
                                     <td>{{ $section->name }}</td>
                                     <td>{{ $section->programName }}</td>
+                                    <td>{{ $section->majorName }}</td>
                                     <td>{{ $section->maxNumberOfStudent }}</td>
 
                                     <td>

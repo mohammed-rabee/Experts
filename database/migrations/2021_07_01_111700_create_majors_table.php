@@ -19,7 +19,7 @@ class CreateMajorsTable extends Migration
             $table->unsignedBigInteger('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
-            $table->string('name')->unique();
+            $table->string('name');
             $table->double('discount');
             $table->integer('numberOfYears');
 

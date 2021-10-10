@@ -6,8 +6,8 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Teacher</h4>
-                    <p class="card-category"> Here you can see a list of all Teachers in the system</p>
+                    <h4 class="card-title ">Programs</h4>
+                    <p class="card-category"> Here you can see a list of all Programs in the system with it's sectoins</p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">
@@ -21,68 +21,43 @@
                         </div>
                         @endif
 
-                        <a href="{{ route('user.create') }}" style="padding-top: 1.5%">
-                            <span class="btn btn-primary">Add User</span>
-                        </a>
-                        <br>
-                        <br>
-
-                        <table class="table table-bordered">
-                            <thead class=" text-primary">
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>BirthDate</th>
-
-                                {{-- <th>Type</th> --}}
-                                
-                                <th>Control</th>
-                                <th>Program assgin</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->fname }}</td>
-                                    <td>{{ $user->lname }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->birthDate }}</td>
-                                    {{-- <td>
-                                        <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
-                                            @foreach($user->roles as $role)
-                                            <option value="{{ $role->id }}" disabled>{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td> --}}
-                                
-                                    <td>
-                                        <form action="{{ route('user.delete',$user->id) }}" method="POST">
-
-                                            <a class="btn btn-primary"
-                                                href="{{ route('user.edit', $user->id) }}">Edit</a>
-
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger show_confirm">Delete</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('user.delete',$user->id) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-success show_confirm">Assign New Programs</button>
-                                            
-                                            <a class="btn btn-light"
-                                                href="{{ route('user.edit', $user->id) }}">Edit Assigned Programs</a>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <form action="{{ route('student.assignClass', $user->id)}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <table class="table table-bordered">
+                                <thead class=" text-primary">
+                                    <th>ID</th>
+                                    <th>Majors Name</th>
+    
+                                    <th>Programs Name</th>
+                                    
+                                    <th>Sections</th>
+                                    <th>Assign</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($majorPrograms as $majorProgram)
+                                    <tr>
+                                        <td>{{ $majorProgram->id }}</td>
+                                        <td>{{ $majorProgram->majorName  }}</td>
+                                        <td>{{ $majorProgram->programName }}</td>
+                                        <td>
+                                            <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="section_id" id="section_id">
+                                                <option value="" disabled selected>Choose Section : </option>
+                                                @foreach($majorProgram->sections as $section)
+                                                <option value="{{$section->id}}">Name: {{ $section->name }} , Current Number Of Student: {{ $section->maxNumberOfStudent }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Assign</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </form>
+                        <a href="{{ URL::previous() }}">
+                            <span class="btn btn-light pull-left">Back</span>
+                          </a>
                     </div>
                 </div>
             </div>

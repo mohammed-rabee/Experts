@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Section extends Model
 {
     protected $fillable = [
-        'name', 'maxNumberOfStudent', 'major_program_id'
+        'name', 'maxNumberOfStudent', 'major_programs_id'
     ];
 
     // major Program
-    public function majorProgram() {
+    public function majorPrograms() {
         return $this->belongsTo(MajorPrograms::class);
     }
 
@@ -24,6 +24,11 @@ class Section extends Model
     // students
     public function students() {
         return $this->BelongsToMany(User::class, 'teaches', 'section_id', 'student_id')->withTimestamps();
+    }
+
+    // document to upload
+    public function resources() {
+        return $this->hasMany(Resource::class);
     }
 
 }

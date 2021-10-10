@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('gander');
 
+            $table->string('shareFolderLink')->nullable();
+
             $table->rememberToken();
 
             $table->timestamps();

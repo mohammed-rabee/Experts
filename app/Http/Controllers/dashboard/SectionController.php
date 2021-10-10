@@ -17,7 +17,8 @@ class SectionController extends Controller
         //
         $sections = Section::all();
         $sections->transform(function ($item){
-            $item->programName = Program::where('id', $item->majorProgram->program_id)->value('name');
+            $item->programName = Program::where('id', $item->majorPrograms->program_id)->value('name');
+            $item->majorName   = Major::where('id', $item->majorPrograms->major_id)->value('name');
             return $item;
         });
 

@@ -16,10 +16,12 @@ class CreateSectionsTable extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('major_program_id')->unsigned();
-            $table->foreign('major_program_id')->references('id')->on('major_programs')->onDelete('cascade');
+            $table->unsignedBigInteger('major_programs_id')->unsigned();
+            $table->foreign('major_programs_id')->references('id')->on('major_programs')->onDelete('cascade');
 
-            $table->string('name');
+            $table->string('name')->unique();
+
+            $table->integer('currentNumberOfStudent');
 
             // number of studen can be enrolled
             $table->integer('maxNumberOfStudent');

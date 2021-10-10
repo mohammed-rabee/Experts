@@ -66,36 +66,37 @@ Route::put('/program/{program}'            , [ProgramController::class, 'update'
 Route::delete('/program/{program}'         , [ProgramController::class, 'destroy'])->name('program.delete');
 
 
-Route::get('/section'                      , [SectionController::class, 'index'])->name('section.index');
-Route::get('/section/create'               , [SectionController::class, 'create'])->name('section.create');
-Route::post('/section'                     , [SectionController::class, 'store'])->name('section.store');
-Route::get('/section/{section}/edit'       , [SectionController::class, 'edit'])->name('section.edit');
-Route::put('/section/{section}'            , [SectionController::class, 'update'])->name('section.update');
-Route::delete('/section/{section}'         , [sectionController::class, 'destroy'])->name('section.delete');
+Route::get('/section'                               , [SectionController::class, 'index'])->name('section.index');
+Route::get('/section/create'                        , [SectionController::class, 'create'])->name('section.create');
+Route::post('/section'                              , [SectionController::class, 'store'])->name('section.store');
+Route::get('/section/{section}/edit'                , [SectionController::class, 'edit'])->name('section.edit');
+Route::put('/section/{section}'                     , [SectionController::class, 'update'])->name('section.update');
+Route::delete('/section/{section}'                  , [sectionController::class, 'destroy'])->name('section.delete');
 
 
-Route::get('/user'                         , [UserController::class, 'index'])->name('user.index');
-Route::get('/user/create'                  , [UserController::class, 'create'])->name('user.create');
-Route::post('/user'                        , [UserController::class, 'store'])->name('user.store');
-Route::get('/user/{user}/edit'             , [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/{user}'                  , [UserController::class, 'update'])->name('user.update');
-Route::delete('/user/{user}'               , [UserController::class, 'destroy'])->name('user.delete');
+Route::get('/user'                                  , [UserController::class, 'index'])->name('user.index');
+Route::get('/user/create'                           , [UserController::class, 'create'])->name('user.create');
+Route::post('/user'                                 , [UserController::class, 'store'])->name('user.store');
+Route::get('/user/{user}/edit'                      , [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{user}'                           , [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{user}'                        , [UserController::class, 'destroy'])->name('user.delete');
 
 
-Route::get('/teacher'                      , [TeacherController::class, 'index'])->name('teacher.index');
-Route::get('/teacher/{user}/assign'        , [TeacherController::class, 'assignClass'])->name('teacher.assign');
-Route::get('/teacher/{user}/editAssign'    , [TeacherController::class, 'editAssignClass'])->name('teacher.editAssign');
+Route::get('/teacher'                               , [TeacherController::class, 'index'])->name('teacher.index');
+Route::get('/teacher/{user}/assign'                 , [TeacherController::class, 'assignClass'])->name('teacher.assign');
+Route::get('/teacher/{user}/editAssign'             , [TeacherController::class, 'editAssignClass'])->name('teacher.editAssign');
 
-Route::get('/student'                      , [StudentController::class, 'index'])->name('student.index');
-Route::get('/student/{user}/assign'        , [StudentController::class, 'assignClass'])->name('student.assign');
-Route::get('/student/{user}/editAssign'    , [StudentController::class, 'editAssignClass'])->name('student.editAssign');
+Route::get('/student'                               , [StudentController::class, 'index'])->name('student.index');
+Route::get('/student/{user}/assign'                 , [StudentController::class, 'assign'])->name('student.assign');
+Route::post('/student/{user}/assignClass'                  , [StudentController::class, 'assignClass'])->name('student.assignClass');
+Route::get('/student/{user}/editAssign'             , [StudentController::class, 'editAssignClass'])->name('student.editAssign');
 
 Route::get('/admin'                        , [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/create'                 , [AdminController::class, 'create'])->name('admin.create');
-Route::post('/admin'                       , [AdminController::class, 'store'])->name('admin.store');
-Route::get('/admin/{admin}/edit'           , [AdminController::class, 'edit'])->name('admin.edit');
-Route::put('/admin/{admin}'                , [AdminController::class, 'update'])->name('admin.update');
-Route::delete('/admin/{admin}'             , [AdminController::class, 'destroy'])->name('admin.delete');
+// Route::get('/admin/create'                 , [AdminController::class, 'create'])->name('admin.create');
+// Route::post('/admin'                       , [AdminController::class, 'store'])->name('admin.store');
+// Route::get('/admin/{admin}/edit'           , [AdminController::class, 'edit'])->name('admin.edit');
+// Route::put('/admin/{admin}'                , [AdminController::class, 'update'])->name('admin.update');
+// Route::delete('/admin/{admin}'             , [AdminController::class, 'destroy'])->name('admin.delete');
 
 
 // Route::middleware(['auth'])->group(function () {
