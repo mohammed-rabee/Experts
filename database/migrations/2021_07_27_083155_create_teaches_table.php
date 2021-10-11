@@ -22,9 +22,6 @@ class CreateTeachesTable extends Migration
             $table->unsignedBigInteger('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
-            // already enrolled
-            $table->integer('numberOfStudent');
-
             $table->timestamps();
         });
     }

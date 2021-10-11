@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Major;
 use App\Models\MajorPrograms;
 use App\Models\Program;
+use App\Models\Register;
 use App\Models\Section;
 use App\Models\User;
 use Exception;
@@ -24,9 +25,9 @@ class StudentController extends Controller
     public function assign(User $user) {
         $user = User::find($user->id);
 
-        $sectionsIDs = array_values($user->register->values()->pluck('major_programs_id')->toArray());
+        $majorProgramsIDs = array_values($user->register->values()->pluck('major_programs_id')->toArray());
 
-        $majorPrograms = MajorPrograms::whereNotIn('id',$sectionsIDs)->get();
+        $majorPrograms = MajorPrograms::whereNotIn('id',$majorProgramsIDs)->get();
 
         $majorPrograms->transform(function ($item){
             $item->majorName     = Major::where('id', $item->major_id)->value('name');
@@ -35,7 +36,7 @@ class StudentController extends Controller
             return $item;
         });
 
-        return view('dashboard.user.assign', compact('user', 'majorPrograms'));
+        return view('dashboard.student.assign', compact('user', 'majorPrograms'));
         // dd($majorProgram);
 
         // $data = User::where('id', $user->id)->with(['register' => function($query) {
@@ -91,9 +92,72 @@ class StudentController extends Controller
         }
     }
     
-    public function editAssignClass(User $user) {
+    public function editAssign(User $user) {
 
-        return view('dashboard.user.editAssign', compact('user'));
+        $user = User::find($user->id);
+        $sectionIDs = $user->register;
 
+        $sectionIDs->transform(function ($item){
+            $item->sectionID = $item->pivot->section_id;
+            return $item;
+        });
+
+        $sectionIDs = array_values($sectionIDs->pluck('sectionID')->toArray());
+
+        $majorProgramIDs = array_values($user->register->values()->pluck('major_programs_id')->toArray());
+
+        $majorPrograms = MajorPrograms::whereIn('id',$majorProgramIDs)->get();
+
+        $majorPrograms->transform(function ($item){
+            $item->majorName     = Major::where('id', $item->major_id)->value('name');
+            $item->programName   = Program::where('id', $item->program_id)->value('name');
+            $item->sectionsNames      = $item->sections;
+            return $item;
+        });
+
+        return view('dashboard.student.editAssign', compact('user', 'majorPrograms', 'sectionIDs'));
+
+    }
+
+    public function editAssignClass(Request $request, User $user) {
+
+
+        try {
+            
+            $majorProgramID = Section::where('id',$request->section_id)->value('major_programs_id');
+
+            dd($majorProgramID);
+
+            $registerSections = $user->register;
+
+            $currentData = array();
+
+            foreach ($registerSections as $registerSection) {
+                 if ($registerSection->major_programs_id == $majorProgramID){
+                    $currentData = array(
+                        'currentPayment' => $registerSection->pivot->currentPayment,
+                        'leftPayment'    => $registerSection->pivot->leftPayment,
+                        'overallPayment' => $registerSection->pivot->overallPayment,
+                    );
+                    $user->register()->detach($registerSection->pivot->section_id);
+                 }
+            }
+
+            // $register = Register::where('section_id', $registerId)->first();
+
+            $user->register()->attach($request->section_id, $currentData);
+            return redirect()->route('student.index')
+            ->withErrors([
+                'message' => 'Program Assigned successfully.',
+                'class'   => 'alert-success'
+            ]);
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+            return back()->withErrors([
+                'message' => $e->getMessage(),
+                'class'   => 'alert-danger'
+            ]);
+        }
     }
 }

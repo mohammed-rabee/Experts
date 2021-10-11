@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     // user the part where user register a program
     public function register() {
-        return $this->belongsToMany(Section::class, 'registers', 'student_id', 'section_id')->withTimestamps();
+        return $this->belongsToMany(Section::class, 'registers', 'student_id', 'section_id')->withPivot('currentPayment', 'leftPayment', 'overallPayment')->withTimestamps();
     }
 
     // teacher section

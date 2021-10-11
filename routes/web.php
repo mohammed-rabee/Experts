@@ -83,13 +83,16 @@ Route::delete('/user/{user}'                        , [UserController::class, 'd
 
 
 Route::get('/teacher'                               , [TeacherController::class, 'index'])->name('teacher.index');
-Route::get('/teacher/{user}/assign'                 , [TeacherController::class, 'assignClass'])->name('teacher.assign');
-Route::get('/teacher/{user}/editAssign'             , [TeacherController::class, 'editAssignClass'])->name('teacher.editAssign');
+Route::get('/teacher/{user}/assign'                 , [StudentController::class, 'assign'])->name('student.assign');
+Route::post('/teacher/{user}/assignClass'           , [StudentController::class, 'assignClass'])->name('student.assignClass');
+Route::get('/teacher/{user}/editAssign'             , [StudentController::class, 'editAssign'])->name('student.editAssign');
+Route::post('/teacher/{user}/editAssignClass'       , [StudentController::class, 'editAssignClass'])->name('student.editAssignClass');
 
 Route::get('/student'                               , [StudentController::class, 'index'])->name('student.index');
 Route::get('/student/{user}/assign'                 , [StudentController::class, 'assign'])->name('student.assign');
-Route::post('/student/{user}/assignClass'                  , [StudentController::class, 'assignClass'])->name('student.assignClass');
-Route::get('/student/{user}/editAssign'             , [StudentController::class, 'editAssignClass'])->name('student.editAssign');
+Route::post('/student/{user}/assignClass'           , [StudentController::class, 'assignClass'])->name('student.assignClass');
+Route::get('/student/{user}/editAssign'             , [StudentController::class, 'editAssign'])->name('student.editAssign');
+Route::post('/student/{user}/editAssignClass'       , [StudentController::class, 'editAssignClass'])->name('student.editAssignClass');
 
 Route::get('/admin'                        , [AdminController::class, 'index'])->name('admin.index');
 // Route::get('/admin/create'                 , [AdminController::class, 'create'])->name('admin.create');
