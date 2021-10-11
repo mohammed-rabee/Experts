@@ -31,7 +31,6 @@
                                     <th>Programs Name</th>
                                     
                                     <th>Sections</th>
-                                    <th>Assign</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($majorPrograms as $majorProgram)
@@ -40,24 +39,22 @@
                                         <td>{{ $majorProgram->majorName  }}</td>
                                         <td>{{ $majorProgram->programName }}</td>
                                         <td>
-                                            <select class="form-control col-md-12" data-style="btn btn-primary" name="section_id" id="section_id">
-                                                <option value="" disabled selected>Choose Section : </option>
+                                            <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="section_id[]" id="section_id">
+                                                <option style="display:none" disabled>Choose Section:</option>
                                                 @foreach($majorProgram->sections as $section)
-                                                <option value="{{$section->id}}">Name: {{ $section->name }} , Current Number Of Student: {{ $section->maxNumberOfStudent }}</option>
+                                                <option value="{{ $section->id }}">{{ $section->name }}</option>
                                                 @endforeach
                                             </select>
-                                        </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-primary">Assign</button>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            <a href="{{ URL::previous() }}">
+                                <span class="btn btn-light pull-left">Back</span>
+                            </a>
+                            <button type="submit" class="btn btn-primary pull-right">Assign New Program</button>
                         </form>
-                        <a href="{{ URL::previous() }}">
-                            <span class="btn btn-light pull-left">Back</span>
-                          </a>
                     </div>
                 </div>
             </div>

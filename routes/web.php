@@ -83,10 +83,10 @@ Route::delete('/user/{user}'                        , [UserController::class, 'd
 
 
 Route::get('/teacher'                               , [TeacherController::class, 'index'])->name('teacher.index');
-Route::get('/teacher/{user}/assign'                 , [StudentController::class, 'assign'])->name('teacher.assign');
-Route::post('/teacher/{user}/assignClass'           , [StudentController::class, 'assignClass'])->name('teacher.assignClass');
-Route::get('/teacher/{user}/editAssign'             , [StudentController::class, 'editAssign'])->name('teacher.editAssign');
-Route::post('/teacher/{user}/editAssignClass'       , [StudentController::class, 'editAssignClass'])->name('teacher.editAssignClass');
+Route::get('/teacher/{user}/assign'                 , [TeacherController::class, 'assign'])->name('teacher.assign');
+Route::post('/teacher/{user}/assignClass'           , [TeacherController::class, 'assignClass'])->name('teacher.assignClass');
+Route::get('/teacher/{user}/editAssign'             , [TeacherController::class, 'editAssign'])->name('teacher.editAssign');
+Route::post('/teacher/{user}/editAssignClass'       , [TeacherController::class, 'editAssignClass'])->name('teacher.editAssignClass');
 
 Route::get('/student'                               , [StudentController::class, 'index'])->name('student.index');
 Route::get('/student/{user}/assign'                 , [StudentController::class, 'assign'])->name('student.assign');

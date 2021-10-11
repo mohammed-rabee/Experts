@@ -30,8 +30,8 @@ class StudentController extends Controller
         $majorPrograms = MajorPrograms::whereNotIn('id',$majorProgramsIDs)->get();
 
         $majorPrograms->transform(function ($item){
-            $item->majorName     = Major::where('id', $item->major_id)->value('name');
-            $item->programName   = Program::where('id', $item->program_id)->value('name');
+            $item->majorName          = Major::where('id', $item->major_id)->value('name');
+            $item->programName        = Program::where('id', $item->program_id)->value('name');
             $item->sectionsNames      = $item->sections;
             return $item;
         });
@@ -70,6 +70,8 @@ class StudentController extends Controller
 
         try {
 
+            dd($request->section_id);
+            
             $data = array(
                 'currentPayment' => doubleval(0),
                 'leftPayment'    => doubleval(0),
@@ -84,7 +86,6 @@ class StudentController extends Controller
             ]);
 
         } catch (Exception $e) {
-            return $e->getMessage();
             return back()->withErrors([
                 'message' => $e->getMessage(),
                 'class'   => 'alert-danger'
@@ -109,8 +110,8 @@ class StudentController extends Controller
         $majorPrograms = MajorPrograms::whereIn('id',$majorProgramIDs)->get();
 
         $majorPrograms->transform(function ($item){
-            $item->majorName     = Major::where('id', $item->major_id)->value('name');
-            $item->programName   = Program::where('id', $item->program_id)->value('name');
+            $item->majorName          = Major::where('id', $item->major_id)->value('name');
+            $item->programName        = Program::where('id', $item->program_id)->value('name');
             $item->sectionsNames      = $item->sections;
             return $item;
         });
@@ -153,7 +154,6 @@ class StudentController extends Controller
             ]);
 
         } catch (Exception $e) {
-            return $e->getMessage();
             return back()->withErrors([
                 'message' => $e->getMessage(),
                 'class'   => 'alert-danger'
