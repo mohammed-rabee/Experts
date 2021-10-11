@@ -6,8 +6,8 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Assign New Program</h4>
-                    <p class="card-category"> Here you can see assign new program to students</p>
+                    <h4 class="card-title ">Assign New Program To Student</h4>
+                    <p class="card-category"> Here you can assign new program to student</p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">
@@ -40,7 +40,7 @@
                                         <td>{{ $majorProgram->majorName  }}</td>
                                         <td>{{ $majorProgram->programName }}</td>
                                         <td>
-                                            <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" multiple name="section_id" id="section_id">
+                                            <select class="form-control col-md-12" data-style="btn btn-primary" name="section_id" id="section_id">
                                                 <option value="" disabled selected>Choose Section : </option>
                                                 @foreach($majorProgram->sections as $section)
                                                 <option value="{{$section->id}}">Name: {{ $section->name }} , Current Number Of Student: {{ $section->maxNumberOfStudent }}</option>

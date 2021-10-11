@@ -6,7 +6,7 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Edit Assigned Program</h4>
+                    <h4 class="card-title ">Edit Assigned Program For Student</h4>
                     <p class="card-category">Here you can move student between sections </p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
@@ -40,7 +40,7 @@
                                         <td>{{ $majorProgram->majorName  }}</td>
                                         <td>{{ $majorProgram->programName }}</td>
                                         <td>
-                                            <select class="form-control selectpicker col-md-12" multiple data-style="btn btn-primary" name="section_id" id="section_id">
+                                            <select class="form-control col-md-12" data-style="btn btn-primary" name="section_id" id="section_id">
                                                 <option value="" disabled selected>Choose Section : </option>
                                                 @foreach($majorProgram->sections as $section)
                                                   @if(in_array($section->id, $sectionIDs))
