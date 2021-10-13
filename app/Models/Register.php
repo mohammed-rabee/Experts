@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Register extends Model
 {
-    // many to many class
+
+    protected $fillable = [
+        'section_id', 'student_id', 'currentPayment', 'leftPayment', 'overallPayment', 'active'
+    ];
+    
     // public function teach() {
     //     return $this->belongsTo(Teach::class,'teach_id');
     // }
