@@ -37,7 +37,8 @@ class UserController extends Controller
             $age = $currentDate->diffInYears($brithdate);
 
             $user = User::create($request->all() + [
-                'age' => $age
+                'age'    => $age,
+                'active' => true
             ]);
             
             $user->assignRole($request->role);

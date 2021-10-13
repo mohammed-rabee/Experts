@@ -23,18 +23,27 @@ class SiteController extends Controller
     }
     
     public function fags() {
-        return view('site.extra.fags');
+        
+        $majors = Major::all();
+        return view('site.extra.fags', compact('majors'));
     }
 
     public function terms() {
-        return view('site.extra.terms');
+        
+        $majors = Major::all();
+        return view('site.extra.terms', compact('majors'));
     }
 
     public function privacy() {
-        return view('site.extra.privacy');
+
+        $majors = Major::all();
+        return view('site.extra.privacy', compact('majors'));
     }
 
     public function contact() {
-        return view('site.extra.contact');
+
+        $majors = Major::all();
+        return view('site.extra.contact', compact('majors'));
+
     }
 }
