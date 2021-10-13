@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\StudentController;
 use App\Http\Controllers\Dashboard\TeacherController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,11 +96,12 @@ Route::get('/student/{user}/editAssign'             , [StudentController::class,
 Route::post('/student/{user}/editAssignClass'       , [StudentController::class, 'editAssignClass'])->name('student.editAssignClass');
 
 Route::get('/admin'                        , [AdminController::class, 'index'])->name('admin.index');
-// Route::get('/admin/create'                 , [AdminController::class, 'create'])->name('admin.create');
-// Route::post('/admin'                       , [AdminController::class, 'store'])->name('admin.store');
-// Route::get('/admin/{admin}/edit'           , [AdminController::class, 'edit'])->name('admin.edit');
-// Route::put('/admin/{admin}'                , [AdminController::class, 'update'])->name('admin.update');
-// Route::delete('/admin/{admin}'             , [AdminController::class, 'destroy'])->name('admin.delete');
+
+Route::get('/index'                                 , [SiteController::class, 'index'])->name('site.index');
+Route::get('/contact'                               , [SiteController::class, 'contact'])->name('site.contact');
+Route::get('/fags'                                  , [SiteController::class, 'fags'])->name('site.fags');
+Route::get('/privacy'                               , [SiteController::class, 'privacy'])->name('site.privacy');
+Route::get('/terms'                                 , [SiteController::class, 'terms'])->name('site.terms');
 
 
 // Route::middleware(['auth'])->group(function () {

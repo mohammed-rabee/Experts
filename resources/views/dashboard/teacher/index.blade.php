@@ -49,7 +49,7 @@
                                     <td>{{ $user->lname }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->username }}</td>
-                                    <td>{{ $user->birthDate }}</td>
+                                    <td style="width: 10%">{{ $user->birthDate }}</td>
                                     {{-- <td>
                                         <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
                                             @foreach($user->roles as $role)
