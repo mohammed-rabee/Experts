@@ -10,6 +10,11 @@ class Major extends Model
         'department_id', 'name', 'discount', 'numberOfYears'
     ];
     //
+
+    public function students() {
+        return $this->hasMany(User::class);
+    }
+    
     public function department() {
         return $this->belongsTo(Department::class);
     }

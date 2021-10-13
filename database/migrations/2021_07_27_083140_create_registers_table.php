@@ -27,6 +27,8 @@ class CreateRegistersTable extends Migration
             $table->double('leftPayment');
             $table->double('overallPayment');
 
+            $table->boolean('active')->default(0);
+
             $table->timestamps();
         });
     }

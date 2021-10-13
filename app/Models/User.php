@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fname', 'lname', 'phone', 'gander', 'username', 'email', 'password', 'birthDate', 'age'
+        'fname', 'lname', 'phone', 'gander', 'username', 'email', 'password', 'birthDate', 'age', 'major_id', 'active'
     ];
 
     /**
@@ -40,6 +40,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function major() {
+        return $this->belongsTo(Major::class);
+    }
 
     // user the part where user register a program
     public function register() {
