@@ -25,7 +25,6 @@
                             @csrf
                             <table class="table table-bordered">
                                 <thead class=" text-primary">
-                                    <th>ID</th>
                                     <th>Majors Name</th>
     
                                     <th>Programs Name</th>
@@ -35,7 +34,6 @@
                                 <tbody>
                                     @foreach ($majorPrograms as $majorProgram)
                                     <tr>
-                                        <td>{{ $majorProgram->id }}</td>
                                         <td>{{ $majorProgram->majorName  }}</td>
                                         <td>{{ $majorProgram->programName }}</td>
                                         <td width="4%">

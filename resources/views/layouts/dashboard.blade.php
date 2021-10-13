@@ -81,7 +81,7 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
-        <a href="{{ route('home') }}" class="simple-text logo-normal">Experts+ Admin Panel</a>
+        <a href="{{ route('dash.index') }}" class="simple-text logo-normal">Experts+ Admin Panel</a>
       </div>
       <div class="sidebar-wrapper" style="padding-top: 4%">
         <ul class="nav">

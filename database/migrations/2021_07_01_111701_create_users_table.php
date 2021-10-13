@@ -30,10 +30,10 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('gander');
 
-            $table->unsignedBigInteger('major_id')->unsigned();
+            $table->unsignedBigInteger('major_id')->unsigned()->nullable();
             $table->foreign('major_id')->references('id')->on('majors')->onDelete('cascade');
 
-            $table->boolean('active')->default(0);
+            $table->boolean('active');
 
             $table->string('shareFolderLink')->nullable();
 

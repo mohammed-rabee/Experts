@@ -7,10 +7,13 @@ use App\Models\Student;
 use App\Models\Teacher;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Carbon\Carbon;
 use Faker\Provider\cs_CZ\PhoneNumber;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 use function PHPSTORM_META\type;
 
@@ -49,75 +52,29 @@ class RegisterController extends Controller
         // $this->middleware('guest:student');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    protected function validator(Request $request)
     {
-        return Validator::make($data, [
-            'fname'        => ['required', 'string', 'max:255'],
-            'lname'        => ['required', 'string', 'max:255'],
-            'email'        => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'     => ['required', 'string', 'min:8', 'confirmed'],
-            'phone'        => ['required', 'numeric'],
-            'gender'       => ['required', 'string'],
-            'day'          => ['required', 'numeric'],
-            'month'        => ['required', 'numeric'],
-            'year'         => ['required', 'numeric'],
-
+        return $request->validate([
+            'email'      => 'required|unique:users',
+            'username'   => 'required|unique:users',
+            'password'   => 'confirmed|required'
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        
-        // $day    = $data['day'];
-        // $month  = $data['month'];
-        // $year   = $data['year'];
-        // $birth_date = $year + '-' + $month + '-' + $day;
+        $brithdate = Carbon::parse($request->birthDate);
+        $currentDate = Carbon::now();
+        $age = $currentDate->diffInYears($brithdate);
+        $request->password = Hash::make($request->password);
 
-        // $student = Teacher::find($student->id);
-
-        // $user = new User;
-
-        // $user->fname    = $data['fname'];
-        // $user->lname    = $data['lname'];
-
-        // $user->username      = $data['email'];
-        // $user->password      = Hash::make($data['password']);
-
-        // $user->email        = $data['email'];
-        // $user->phone         = $data['phone'];
-        // $user->gander        = $data['gender'];
-
-        // dd($user);
-
-        // return $student->user()->save($user);
-
-        // remember that user should select his major 
-        // and colleage department so the rigster login can be compplete
-
-        // $student = Student::create();
-        return User::create([
-            'fname'         => $data['fname'],
-            'lanme'         => $data['lname'],
-
-            'username'      => $data['email'],
-            'password'      => Hash::make($data['password']),
-
-            'email'         => $data['email'],
-            'phone'         => $data['phone'],
-            'gander'        => $data['gender']
-
+        $user = User::create($request->all() + [
+            'age'    => $age,
+            'active' => 0,
         ]);
+
+        $user->assignRole('student');
+        
+        return $user;
     }
 }

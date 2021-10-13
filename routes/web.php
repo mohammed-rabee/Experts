@@ -30,7 +30,15 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/'                                 , [SiteController::class, 'index'])->name('site.index');
+Route::get('/dash'                             , [HomeController::class, 'index'])->name('dash.index');
+Route::get('/contact'                          , [SiteController::class, 'contact'])->name('site.contact');
+Route::get('/fags'                             , [SiteController::class, 'fags'])->name('site.fags');
+Route::get('/privacy'                          , [SiteController::class, 'privacy'])->name('site.privacy');
+Route::get('/terms'                            , [SiteController::class, 'terms'])->name('site.terms');
+
+
+Auth::routes();
 
 
 
@@ -97,11 +105,7 @@ Route::post('/student/{user}/editAssignClass'       , [StudentController::class,
 
 Route::get('/admin'                        , [AdminController::class, 'index'])->name('admin.index');
 
-Route::get('/index'                                 , [SiteController::class, 'index'])->name('site.index');
-Route::get('/contact'                               , [SiteController::class, 'contact'])->name('site.contact');
-Route::get('/fags'                                  , [SiteController::class, 'fags'])->name('site.fags');
-Route::get('/privacy'                               , [SiteController::class, 'privacy'])->name('site.privacy');
-Route::get('/terms'                                 , [SiteController::class, 'terms'])->name('site.terms');
+
 
 
 // Route::middleware(['auth'])->group(function () {

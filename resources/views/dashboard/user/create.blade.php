@@ -27,7 +27,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">User Name :</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="username" id="username" value="{{ old('username') }}" >
+                  <input class="form-control" type="text" minlength="4" maxlength="10" name="username" id="username" value="{{ old('username') }}" >
                 </div>
               </div>
               <div class="col-md-6">
@@ -41,13 +41,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">First Name :</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="fname" id="fname" value="{{ old('fname') }}" >
+                  <input class="form-control" type="text" minlength="4" maxlength="20" name="fname" id="fname" value="{{ old('fname') }}" >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Last Name :</label>
-                  <input class="form-control" type="text" minlength="4" maxlength="10" name="lname" id="lname" value="{{ old('lname') }}" >
+                  <input class="form-control" type="text" minlength="4" maxlength="20" name="lname" id="lname" value="{{ old('lname') }}" >
                 </div>
               </div>
             </div>
