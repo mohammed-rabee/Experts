@@ -91,6 +91,8 @@ Route::put('/user/{user}'                           , [UserController::class, 'u
 Route::delete('/user/{user}'                        , [UserController::class, 'destroy'])->name('user.delete');
 
 
+
+
 Route::get('/teacher'                               , [TeacherController::class, 'index'])->name('teacher.index');
 Route::get('/teacher/{user}/assign'                 , [TeacherController::class, 'assign'])->name('teacher.assign');
 Route::post('/teacher/{user}/assignClass'           , [TeacherController::class, 'assignClass'])->name('teacher.assignClass');
@@ -98,6 +100,9 @@ Route::get('/teacher/{user}/editAssign'             , [TeacherController::class,
 Route::post('/teacher/{user}/editAssignClass'       , [TeacherController::class, 'editAssignClass'])->name('teacher.editAssignClass');
 
 Route::get('/student'                               , [StudentController::class, 'index'])->name('student.index');
+Route::get('/pendingUser'                           , [StudentController::class, 'pendingApprovel'])->name('student.pendingUser');
+Route::get('/student/{user}/activate'               , [StudentController::class, 'activate'])->name('student.activate');
+Route::get('/student/{user}/disable'                , [StudentController::class, 'disable'])->name('student.disable');
 Route::get('/student/{user}/assign'                 , [StudentController::class, 'assign'])->name('student.assign');
 Route::post('/student/{user}/assignClass'           , [StudentController::class, 'assignClass'])->name('student.assignClass');
 Route::get('/student/{user}/editAssign'             , [StudentController::class, 'editAssign'])->name('student.editAssign');

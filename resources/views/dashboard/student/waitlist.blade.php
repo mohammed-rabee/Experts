@@ -6,8 +6,8 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Teacher</h4>
-                    <p class="card-category"> Here you can see a list of all Teachers in the system</p>
+                    <h4 class="card-title ">Students</h4>
+                    <p class="card-category"> Here you can see a list of all Students in the system</p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">
@@ -31,44 +31,30 @@
                             <thead class=" text-primary">
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>BirthDate</th>
                                 <th>Email</th>
+                                <th>BirthDate</th>
 
                                 {{-- <th>Type</th> --}}
                                 
                                 <th>Control</th>
-                                <th>Program assgin</th>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->fname }}</td>
                                     <td>{{ $user->lname }}</td>
-                                    <td style="width: 10%">{{ $user->birthDate }}</td>
                                     <td>{{ $user->email }}</td>
-                                    {{-- <td>
-                                        <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
-                                            @foreach($user->roles as $role)
-                                            <option value="{{ $role->id }}" disabled>{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td> --}}
+                                    <td>{{ $user->birthDate }}</td>
                                 
                                     <td>
                                         <form action="{{ route('user.delete',$user->id) }}" method="POST">
 
-                                            <a class="btn btn-primary" href="{{ route('user.edit', $user->id) }}">Edit</a>
+                                            <a class="btn btn-success show_confirm2" href="{{ route('student.activate', $user->id) }}">Approve</a>
 
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger show_confirm">Delete</button>
-
-                                            <a class="btn btn-light show_confirm3" href="{{ route('student.disable', $user->id) }}">Disable</a>
                                         </form>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-success" href="{{ route('teacher.assign', $user->id) }}">Assign New Programs</a>
-                                        <a class="btn btn-light" href="{{ route('teacher.editAssign', $user->id) }}">Edit Assigned Programs</a>
                                     </td>
                                 </tr>
                                 @endforeach

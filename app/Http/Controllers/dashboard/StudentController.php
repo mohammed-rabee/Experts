@@ -18,18 +18,52 @@ class StudentController extends Controller
     public function index()
     {
         //
-        $students =  User::role('student')->get();
+        $students =  User::role('student')->where('active', true)->get();
         return view('dashboard.student.index', ['users' => $students]);
     }
 
-    public function assign(User $user) {
+    public function pendingApprovel()
+    {
+        //
+        $students =  User::role('student')->where('active', false)->get();
+        return view('dashboard.student.waitlist', ['users' => $students]);
+    }
+
+    public function activate(User $user)
+    {
+
+        $user->active = true;
+        $user->update($user->toArray());
+
+        return redirect()->route('student.index')
+            ->withErrors([
+                'message' => 'Student Account Activated Successfully.',
+                'class'   => 'alert-success'
+            ]);
+    }
+
+    public function disable(User $user)
+    {
+
+        $user->active = false;
+        $user->update($user->toArray());
+
+        return redirect()->route('student.index')
+            ->withErrors([
+                'message' => 'Student Account Disabled Successfully.',
+                'class'   => 'alert-success'
+            ]);
+    }
+
+    public function assign(User $user)
+    {
         $user = User::find($user->id);
 
         $majorProgramsIDs = array_values($user->register->values()->pluck('major_programs_id')->toArray());
 
-        $majorPrograms = MajorPrograms::whereNotIn('id',$majorProgramsIDs)->get();
+        $majorPrograms = MajorPrograms::whereNotIn('id', $majorProgramsIDs)->get();
 
-        $majorPrograms->transform(function ($item){
+        $majorPrograms->transform(function ($item) {
             $item->majorName          = Major::where('id', $item->major_id)->value('name');
             $item->programName        = Program::where('id', $item->program_id)->value('name');
             $item->sectionsNames      = $item->sections;
@@ -66,25 +100,25 @@ class StudentController extends Controller
         // dd($otherMajor);
     }
 
-    public function assignClass(Request $request,User $user) {
+    public function assignClass(Request $request, User $user)
+    {
 
         try {
 
             dd($request->section_id);
-            
+
             $data = array(
                 'currentPayment' => doubleval(0),
                 'leftPayment'    => doubleval(0),
                 'overallPayment' => doubleval(0)
             );
 
-            $user->register()->attach($request->section_id,$data);
+            $user->register()->attach($request->section_id, $data);
             return redirect()->route('student.index')
-            ->withErrors([
-                'message' => 'Program Assigned successfully.',
-                'class'   => 'alert-success'
-            ]);
-
+                ->withErrors([
+                    'message' => 'Program Assigned successfully.',
+                    'class'   => 'alert-success'
+                ]);
         } catch (Exception $e) {
             return back()->withErrors([
                 'message' => $e->getMessage(),
@@ -92,13 +126,14 @@ class StudentController extends Controller
             ]);
         }
     }
-    
-    public function editAssign(User $user) {
+
+    public function editAssign(User $user)
+    {
 
         $user = User::find($user->id);
         $sectionIDs = $user->register;
 
-        $sectionIDs->transform(function ($item){
+        $sectionIDs->transform(function ($item) {
             $item->sectionID = $item->pivot->section_id;
             return $item;
         });
@@ -107,9 +142,9 @@ class StudentController extends Controller
 
         $majorProgramIDs = array_values($user->register->values()->pluck('major_programs_id')->toArray());
 
-        $majorPrograms = MajorPrograms::whereIn('id',$majorProgramIDs)->get();
+        $majorPrograms = MajorPrograms::whereIn('id', $majorProgramIDs)->get();
 
-        $majorPrograms->transform(function ($item){
+        $majorPrograms->transform(function ($item) {
             $item->majorName          = Major::where('id', $item->major_id)->value('name');
             $item->programName        = Program::where('id', $item->program_id)->value('name');
             $item->sectionsNames      = $item->sections;
@@ -117,15 +152,15 @@ class StudentController extends Controller
         });
 
         return view('dashboard.student.editAssign', compact('user', 'majorPrograms', 'sectionIDs'));
-
     }
 
-    public function editAssignClass(Request $request, User $user) {
+    public function editAssignClass(Request $request, User $user)
+    {
 
 
         try {
-            
-            $majorProgramID = Section::where('id',$request->section_id)->value('major_programs_id');
+
+            $majorProgramID = Section::where('id', $request->section_id)->value('major_programs_id');
 
             dd($majorProgramID);
 
@@ -134,25 +169,24 @@ class StudentController extends Controller
             $currentData = array();
 
             foreach ($registerSections as $registerSection) {
-                 if ($registerSection->major_programs_id == $majorProgramID){
+                if ($registerSection->major_programs_id == $majorProgramID) {
                     $currentData = array(
                         'currentPayment' => $registerSection->pivot->currentPayment,
                         'leftPayment'    => $registerSection->pivot->leftPayment,
                         'overallPayment' => $registerSection->pivot->overallPayment,
                     );
                     $user->register()->detach($registerSection->pivot->section_id);
-                 }
+                }
             }
 
             // $register = Register::where('section_id', $registerId)->first();
 
             $user->register()->attach($request->section_id, $currentData);
             return redirect()->route('student.index')
-            ->withErrors([
-                'message' => 'Program Assigned successfully.',
-                'class'   => 'alert-success'
-            ]);
-
+                ->withErrors([
+                    'message' => 'Program Assigned successfully.',
+                    'class'   => 'alert-success'
+                ]);
         } catch (Exception $e) {
             return back()->withErrors([
                 'message' => $e->getMessage(),

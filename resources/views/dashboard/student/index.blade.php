@@ -32,6 +32,7 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>BirthDate</th>
+                                <th>Email</th>
 
                                 {{-- <th>Type</th> --}}
                                 
@@ -43,7 +44,8 @@
                                 <tr>
                                     <td>{{ $user->fname }}</td>
                                     <td>{{ $user->lname }}</td>
-                                    <td>{{ $user->birthDate }}</td>
+                                    <td style="width: 10%">{{ $user->birthDate }}</td>
+                                    <td>{{ $user->email }}</td>
                                     {{-- <td>
                                         <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
                                             @foreach($user->roles as $role)
@@ -61,6 +63,8 @@
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger show_confirm">Delete</button>
+
+                                            <a class="btn btn-light show_confirm3" href="{{ route('student.disable', $user->id) }}">Disable</a>
                                         </form>
                                     </td>
                                     <td>
