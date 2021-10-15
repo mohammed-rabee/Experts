@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'userCheck']);;
+    }
+    
     //
     public function index()
     {

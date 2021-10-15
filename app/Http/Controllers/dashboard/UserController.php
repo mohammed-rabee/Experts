@@ -6,10 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'userCheck']);
+    }
+    
     //
     public function index()
     {
@@ -36,12 +43,21 @@ class UserController extends Controller
             $currentDate = Carbon::now();
             $age = $currentDate->diffInYears($brithdate);
 
+            $pass = Hash::make($request->password);
+            $request->password = $pass;
+
+                // dd($pass);
+
             $user = User::create($request->all() + [
-                'age'    => $age,
-                'active' => true
+                'age'      => $age,
+                'active'   => true
             ]);
+
+            $user->password = $pass;
             
             $user->assignRole($request->role);
+
+            $user->save();
 
             return redirect()->route('user.create')
             ->withErrors([

@@ -3,7 +3,7 @@
 @section('content')
 
     <!--=================================
-        Inner Header -->
+            Inner Header -->
     <section class="space-ptb bg-holder bg-overlay-black-90" style="background-image: url('images/bg/03.jpg');">
         <div class="container">
             <div class="find-Course">
@@ -14,24 +14,20 @@
                 </div>
                 <div class="row">
                     <form class="col-md-10 offset-md-1">
-                        <div class="form-row align-items-center">
+                        <div class="form-row align-items-center justify-content-center">
                             <div class="col-md-4 col-lg-3 mb-3 mb-md-0">
                                 <input type="text" class="form-control rounded-sm" placeholder="Search Course">
                             </div>
-                            <div class="col-md-4 col-lg-3 mb-3 mb-md-0">
-                                <input type="text" class="form-control rounded-sm" placeholder="Location">
-                            </div>
                             <div class="col-md-4 col-lg-3">
                                 <select class="basic-select form-control">
-                                    <option selected="selected">Choose Instructor</option>
-                                    <option>Design</option>
-                                    <option>Development</option>
-                                    <option>Marketing</option>
-                                    <option>IT & software</option>
-                                    <option>Photography</option>
-                                    <option>Music</option>
-                                    <option>Personal Development</option>
-                                    <option>Business</option>
+                                    <option disabled>Choose Instructor</option>
+                                    @foreach ($majors as $major)
+                                    @if ($major->id == Auth::user()->major_id)
+                                    <option value="{{ $major->id }}" selected>{{ $major->name }}</option>
+                                    @else
+                                    <option value="{{ $major->id }}">{{ $major->name }}</option>
+                                    @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12 col-lg-3 text-left mt-3 mt-lg-0">
@@ -44,55 +40,15 @@
         </div>
     </section>
     <!--=================================
-        Inner Header -->
+            Inner Header -->
 
     <!--=================================
-        Course Details -->
+            Course Details -->
     <section class="space-ptb course-list">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="widgets">
-                        <div class="widget widget-serach">
-                            <h6 class="widget-title">Search</h6>
-                            <div class="widget-content">
-                                <form class="fill-form">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </div>
-                                    <button type="button" class="btn btn-primary">Search</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="widget widget-Categories">
-                            <h6 class="widget-title">Categories</h6>
-                            <div class="widget-content">
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox1">
-                                    <label class="custom-control-label" for="checkbox1">Design</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox2">
-                                    <label class="custom-control-label" for="checkbox2">Development</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox3">
-                                    <label class="custom-control-label" for="checkbox3">Marketing</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox4">
-                                    <label class="custom-control-label" for="checkbox4">IT & software</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox5">
-                                    <label class="custom-control-label" for="checkbox5">Photography</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox6">
-                                    <label class="custom-control-label" for="checkbox6">Music</label>
-                                </div>
-                            </div>
-                        </div>
                         <div class="widget">
                             <div class="widget-title">
                                 <h6>Filter by price</h6>
@@ -110,44 +66,6 @@
                                         Price: <span class="from">$10 — $382</span>
                                     </div>
                                     <a class="ml-auto" href="#"><i class="fas fa-filter"></i>Filter</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h6>Levels</h6>
-                            </div>
-                            <div class="widget-content">
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox12">
-                                    <label class="custom-control-label" for="checkbox12">Beginner</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox7">
-                                    <label class="custom-control-label" for="checkbox7">Intermediate</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox8">
-                                    <label class="custom-control-label" for="checkbox8">Advanced</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h6>Type</h6>
-                            </div>
-                            <div class="widget-content">
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox9">
-                                    <label class="custom-control-label" for="checkbox9">Free Course</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox10">
-                                    <label class="custom-control-label" for="checkbox10">Paid Course</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox11">
-                                    <label class="custom-control-label" for="checkbox11">Offline Course</label>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +127,7 @@
                         </ul>
                     </div>
                     <div class="course">
-                        @foreach ($programs as $program)
+                        {{-- @foreach ($programs as $program)
                             <div class="row no-gutters box-shadow mb-4">
                                 <div class="col-sm-5">
                                     <div class="course-img h-100">
@@ -239,7 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforeach --}}
                     </div>
                     <div class="row">
                         <div class="col-12 text-center mt-4 mt-md-5">
@@ -277,6 +195,6 @@
         </div>
     </section>
     <!--=================================
-        Course Details -->
+            Course Details -->
 
 @endsection

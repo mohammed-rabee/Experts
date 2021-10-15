@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Major;
+use App\Models\MajorPrograms;
 use App\Models\Program;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class SiteController extends Controller
 {
-
-    public function courseList() {
-        
-        return view('site.program.index');
-    }
 
     public function index() {
 
@@ -44,6 +42,13 @@ class SiteController extends Controller
 
         $majors = Major::all();
         return view('site.extra.contact', compact('majors'));
+
+    }
+
+    public function info() {
+
+        $majors = Major::all();
+        return view('site.extra.info', compact('majors'));
 
     }
 }

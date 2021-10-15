@@ -1,29 +1,7 @@
-@extends('layouts.site')
-
-@section('content')
-
-<!--=================================
-            Inner Header -->
-            <section class="inner-header bg-holder bg-overlay-black-90" style="background-image: url('images/bg/03.jpg');">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-                            <h1 class="breadcrumb-title mb-0 text-white">Registred Courses</h1>
-                        </div>
-                        <div class="col-md-6">
-                            <ol class="breadcrumb d-flex justify-content-center justify-content-md-end ml-auto">
-                                <li class="breadcrumb-item"><a href="{{ route('site.index') }}"><i class="fas fa-home mr-1"></i>Home</a></li>
-                                <li class="breadcrumb-item active"><span>{{ Auth::user()->fname }} Registred Courses</span></li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--=================================
-                      Inner Header -->
+@section('listCourses')
 
     <!--=================================
-            Course Details -->
+                Course Details -->
     <section class="space-ptb course-list">
         <div class="container">
             <div class="row">
@@ -58,7 +36,42 @@
                         </div>
                     </div>
                     <div class="course-filter d-sm-flex mb-4">
+                        <ul class="course-short list-unstyled d-sm-flex mb-0">
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group d-sm-flex d-block">
+                                        <label class="justify-content-start">Short by:</label>
+                                        <div class="short-by">
+                                            <select class="form-control basic-select">
+                                                <option>Date new to old</option>
+                                                <option>Price Low to High</option>
+                                                <option>Price High to Low</option>
+                                                <option>Date Old to New</option>
+                                                <option>Date New to Old</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
                         <ul class="course-view-list list-unstyled d-flex mb-0">
+                            <li>
+                                <form class="form-inline">
+                                    <div class="form-group d-sm-flex d-block">
+                                        <label class="justify-content-start pr-4">Sort by: </label>
+                                        <div class="short-by">
+                                            <select class="form-control basic-select">
+                                                <option>12</option>
+                                                <option>18 </option>
+                                                <option>24 </option>
+                                                <option>64 </option>
+                                                <option>128</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                            <li><a href="index-05.html"><i class="fas fa-map-marker-alt fa-lg"></i></a></li>
                             <li><a class="course-list-icon active" href="course-list.html">
                                     <span></span>
                                     <span></span>
@@ -73,36 +86,36 @@
                     </div>
                     <div class="course">
                         {{-- @foreach ($programs as $program)
-                            <div class="row no-gutters box-shadow mb-4">
-                                <div class="col-sm-5">
-                                    <div class="course-img h-100">
-                                        <img class="img-fluid" src="{{ asset('assets/site/images/course/01.jpg') }}" alt="">
-                                        <a href="#" class="course-category"><i class="far fa-bookmark"></i>Development</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="course-info p-0 h-100">
-                                        <div class="px-4 pt-4">
-                                            <div class="course-title">
-                                                <a href="#">Basic web development & coding online course</a>
+                                    <div class="row no-gutters box-shadow mb-4">
+                                        <div class="col-sm-5">
+                                            <div class="course-img h-100">
+                                                <img class="img-fluid" src="{{ asset('assets/site/images/course/01.jpg') }}" alt="">
+                                                <a href="#" class="course-category"><i class="far fa-bookmark"></i>Development</a>
                                             </div>
-                                            <div class="course-instructor mb-2">by
-                                                <a href="#">Alice Williams</a>
-                                            </div>
-                                            <p class="mb-0">Introspection is the trick. Understand what you want,
-                                                why you want it and what it will do for you.</p>
                                         </div>
-                                        <div class="course-rate-price px-4 pb-3">
-                                            <div class="rating">
-                                                <span>4.1</span>
-                                                <a href="#">101 Ratings</a>
+                                        <div class="col-sm-7">
+                                            <div class="course-info p-0 h-100">
+                                                <div class="px-4 pt-4">
+                                                    <div class="course-title">
+                                                        <a href="#">Basic web development & coding online course</a>
+                                                    </div>
+                                                    <div class="course-instructor mb-2">by
+                                                        <a href="#">Alice Williams</a>
+                                                    </div>
+                                                    <p class="mb-0">Introspection is the trick. Understand what you want,
+                                                        why you want it and what it will do for you.</p>
+                                                </div>
+                                                <div class="course-rate-price px-4 pb-3">
+                                                    <div class="rating">
+                                                        <span>4.1</span>
+                                                        <a href="#">101 Ratings</a>
+                                                    </div>
+                                                    <div class="price">$59</div>
+                                                </div>
                                             </div>
-                                            <div class="price">$59</div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        @endforeach --}}
+                                @endforeach --}}
                     </div>
                     <div class="row">
                         <div class="col-12 text-center mt-4 mt-md-5">
@@ -140,6 +153,6 @@
         </div>
     </section>
     <!--=================================
-            Course Details -->
+                        Course Details -->
 
 @endsection

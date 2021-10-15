@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboard\AdminController;
 use App\Http\Controllers\Dashboard\CollegeController;
+use App\Http\Controllers\Dashboard\DashBoardController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\MajorController;
 use App\Http\Controllers\Dashboard\ProgramController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Dashboard\StudentController;
 use App\Http\Controllers\Dashboard\TeacherController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Site\CourseController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,11 +33,12 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes();
 
 Route::get('/'                                 , [SiteController::class, 'index'])->name('site.index');
-Route::get('/dash'                             , [HomeController::class, 'index'])->name('dash.index');
+Route::get('/dash'                             , [DashBoardController::class, 'index'])->name('dash.index');
 Route::get('/contact'                          , [SiteController::class, 'contact'])->name('site.contact');
 Route::get('/fags'                             , [SiteController::class, 'fags'])->name('site.fags');
 Route::get('/privacy'                          , [SiteController::class, 'privacy'])->name('site.privacy');
 Route::get('/terms'                            , [SiteController::class, 'terms'])->name('site.terms');
+Route::get('/info'                             , [SiteController::class, 'info'])->name('site.info');
 
 
 Auth::routes();
@@ -108,9 +111,12 @@ Route::post('/student/{user}/assignClass'           , [StudentController::class,
 Route::get('/student/{user}/editAssign'             , [StudentController::class, 'editAssign'])->name('student.editAssign');
 Route::post('/student/{user}/editAssignClass'       , [StudentController::class, 'editAssignClass'])->name('student.editAssignClass');
 
-Route::get('/admin'                        , [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin'                                 , [AdminController::class, 'index'])->name('admin.index');
 
 
+// Route::get('/course', [CourseController::class, 'courseList'])->name('allCourses');
+Route::get('/recommendedCourses', [CourseController::class, 'recommendedCourses'])->name('recommendedCourses');
+Route::get('/mycourses', [CourseController::class, 'myCourses'])->name('myCourses');
 
 
 // Route::middleware(['auth'])->group(function () {

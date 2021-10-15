@@ -14,6 +14,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'userCheck']);;
+    }
+    
     //
     public function index()
     {
@@ -48,7 +53,7 @@ class StudentController extends Controller
         $user->active = false;
         $user->update($user->toArray());
 
-        return redirect()->route('student.index')
+        return redirect()->route('student.pendingUser')
             ->withErrors([
                 'message' => 'Student Account Disabled Successfully.',
                 'class'   => 'alert-success'

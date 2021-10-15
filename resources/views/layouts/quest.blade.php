@@ -112,11 +112,11 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses<i
                                         class="fas fa-chevron-down fa-xs"></i></a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {{-- <li><a class="dropdown-item" href="{{ route('allCourses') }}"><span>All Courses</span></a>
-                                    </li> --}}
-                                    <li><a class="dropdown-item" href="{{ route('recommendedCourses') }}"><span>Recommended
+                                    <li><a class="dropdown-item" href="course.blade.php"><span>All Courses</span></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="course.blade.php"><span>Recommended
                                                 Coursed</span></a></li>
-                                    <li><a class="dropdown-item" href="{{ route('myCourses') }}"><span>My Courses</span></a>
+                                    <li><a class="dropdown-item" href="mycourse.blade.php"><span>My Courses</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -158,11 +158,9 @@
                     <div class="woo-action">
                         <ul class="list-unstyled">
                             <ul class="list-unstyled">
-                                <li class="user"><i
-                                        class="fa fa-user pl-2 text-primary"></i>&nbsp;&nbsp;{{ Auth::user()->fname }} 
-                                    <a onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                        href="">&nbsp;&nbsp;Logout</a>
-                                </li>
+                                <li class="user"><a
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                        href=""><i class="fa fa-user pl-2 text-primary"></i>&nbsp;&nbsp;Logout</a></li>
                             </ul>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                 style="display: none;">
@@ -177,188 +175,109 @@
     <!--=================================
     Header -->
 
-    @if (!Auth::check())
-        <!--================================= Modal login -->
-        <div class="modal login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title" id="loginModalLabel">Log in & Register</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs nav-tabs-02 justify-content-center" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab"
-                                    aria-controls="login" aria-selected="false"> <span> Log in</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register"
-                                    role="tab" aria-controls="register" aria-selected="true"><span>Register</span></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="login" role="tabpanel"
-                                aria-labelledby="login-tab">
-                                <form class="form-row my-4 align-items-center" action="{{ route('login') }}"
-                                    method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group col-sm-12">
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="Username" name="email" id="email" required>
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <input type="Password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="Password" name="password" id="password" required>
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                <form class="form-row my-4 align-items-center" action="{{ route('register') }}"
-                                    method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group col-sm-6">
-                                        <input type="text" class="form-control @error('fname') is-invalid @enderror"
-                                            placeholder="First Name" minlength="4" maxlength="20" name="fname"
-                                            id="fname" value="{{ old('fname') }}" required>
-                                        @error('fname')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <input type="text" class="form-control @error('lname') is-invalid @enderror"
-                                            placeholder="Last Name" minlength="4" maxlength="20" name="lname" id="lname"
-                                            value="{{ old('lname') }}" required>
-                                        @error('lname')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <input class="form-control date @error('birthDate') is-invalid @enderror"
-                                            type="text" placeholder="Birthdate" name="birthDate" id="birthDate"
-                                            required>
-                                        @error('birthDate')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <select class="form-control @error('gander') is-invalid @enderror"
-                                            name="gander" id="gander" required>
-                                            {{-- <option disabled selected> -- Select Gender -- </option> --}}
-                                            <option value="" disabled selected>Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                        @error('gander')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <select class="form-control @error('major_id') is-invalid @enderror"
-                                            name="major_id" id="major_id" required>
-                                            <option style="display:none" selected disabled>Choose Your Major:</option>
-                                            @foreach ($majors as $major)
-                                                <option value="{{ $major->id }}">{{ $major->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('major_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                            placeholder="Username" minlength="4" maxlength="10" name="username"
-                                            id="username" value="{{ old('username') }}" required>
-                                        @error('username')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                                            placeholder="Phone Number" name="phone" id="phone"
-                                            value="{{ old('phone') }}" required>
-                                        @error('phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="Email Address" name="email" id="email"
-                                            value="{{ old('email') }}" required>
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <input type="Password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="Password" minlength="4" maxlength="10" name="password"
-                                            id="password" value="{{ old('password') }}" required>
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <input type="Password"
-                                            class="form-control @error('password_confirmation') is-invalid @enderror"
-                                            placeholder="Confirm Password" minlength="4" maxlength="10"
-                                            name="password_confirmation" id="password_confirmation"
-                                            value="{{ old('password_confirmation') }}" required>
-                                        @error('password_confirmation')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button type="submit" class="btn btn-primary btn-block">Register</button>
-                                    </div>
-                                </form>
-                            </div>
+    <!--=================================
+    Modal login -->
+    <div class="modal login fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="loginModalLabel">Log in & Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs nav-tabs-02 justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab"
+                                aria-controls="login" aria-selected="false"> <span> Log in</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                                aria-controls="register" aria-selected="true"><span>Register</span></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <form class="form-row my-4 align-items-center">
+                                <div class="form-group col-sm-12">
+                                    <input type="text" class="form-control" placeholder="Username">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <input type="Password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                            <form class="form-row my-4 align-items-center" action="{{ route('register') }}"
+                                method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="First Name" minlength="4"
+                                        maxlength="20" name="fname" id="fname" value="{{ old('fname') }}" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Last Name" minlength="4"
+                                        maxlength="20" name="lname" id="lname" value="{{ old('lname') }}" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input class="form-control date" type="text" placeholder="Birthdate"
+                                        name="birthDate" id="birthDate" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control" name="gander" id="gander">
+                                        {{-- <option disabled selected> -- Select Gender -- </option> --}}
+                                        <option value="" disabled selected>Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <select class="form-control" name="major_id" id="major_id" required>
+                                        <option style="display:none" selected disabled>Choose Your Major:</option>
+                                        @foreach ($majors as $major)
+                                            <option value="{{ $major->id }}">{{ $major->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Username" minlength="4"
+                                        maxlength="10" name="username" id="username" value="{{ old('username') }}"
+                                        required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Phone Number" name="phone"
+                                        id="phone" value="{{ old('phone') }}" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <input type="email" class="form-control" placeholder="Email Address" name="email"
+                                        id="email" value="{{ old('email') }}" required>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <input type="Password" class="form-control" placeholder="Password" minlength="4"
+                                        maxlength="10" name="password" id="password" value="{{ old('password') }}">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <input type="Password" class="form-control" placeholder="Confirm Password"
+                                        minlength="4" maxlength="10" name="password_confirmation"
+                                        id="password_confirmation" value="{{ old('password_confirmation') }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--================================= Modal login -->
-    @else
-
-    @endif
+    </div>
+    <!--=================================
+    Modal login -->
 
     @yield('content')
 

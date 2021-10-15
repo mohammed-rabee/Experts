@@ -3657,7 +3657,8 @@ ul.list {
       -webkit-transform: translate3d(-15px, 10px, 0);
               transform: translate3d(-15px, 10px, 0); }
   .header .navbar .dropdown-menu.megamenu {
-    left: 50%; }
+    left: 50%;
+    margin-left: 400%; }
   .header .navbar .dropdown:hover > .dropdown-menu {
     -webkit-transform: translate3d(-50%, 0, 0);
             transform: translate3d(-50%, 0, 0);

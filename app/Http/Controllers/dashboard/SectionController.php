@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'userCheck']);;
+    }
+    
     //
     public function index()
     {

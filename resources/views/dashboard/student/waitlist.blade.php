@@ -6,8 +6,8 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Students</h4>
-                    <p class="card-category"> Here you can see a list of all Students in the system</p>
+                    <h4 class="card-title ">Students Accounts Need Activation</h4>
+                    <p class="card-category"> Here you can see a list of all Students accounts waiting your approvel</p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">

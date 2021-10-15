@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use Faker\Provider\cs_CZ\PhoneNumber;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -52,29 +53,43 @@ class RegisterController extends Controller
         // $this->middleware('guest:student');
     }
 
-    protected function validator(Request $request)
+    protected function validator(array $data)
     {
-        return $request->validate([
-            'email'      => 'required|unique:users',
-            'username'   => 'required|unique:users',
-            'password'   => 'confirmed|required'
+        return Validator::make($data, [
+            'username' => ['required', 'unique:users'],
+            'email' => ['required', 'unique:users'],
+            'password' => ['required', 'confirmed'],
         ]);
     }
 
-    protected function create(Request $request)
+    protected function create(array $data)
     {
-        $brithdate = Carbon::parse($request->birthDate);
-        $currentDate = Carbon::now();
-        $age = $currentDate->diffInYears($brithdate);
-        $request->password = Hash::make($request->password);
+        try {
 
-        $user = User::create($request->all() + [
-            'age'    => $age,
-            'active' => 0,
-        ]);
+            $brithdate = Carbon::parse($data['birthDate']);
+            $currentDate = Carbon::now();
+            $age = $currentDate->diffInYears($brithdate);
 
-        $user->assignRole('student');
+            $user = User::create([
+                'fname'     => $data['fname'],
+                'lname'     => $data['lname'],
+                'username'  => $data['username'],
+                'password'  => Hash::make($data['password']),
+                'email'     => $data['email'],
+                'birthDate' => $data['birthDate'],
+                'age'       => $age,
+                'phone'     => $data['phone'],
+                'gander'    => $data['gander'],
+                'major_id'  => $data['major_id'],
+                'active'    => false,
+            ]);
+
+            $user->assignRole('student');
+
+            return $user;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
         
-        return $user;
     }
 }

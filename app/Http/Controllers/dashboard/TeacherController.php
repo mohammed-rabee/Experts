@@ -12,6 +12,11 @@ use Spatie\Permission\Models\Role;
 
 class TeacherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'userCheck']);;
+    }
+    
     //
     public function index()
     {
