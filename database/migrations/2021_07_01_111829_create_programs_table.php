@@ -21,6 +21,8 @@ class CreateProgramsTable extends Migration
             
             $table->longText('description');
 
+            $table->string('image')->nullable();
+
             // student number in all section
             $table->integer('student_number');
 

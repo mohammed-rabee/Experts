@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Section extends Model
 {
     protected $fillable = [
-        'name', 'maxNumberOfStudent', 'major_programs_id'
+        'name', 'currentNumberOfStudent', 'maxNumberOfStudent', 'major_programs_id'
     ];
 
     // major Program
@@ -23,7 +23,7 @@ class Section extends Model
 
     // students
     public function students() {
-        return $this->BelongsToMany(User::class, 'teaches', 'section_id', 'student_id')->withTimestamps();
+        return $this->BelongsToMany(User::class, 'registers', 'section_id', 'student_id')->withTimestamps();
     }
 
     // document to upload

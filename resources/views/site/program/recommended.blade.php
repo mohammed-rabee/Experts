@@ -2,35 +2,37 @@
 
 @section('content')
 
-<!--=================================
-            Inner Header -->
-            <section class="inner-header bg-holder bg-overlay-black-90" style="background-image: url('images/bg/03.jpg');">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-                            <h1 class="breadcrumb-title mb-0 text-white">Registred Courses</h1>
-                        </div>
-                        <div class="col-md-6">
-                            <ol class="breadcrumb d-flex justify-content-center justify-content-md-end ml-auto">
-                                <li class="breadcrumb-item"><a href="{{ route('site.index') }}"><i class="fas fa-home mr-1"></i>Home</a></li>
-                                <li class="breadcrumb-item active"><span>{{ Auth::user()->fname }} Registred Courses</span></li>
-                            </ol>
-                        </div>
-                    </div>
+    <!--=================================
+                    Inner Header -->
+    <section class="inner-header bg-holder bg-overlay-black-90" style="background-image: url('images/bg/03.jpg');">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
+                    <h1 class="breadcrumb-title mb-0 text-white">Registred Courses</h1>
                 </div>
-            </section>
-            <!--=================================
-                      Inner Header -->
+                <div class="col-md-6">
+                    <ol class="breadcrumb d-flex justify-content-center justify-content-md-end ml-auto">
+                        <li class="breadcrumb-item"><a href="{{ route('site.index') }}"><i
+                                    class="fas fa-home mr-1"></i>Home</a></li>
+                        <li class="breadcrumb-item active"><span>({{ Auth::user()->fname }}) Registred Courses</span></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+                              Inner Header -->
 
     <!--=================================
-            Course Details -->
+                    Course Details -->
     <section class="space-ptb course-list">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mt-5 mt-lg-0">
                     <div class="row mb-4">
                         <div class="col-12">
-                            <h6 class="mb-0">Showing 1-5 of <span class="text-primary">{{ $programs->count() }}</span></h6>
+                            <h6 class="mb-0">Showing 1-5 of <span
+                                    class="text-primary">{{ $programs->count() }}</span></h6>
                         </div>
                     </div>
                     <div class="course-filter d-sm-flex mb-4">
@@ -48,35 +50,39 @@
                         </ul> --}}
                     </div>
                     <div class="course">
-                        @foreach ($programs as $program)
-                            <div class="row no-gutters box-shadow mb-4">
-                                <div class="col-sm-5">
-                                    <div class="course-img h-100">
-                                        <img class="img-fluid" src="{{ asset('assets/site/images/course/01.jpg') }}" alt="">
-                                        <a href="#" class="course-category"><i class="far fa-bookmark"></i>{{ $major->name }}</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="course-info p-0 h-100">
-                                        <div class="px-4 pt-4">
-                                            <div class="course-title">
-                                                <a href="#">{{ $program->name }}</a>
-                                            </div>
-                                            <div class="course-instructor mb-2">
-                                                <a href="#">Description:</a>
-                                            </div>
-                                            <p class="mb-0">{{ $program->description }}</p>
-                                        </div>
-                                        <div class="course-rate-price px-4 pb-3">
-                                            <div class="rating">
-                                                <span>{{ $program->rate_fake }}</span>
-                                                <a href="#">Ratings</a>
-                                            </div>
-                                            <div class="price">{{ $program->price }}</div>
+                        @foreach ($programs as $majorProgram)
+                            <a class="text-dark" href="/course/{{$majorProgram->id}}">
+                                <div class="row no-gutters box-shadow mb-4">
+                                    <div class="col-sm-5">
+                                        <div class="course-img h-100">
+                                            {{-- <img class="img-fluid"
+                                                src="{{ asset('images/'.$program->image) }}" alt=""> --}}
+                                            <p class="course-category"><i class="far fa-bookmark"></i>{{ $major->name }}
+                                            </p>
                                         </div>
                                     </div>
+                                    <div class="col-sm-7">
+                                        <div class="course-info p-0 h-100">
+                                            <div class="px-4 pt-4">
+                                                <div class="course-title">
+                                                    {{ $majorProgram->program->name }}
+                                                </div>
+                                                <div class="course-instructor mb-2" style="color: blue">
+                                                    Description:
+                                                </div>
+                                                <p class="mb-0">{{ $majorProgram->program->description }}</p>
+                                            </div>
+                                            <div class="course-rate-price px-4 pb-3">
+                                                <div class="rating">
+                                                    <span>{{ $majorProgram->program->rate_fake }}</span>
+                                                    Ratings
+                                                </div>
+                                                <div class="price">{{ $majorProgram->program->cost }} $</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
                     <div class="row">
@@ -90,9 +96,9 @@
                                         </a>
                                     </li> --}}
                                     @if ($programs->links()->paginator->hasPages())
-                                    <div class="d-flex justify-content-center">
-                                        {{ $programs->links() }}
-                                    </div>
+                                        <div class="d-flex justify-content-center">
+                                            {{ $programs->links() }}
+                                        </div>
                                     @endif
                                     {{-- <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Next">
@@ -109,6 +115,6 @@
         </div>
     </section>
     <!--=================================
-            Course Details -->
+                    Course Details -->
 
 @endsection

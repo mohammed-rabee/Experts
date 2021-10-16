@@ -10,7 +10,6 @@ use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\StudentController;
 use App\Http\Controllers\Dashboard\TeacherController;
 use App\Http\Controllers\dashboard\UserController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Site\CourseController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +75,13 @@ Route::post('/program'                     , [ProgramController::class, 'store']
 Route::get('/program/{program}/edit'       , [ProgramController::class, 'edit'])->name('program.edit');
 Route::put('/program/{program}'            , [ProgramController::class, 'update'])->name('program.update');
 Route::delete('/program/{program}'         , [ProgramController::class, 'destroy'])->name('program.delete');
+Route::get('/pendingResgiter'                     , [ProgramController::class, 'pendingApprovel'])->name('program.pendingResgiter');
+Route::get('/pendingResgiter/confirm/{id}'        , [ProgramController::class, 'pendingApprovelConfirm'])->name('program.pendingApprovelConfirm');
+Route::get('/pendingResgiter/delete/{id}'         , [ProgramController::class, 'pendingApprovelDelete'])->name('program.pendingApprovelDelete');
+Route::get('/disableRegister'                     , [ProgramController::class, 'disableList'])->name('program.disableRegister');
+Route::get('/disableRegistration/{id}'                     , [ProgramController::class, 'disableRegistration'])->name('program.disableRegistration');
+// Route::get('/student/{user}/activate'               , [ProgramController::class, 'activate'])->name('student.activate');
+// Route::get('/student/{user}/disable'                , [ProgramController::class, 'disable'])->name('student.disable');
 
 
 Route::get('/section'                               , [SectionController::class, 'index'])->name('section.index');
@@ -117,6 +123,9 @@ Route::get('/admin'                                 , [AdminController::class, '
 // Route::get('/course', [CourseController::class, 'courseList'])->name('allCourses');
 Route::get('/recommendedCourses', [CourseController::class, 'recommendedCourses'])->name('recommendedCourses');
 Route::get('/mycourses', [CourseController::class, 'myCourses'])->name('myCourses');
+
+Route::get('/course/{id}', [CourseController::class, 'details'])->name('course.detail');
+Route::get('/program/register/{id}'                 , [CourseController::class, 'register'])->name('program.register');
 
 
 // Route::middleware(['auth'])->group(function () {

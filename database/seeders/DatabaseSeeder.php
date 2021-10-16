@@ -5,8 +5,11 @@ namespace Database\Seeders;
 use App\Models\College;
 use App\Models\Department;
 use App\Models\Major;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
@@ -77,6 +80,22 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name'          => 'student',
         ]);
+
+        $user = User::create([
+            'fname'     => 'Ebrahim',
+            'lname'     => 'Ziab',
+            'username'  => 'EbrahimZ',
+            'password'  => Hash::make('123456789'),
+            'email'     => 'Ebrahim@admin.com',
+            'birthDate' => Carbon::parse('12-05-1995'),
+            'age'       => 26,
+            'phone'     => '54646546546',
+            'gander'    => 'male',
+            'major_id'  => null,
+            'active'    => true,
+        ]); 
+
+        $user->assignRole('admin');
 
         // DB::table('colleges')->insert([
         //     'name'          => 'firstCollege',

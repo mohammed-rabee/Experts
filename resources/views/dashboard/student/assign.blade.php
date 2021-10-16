@@ -38,7 +38,7 @@
                                         <td>{{ $majorProgram->programName }}</td>
                                         <td>
                                             <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="section_id[]" id="section_id">
-                                                <option style="display:none" disabled>Choose Section:</option>
+                                                <option style="display:none" selected disabled>Choose Section:</option>
                                                 @foreach($majorProgram->sections as $section)
                                                 <option value="{{ $section->id }}">{{ $section->name }}</option>
                                                 @endforeach

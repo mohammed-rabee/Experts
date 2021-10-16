@@ -22,7 +22,7 @@ class CreateSectionsTable extends Migration
             $table->string('name')->unique();
 
             // already enrolled
-            $table->integer('currentNumberOfStudent')->nullable();
+            $table->integer('currentNumberOfStudent')->default(0);
 
             // number of studen can be enrolled
             $table->integer('maxNumberOfStudent');

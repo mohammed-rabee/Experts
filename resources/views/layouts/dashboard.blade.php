@@ -163,6 +163,16 @@
                                         <span class="sidebar-normal">List Program</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('program.pendingResgiter') }}">
+                                        <span class="sidebar-normal">Program Registration Request</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('program.disableRegister') }}">
+                                        <span class="sidebar-normal">Disable Program Registration</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -215,10 +225,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('student.pendingUser') }}">
-                                        <span class="sidebar-normal">Student Wait List</span>
+                                        <span class="sidebar-normal">Registration Request</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </div>
                     </li>

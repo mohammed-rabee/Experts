@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Major;
+use App\Models\MajorPrograms;
 use App\Models\Program;
+use App\Models\Register;
+use App\Models\Section;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ProgramController extends Controller
 {
@@ -13,7 +18,7 @@ class ProgramController extends Controller
     {
         $this->middleware(['auth', 'userCheck']);;
     }
-    
+
     //
     public function index()
     {
@@ -27,7 +32,6 @@ class ProgramController extends Controller
         //
         $majors = Major::all();
         return view('dashboard.program.create', ['majors' => $majors]);
-
     }
 
     public function store(Request $request)
@@ -40,16 +44,16 @@ class ProgramController extends Controller
             ]);
             $program->majors()->attach(array_values($request->major_id));
             return redirect()->route('program.index')
-            ->withErrors([
-                'message' => 'Program created successfully.',
-                'class'   => 'alert-success'
-            ]);
+                ->withErrors([
+                    'message' => 'Program created successfully.',
+                    'class'   => 'alert-success'
+                ]);
         } catch (Exception $e) {
             return back()->withErrors([
                 'message' => 'Program name already registered',
                 'class'   => 'alert-danger'
             ]);
-        }   
+        }
     }
 
     public function edit(Program $program)
@@ -60,7 +64,7 @@ class ProgramController extends Controller
         $keys   = $program->majors->modelKeys();
 
         // $otherMajors = Major::all()->whereNotIn('id', array_values($majors->modelKeys()));
-        
+
         return view('dashboard.program.edit', compact('program', 'majors', 'keys'));
     }
 
@@ -76,11 +80,10 @@ class ProgramController extends Controller
             ]);
             $program->majors()->attach(array_values($request->major_id));
             return redirect()->route('program.index')
-            ->withErrors([
-                'message' => 'Program created successfully.',
-                'class'   => 'alert-success'
-            ]);
-
+                ->withErrors([
+                    'message' => 'Program created successfully.',
+                    'class'   => 'alert-success'
+                ]);
         } catch (Exception $e) {
 
             return back()->withErrors([
@@ -97,18 +100,91 @@ class ProgramController extends Controller
 
             $program->delete();
             return redirect()->route('program.index')
-            ->withErrors([
-                'message' => 'Program Deleted successfully.',
-                'class'   => 'alert-success'
-            ]);
-
+                ->withErrors([
+                    'message' => 'Program Deleted successfully.',
+                    'class'   => 'alert-success'
+                ]);
         } catch (Exception $e) {
 
             return back()->withErrors([
                 'message' => 'You need to choose another name , Program name already been taken',
                 'class'   => 'alert-danger'
             ]);
-
         }
+    }
+
+    public function pendingApprovel()
+    {
+
+        $registers = Register::where('active', false)->get();
+
+        $registers->transform(function ($item) {
+
+            $item->studentEmail = User::where('id', $item->student_id)->value('email');
+            $item->majorName    = Major::where('id', Section::where('id', $item->section_id)->first()->majorPrograms->major_id)->value('name');
+            $item->programName  = Program::where('id', Section::where('id', $item->section_id)->first()->majorPrograms->program_id)->value('name');
+            $item->sectionName  = Section::where('id', $item->section_id)->value('name');
+            return $item;
+        });
+
+        return view('dashboard.program.waitlist', compact('registers'));
+    }
+
+    public function pendingApprovelConfirm($id)
+    {
+
+        $register = Register::where('id', $id)->first();
+        $register->active = true;
+
+        $register->save();
+        return redirect()->route('program.pendingResgiter')
+            ->withErrors([
+                'message' => 'Student Registraion Activated Successfully.',
+                'class'   => 'alert-success'
+            ]);
+    }
+
+    public function pendingApprovelDelete($id)
+    {
+        $register = Register::where('id', $id)->first();
+
+        $register->delete();
+
+        return redirect()->route('program.pendingResgiter')
+            ->withErrors([
+                'message' => 'Student Registraion Deleted Successfully.',
+                'class'   => 'alert-danger'
+            ]);
+    }
+
+    public function disableList()
+    {
+
+        $registers = Register::where('active', true)->get();
+
+        $registers->transform(function ($item) {
+
+            $item->studentEmail = User::where('id', $item->student_id)->value('email');
+            $item->majorName    = Major::where('id', Section::where('id', $item->section_id)->first()->majorPrograms->major_id)->value('name');
+            $item->programName  = Program::where('id', Section::where('id', $item->section_id)->first()->majorPrograms->program_id)->value('name');
+            $item->sectionName  = Section::where('id', $item->section_id)->value('name');
+            return $item;
+        });
+
+        return view('dashboard.program.disableList', compact('registers'));
+    }
+
+    public function disableRegistration($id)
+    {
+
+        $register = Register::where('id', $id)->first();
+        $register->active = false;
+
+        $register->save();
+        return redirect()->route('program.disableRegister')
+            ->withErrors([
+                'message' => 'Student Registraion Disabled Successfully.',
+                'class'   => 'alert-success'
+            ]);
     }
 }

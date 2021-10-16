@@ -11,6 +11,7 @@ use App\Models\Section;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class StudentController extends Controller
 {
@@ -76,33 +77,8 @@ class StudentController extends Controller
         });
 
         return view('dashboard.student.assign', compact('user', 'majorPrograms'));
-        // dd($majorProgram);
-
-        // $data = User::where('id', $user->id)->with(['register' => function($query) {
-        //     $query->select('major_program_id');
-        // }])->get();
-
-        // $userSections = $user->register->transform(function ($item){
-        //     $item->major_program_id = Program::where('id', $item->majorProgram->program_id)->value('name');
-        //     return $item;
-        // });
-
-        // $sections->transform(function ($item){
-        //     $item->programName = Program::where('id', $item->majorProgram->program_id)->value('name');
-        //     $item->majorName   = Major::where('id', $item->majorProgram->major_id)->value('name');
-        //     return $item;
-        // });
 
 
-        // $userSectionIds = array_values($user->register->modelKeys());
-
-        // $otherSections = Section::whereNotIn('id',$userSectionIds)->get('major_program_id');
-
-        // dd($otherSections);
-
-        // $otherMajor = MajorPrograms::whereIn('id',$otherSections)->get();
-
-        // dd($otherMajor);
     }
 
     public function assignClass(Request $request, User $user)
@@ -110,15 +86,14 @@ class StudentController extends Controller
 
         try {
 
-            dd($request->section_id);
-
             $data = array(
                 'currentPayment' => doubleval(0),
                 'leftPayment'    => doubleval(0),
-                'overallPayment' => doubleval(0)
+                'overallPayment' => doubleval(0),
+                'active'         => true,
             );
 
-            $user->register()->attach($request->section_id, $data);
+            $user->register()->attach(array_values($request->section_id), $data);
             return redirect()->route('student.index')
                 ->withErrors([
                     'message' => 'Program Assigned successfully.',
@@ -164,29 +139,41 @@ class StudentController extends Controller
 
 
         try {
+            
+            if ($request->section_id == null) {
+                return redirect()->route('student.index')
+                ->withErrors([
+                    'message' => 'You did not select anything.',
+                    'class'   => 'alert-danger'
+                ]);
+            }
 
-            $majorProgramID = Section::where('id', $request->section_id)->value('major_programs_id');
-
-            dd($majorProgramID);
+            $majorProgramID = Section::select('major_programs_id')->whereIn('id', array_values($request->section_id))->get('major_programs_id');
 
             $registerSections = $user->register;
 
             $currentData = array();
 
+            // 'id'             => array_values(Register::where('section_id', $registerSection->id)->where('student_id', $user->id)->pluck('id')->toArray()),
+
             foreach ($registerSections as $registerSection) {
-                if ($registerSection->major_programs_id == $majorProgramID) {
+                if (in_array($registerSection->major_programs_id, array_values(Arr::flatten($majorProgramID->toArray())))) {
+
+                    $sectoinId = array_values(Section::whereIn('id', $request->section_id)->where('major_programs_id', $registerSection->major_programs_id)->pluck('id')->toArray());
+
                     $currentData = array(
+                        
                         'currentPayment' => $registerSection->pivot->currentPayment,
                         'leftPayment'    => $registerSection->pivot->leftPayment,
                         'overallPayment' => $registerSection->pivot->overallPayment,
+                        'active'         => ($registerSection->pivot->active) ? true : false
                     );
+
                     $user->register()->detach($registerSection->pivot->section_id);
+                    $user->register()->attach($sectoinId, $currentData);
                 }
             }
 
-            // $register = Register::where('section_id', $registerId)->first();
-
-            $user->register()->attach($request->section_id, $currentData);
             return redirect()->route('student.index')
                 ->withErrors([
                     'message' => 'Program Assigned successfully.',

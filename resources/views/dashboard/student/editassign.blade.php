@@ -37,11 +37,11 @@
                                         <td>{{ $majorProgram->majorName  }}</td>
                                         <td>{{ $majorProgram->programName }}</td>
                                         <td>
-                                            <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="section_id" id="section_id">
-                                                <option style="display:none">Choose Section:</option>
+                                            <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" name="section_id[]" id="section_id[]">
+                                                <option style="display:none" disabled>Choose Section:</option>
                                                 @foreach($majorProgram->sections as $section)
                                                   @if(in_array($section->id, $sectionIDs))
-                                                    <option value="{{$section->id}}" disabled>{{ $section->name }}</option>
+                                                    <option value="{{$section->id}}" selected disabled>{{ $section->name }}</option>
                                                   @else
                                                     <option value="{{$section->id}}">{{ $section->name }}</option>
                                                   @endif
@@ -55,7 +55,7 @@
                             <a href="{{ URL::previous() }}">
                                 <span class="btn btn-light pull-left">Back</span>
                             </a>
-                            <button type="submit" class="btn btn-primary pull-right">Assign</button>
+                            <button type="submit" class="btn btn-primary pull-right">Edit Assigned Programs</button>
                         </form>
                     </div>
                 </div>
