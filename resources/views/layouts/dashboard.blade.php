@@ -656,6 +656,27 @@
             }
         });
     </script>
+    <script type="text/javascript">
+        $('.show_confirm4').click(function(e) {
+            if (!confirm('Are you sure you want to Disable this user registration?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $('.show_confirm5').click(function(e) {
+            if (!confirm('Are you sure you want to Activate this user registration?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $('.show_confirm6').click(function(e) {
+            if (!confirm('Are you sure you want to Delete this user registration?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
     <script>
         window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function() {

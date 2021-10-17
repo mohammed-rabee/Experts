@@ -47,8 +47,8 @@
                                     <td>{{ $register->sectionName }}</td>
                                 
                                     <td>
-                                        <a class="btn btn-success show_confirm2" href="{{ route('program.pendingApprovelConfirm', $register->id) }}">Approve Registration</a>
-                                        <a class="btn btn-danger show_confirm2" href="{{ route('program.pendingApprovelDelete', $register->id) }}">Delete Registration </a>
+                                        <a class="btn btn-success show_confirm5" href="{{ route('program.pendingApprovelConfirm', $register->id) }}">Approve Registration</a>
+                                        <a class="btn btn-danger show_confirm6" href="{{ route('program.pendingApprovelDelete', $register->id) }}">Delete Registration </a>
                                     </td>
                                 </tr>
                                 @endforeach
