@@ -114,10 +114,18 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {{-- <li><a class="dropdown-item" href="{{ route('allCourses') }}"><span>All Courses</span></a>
                                     </li> --}}
-                                    <li><a class="dropdown-item" href="{{ route('recommendedCourses') }}"><span>Recommended
-                                                Coursed</span></a></li>
-                                    <li><a class="dropdown-item" href="{{ route('myCourses') }}"><span>My Courses</span></a>
-                                    </li>
+                                    @if (Auth::user()->hasRole('student'))
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('recommendedCourses') }}"><span>Recommended
+                                                    Coursed</span></a></li>
+                                        <li><a class="dropdown-item" href="{{ route('myCourses') }}"><span>My
+                                                    Courses</span></a>
+                                        </li>
+                                    @else
+                                        <li><a class="dropdown-item" href="{{ route('myCourses') }}"><span>My
+                                                    Courses</span></a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </li>
                             <li class="dropdown nav-item">
@@ -159,7 +167,7 @@
                         <ul class="list-unstyled">
                             <ul class="list-unstyled">
                                 <li class="user"><i
-                                        class="fa fa-user pl-2 text-primary"></i>&nbsp;&nbsp;{{ Auth::user()->fname }} 
+                                        class="fa fa-user pl-2 text-primary"></i>&nbsp;&nbsp;{{ Auth::user()->fname }}
                                     <a onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                                         href="">&nbsp;&nbsp;Logout</a>
                                 </li>
@@ -208,7 +216,7 @@
                                     @csrf
                                     <div class="form-group col-sm-12">
                                         <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="Username" name="email" id="email" required>
+                                            placeholder="Enter your email or username" name="email" id="email" required>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
