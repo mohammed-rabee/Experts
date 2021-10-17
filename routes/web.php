@@ -95,6 +95,7 @@ Route::delete('/user/{user}'                             , [UserController::clas
      
      
 Route::get('/teacher'                                    , [TeacherController::class, 'index'])->name('teacher.index');
+Route::get('/disabledTeacher'                            , [TeacherController::class, 'disabledTeacher'])->name('teacher.disabledTeacher');
 Route::get('/teacher/{user}/assign'                      , [TeacherController::class, 'assign'])->name('teacher.assign');
 Route::post('/teacher/{user}/assignClass'                , [TeacherController::class, 'assignClass'])->name('teacher.assignClass');
 Route::get('/teacher/{user}/editAssign'                  , [TeacherController::class, 'editAssign'])->name('teacher.editAssign');

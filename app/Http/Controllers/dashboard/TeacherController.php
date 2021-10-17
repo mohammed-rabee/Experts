@@ -21,8 +21,15 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        $students =  User::role('teacher')->where('active', true)->paginate(5);
-        return view('dashboard.teacher.index', ['users' => $students]);
+        $teachers =  User::role('teacher')->where('active', true)->paginate(5);
+        return view('dashboard.teacher.index', ['users' => $teachers]);
+    }
+
+    public function disabledTeacher()
+    {
+        //
+        $teachers =  User::role('teacher')->where('active', false)->paginate(5);
+        return view('dashboard.teacher.waitlist', ['users' => $teachers]);
     }
 
     public function assign(User $user) {

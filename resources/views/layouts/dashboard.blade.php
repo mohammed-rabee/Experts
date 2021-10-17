@@ -219,6 +219,11 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('teacher.disabledTeacher') }}">
+                                        <span class="sidebar-normal">Disabled Teachers Accounts</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('student.index') }}">
                                         <span class="sidebar-normal">Student</span>
                                     </a>

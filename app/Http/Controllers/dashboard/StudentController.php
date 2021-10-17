@@ -31,7 +31,7 @@ class StudentController extends Controller
     public function pendingApprovel()
     {
         //
-        $students =  User::role('student')->where('active', false)->get();
+        $students =  User::role('student')->where('active', false)->paginate(5);
         return view('dashboard.student.waitlist', ['users' => $students]);
     }
 
@@ -41,11 +41,10 @@ class StudentController extends Controller
         $user->active = true;
         $user->update($user->toArray());
 
-        return redirect()->route('student.index')
-            ->withErrors([
-                'message' => 'Student Account Activated Successfully.',
-                'class'   => 'alert-success'
-            ]);
+        return back()->withErrors([
+            'message' => 'User Account Activated Successfully.',
+            'class'   => 'alert-success'
+        ]);
     }
 
     public function disable(User $user)
@@ -54,11 +53,10 @@ class StudentController extends Controller
         $user->active = false;
         $user->update($user->toArray());
 
-        return redirect()->route('student.pendingUser')
-            ->withErrors([
-                'message' => 'Student Account Disabled Successfully.',
-                'class'   => 'alert-success'
-            ]);
+        return back()->withErrors([
+            'message' => 'User Account Disabled Successfully.',
+            'class'   => 'alert-success'
+        ]);
     }
 
     public function assign(User $user)
