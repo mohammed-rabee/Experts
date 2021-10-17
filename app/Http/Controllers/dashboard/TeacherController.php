@@ -21,7 +21,7 @@ class TeacherController extends Controller
     public function index()
     {
         //
-        $students =  User::role('teacher')->where('active', true)->get();
+        $students =  User::role('teacher')->where('active', true)->paginate(5);
         return view('dashboard.teacher.index', ['users' => $students]);
     }
 

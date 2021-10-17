@@ -109,8 +109,7 @@ class UserController extends Controller
         try {
 
             $user->delete();
-            return redirect()->route('user.create')
-            ->withErrors([
+            return back()->withErrors([
                 'message' => 'User Deleted successfully.',
                 'class'   => 'alert-success'
             ]);

@@ -17,7 +17,7 @@ class MajorController extends Controller
     public function index()
     {
         //
-        $majors = Major::all();
+        $majors = Major::paginate(5);
         return view('dashboard.major.index', ['majors' => $majors]);
     }
 

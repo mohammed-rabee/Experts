@@ -97,6 +97,38 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole('admin');
 
+        $user = User::create([
+            'fname'     => 'Abdulqader',
+            'lname'     => 'Alsheht',
+            'username'  => 'AbdulqaderA',
+            'password'  =>  Hash::make('123456789'),
+            'email'     => 'Abdulqader@admin.com',
+            'birthDate' => Carbon::parse('12-05-1995'),
+            'age'       => 26,
+            'phone'     => '54646546546',
+            'gander'    => 'male',
+            'major_id'  => null,
+            'active'    => true,
+        ]); 
+
+        $user->assignRole('admin');
+
+        $user = User::create([
+            'fname'     => 'AbduAallah',
+            'lname'     => 'Houri',
+            'username'  => 'AbduAallahH',
+            'password'  =>  Hash::make('123456789'),
+            'email'     => 'AbduAallah@admin.com',
+            'birthDate' => Carbon::parse('12-05-1995'),
+            'age'       => 26,
+            'phone'     => '54646546546',
+            'gander'    => 'male',
+            'major_id'  => null,
+            'active'    => true,
+        ]); 
+
+        $user->assignRole('admin');
+
         // DB::table('colleges')->insert([
         //     'name'          => 'firstCollege',
         // ]);

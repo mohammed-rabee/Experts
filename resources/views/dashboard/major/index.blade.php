@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <div class="col-md-10" style="padding-left: 17%">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">Majors</h4>
@@ -59,6 +59,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $majors->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

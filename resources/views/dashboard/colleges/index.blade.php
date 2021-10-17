@@ -70,15 +70,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- <div class="remodal" data-remodal-id="modeltest" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                            <div class="remodal-content">
-                                <h2 id="modal1Title">Are you sure ?</h2>
-                            </div>
-
-                            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                            <a class="remodal-confirm" onclick="document.getElementById('delete_form').submit();">Ok</a>
-                        </div> --}}
+                        <div class="d-flex justify-content-center">
+                            {{ $colleges->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

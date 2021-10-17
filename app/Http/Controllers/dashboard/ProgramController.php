@@ -23,7 +23,7 @@ class ProgramController extends Controller
     public function index()
     {
         //
-        $programs = Program::all();
+        $programs = Program::paginate(5);
         return view('dashboard.program.index', ['programs' => $programs]);
     }
 

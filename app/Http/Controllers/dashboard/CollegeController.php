@@ -22,7 +22,7 @@ class CollegeController extends Controller
     public function index()
     {
         //
-        $Colleges = College::all();
+        $Colleges = College::paginate(5);
         return view('dashboard.colleges.index', ['colleges' => $Colleges]);
     }
 

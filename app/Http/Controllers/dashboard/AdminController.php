@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $admins =  User::role('admin')->get();
+        $admins =  User::role('admin')->paginate(5);
         return view('dashboard.admin.index', ['users' => $admins]);
     }
 }

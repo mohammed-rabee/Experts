@@ -21,7 +21,7 @@ class SectionController extends Controller
     public function index()
     {
         //
-        $sections = Section::all();
+        $sections = Section::paginate(5);
         $sections->transform(function ($item){
             $item->programName = Program::where('id', $item->majorPrograms->program_id)->value('name');
             $item->majorName   = Major::where('id', $item->majorPrograms->major_id)->value('name');
