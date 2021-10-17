@@ -116,7 +116,7 @@ class ProgramController extends Controller
     public function pendingApprovel()
     {
 
-        $registers = Register::where('active', false)->get();
+        $registers = Register::where('active', false)->paginate(5);
 
         $registers->transform(function ($item) {
 
@@ -160,7 +160,7 @@ class ProgramController extends Controller
     public function disableList()
     {
 
-        $registers = Register::where('active', true)->get();
+        $registers = Register::where('active', true)->paginate(5);
 
         $registers->transform(function ($item) {
 

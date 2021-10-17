@@ -6,8 +6,8 @@
         <div class="col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Students Accounts Need Activation</h4>
-                    <p class="card-category"> Here you can see a list of all Students accounts waiting your approvel</p>
+                    <h4 class="card-title ">Students Registration to Disalbe</h4>
+                    <p class="card-category"> Here you can see a list of all Students accounts to disable</p>
                 </div>
                 <div class="card-body" style="padding-top: 1%">
                     <div class="table-responsive">
@@ -54,6 +54,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $registers->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
