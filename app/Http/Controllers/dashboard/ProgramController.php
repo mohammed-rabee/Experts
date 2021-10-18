@@ -134,6 +134,11 @@ class ProgramController extends Controller
     {
 
         $register = Register::where('id', $id)->first();
+        $section  = Section::where('id', $register->section_id)->first();
+        $section->currentNumberOfStudent = $section->currentNumberOfStudent + 1;
+
+        $section->save();
+
         $register->active = true;
 
         $register->save();
@@ -148,10 +153,16 @@ class ProgramController extends Controller
     {
         $register = Register::where('id', $id)->first();
 
+        if ($register->active == true) {
+            $section  = Section::where('id', $register->section_id)->first();
+            $section->currentNumberOfStudent = $section->currentNumberOfStudent - 1;
+    
+            $section->save();
+        }
+
         $register->delete();
 
-        return redirect()->route('program.pendingResgiter')
-            ->withErrors([
+        return back()->withErrors([
                 'message' => 'Student Registraion Deleted Successfully.',
                 'class'   => 'alert-danger'
             ]);
@@ -178,6 +189,11 @@ class ProgramController extends Controller
     {
 
         $register = Register::where('id', $id)->first();
+
+        $section  = Section::where('id', $register->section_id)->first();
+        $section->currentNumberOfStudent = $section->currentNumberOfStudent - 1;
+    
+        $section->save();
         $register->active = false;
 
         $register->save();

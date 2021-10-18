@@ -261,65 +261,85 @@
                         @endforeach
 
                     @elseif ($teacher == false)
+                        <!-- active -->
                         @if ($registred == true && $registerButNotActive == false)
-                            <div class="col-6 col-xl-6">
-                                <div class="accordion" id="accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <h5 class="accordion-title mb-0">
-                                                <button class="btn btn-link d-flex align-items-center ml-auto"
-                                                    data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">Program
-                                                    Sessions </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseOne" class="collapse show accordion-content"
-                                            aria-labelledby="headingOne" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <p>Motivation is not an accident or something that someone else can give you
-                                                    —
-                                                    you are
-                                                    the only one with the power to motivate you. Motivation cannot be an
-                                                    external force,
-                                                    it must come from within as the natural product of your desire to
-                                                    achieve
-                                                    something
-                                                    and your belief that you are capable to succeed at your goal. Success is
-                                                    something
-                                                    of which we all want more.</p>
-                                                <p> Others call it a sense of entitlement. No matter what term you use, it’s
-                                                    basically
-                                                    the same thing. Either way, it’s governed by who you think you are and
-                                                    what
-                                                    circumstances you accept as appropriate for you.</p>
+                            @if (!$sessions->isEmpty())
+                                @foreach ($sessions as $session)
+                                    <div>
+                                        <div class="accordion" id="accordion_{{ $session->id }}"
+                                            style="padding-top: 4%">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne_{{ $session->id }}">
+                                                    <h5 class="accordion-title mb-0">
+                                                        <button class="btn btn-link d-flex align-items-center ml-auto"
+                                                            data-toggle="collapse"
+                                                            data-target="#collapseOne_{{ $session->id }}"
+                                                            aria-expanded="true"
+                                                            aria-controls="collapseOne_{{ $session->id }}">{{ $session->name }}
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne_{{ $session->id }}"
+                                                    class="collapse accordion-content"
+                                                    aria-labelledby="headingOne_{{ $session->id }}"
+                                                    data-parent="#accordion_{{ $session->id }}">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="bmd-label-floating">Url:</label>
+                                                                    <input class="form-control" type="text" name="url"
+                                                                        id="url" value="{{ $session->url }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="bmd-label-floating">time:</label>
+                                                                    <input class="form-control date" type="text"
+                                                                        name="time" value="{{ $session->time }}"
+                                                                        disabled>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Annoncment:</label>
+                                                                <textarea class="form-control" rows="8" minlength="10"
+                                                                    maxlength="100" name="annoncment" id="annoncment"
+                                                                    disabled>{{ $session->annoncment }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @else
+                                No Session Created yet
+                            @endif
                             <!-- not active -->
                         @elseif ($registred == true && $registerButNotActive == true)
-                            <div class="col-6 col-xl-6">
-                                <div class="accordion" id="accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <h5 class="accordion-title mb-0">
-                                                <button class="btn btn-link d-flex align-items-center ml-auto"
-                                                    data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">You need to activate your registration on
-                                                    this
-                                                    course,Contact with us for activation: </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseOne" class="collapse show accordion-content"
-                                            aria-labelledby="headingOne" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <h2>Contact Detail</h2>
-                                                <p class="mb-2"><b class="text-dark">Call us:</b> +(974)
-                                                    701-231-58</p>
-                                                <p class="mb-4"><b class="text-dark">Mail us:</b>
-                                                    experts.plus.center@gmail.com</p>
-                                            </div>
+                            <div class="accordion" id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="accordion-title mb-0">
+                                            <button class="btn btn-link d-flex align-items-center ml-auto"
+                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">You need to activate your registration on
+                                                this
+                                                course,Contact with us for activation: </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show accordion-content"
+                                        aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <h2>Contact Detail</h2>
+                                            <p class="mb-2"><b class="text-dark">Call us:</b> +(974)
+                                                701-231-58</p>
+                                            <p class="mb-4"><b class="text-dark">Mail us:</b>
+                                                experts.plus.center@gmail.com</p>
                                         </div>
                                     </div>
                                 </div>
@@ -331,9 +351,19 @@
                             </div>
                         @endif
                     @endif
-                    <div class="d-flex justify-content-center">
-                        {{ $sections->links() }}
-                    </div>
+                    @if ($teacher == true)
+                        @if (isset($sections))
+                            <div class="d-flex justify-content-center">
+                                {{ $sections->links() }}
+                            </div>
+                        @endif
+                    @else
+                        @if (isset($sessions))
+                            <div class="d-flex justify-content-center">
+                                {{ $sessions->links() }}
+                            </div>
+                        @endif
+                    @endif
                 </div>
                 <div class="col-md-6 col-xl-6 flex-col">
                     <ul class="list-unstyled d-flex flex-wrap mb-5">

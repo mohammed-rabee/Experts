@@ -132,12 +132,12 @@ class CourseController extends Controller
             return view('site.program.details', compact('program', 'teacher', 'sections'));
 
         } else {
-            $section = null;
+
+            $sessions = null;
             $register = null;
             $teacher = false;
             $registred = false;
             $registerButNotActive = false;
-
 
             $major_id = Auth::user()->major_id;
 
@@ -153,18 +153,19 @@ class CourseController extends Controller
                 if (in_array($userSection, $section)) {
                     $registred = true;
                     $register = Register::where('section_id', $userSection)->where('student_id', Auth::user()->id)->where('active', true)->first();
+                     
                     if ($register == null)
                         $registerButNotActive = true;
 
-                    if ($register != null)
-                        $section = $register->sections;
-
+                    if ($register != null){
+                        $sessions  = Session::where('section_id', $userSection)->orderBy('time', 'DESC')->paginate(5);
+                    } 
                     break;
                 }
             }
 
 
-            return view('site.program.details', compact('program', 'register', 'section', 'registred', 'registerButNotActive'));
+            return view('site.program.details', compact('program', 'teacher', 'register', 'sessions', 'registred', 'registerButNotActive'));
         }
     }
 
@@ -194,7 +195,7 @@ class CourseController extends Controller
                 $user = User::find(Auth::user()->id);
                 $test = $user->register()->attach($section->id, $data);
 
-                return redirect()->route('course.detail', $id)
+                return redirect()->route('course.detail', $majorProgram->id)
                     ->withErrors([
                         'message' => 'Registred successfully.',
                         'class'   => 'alert-success'
@@ -205,7 +206,7 @@ class CourseController extends Controller
                 $user = User::find(Auth::user()->id);
                 $user->register()->attach($section->id, $data);
 
-                return redirect()->route('course.detail', $id)
+                return redirect()->route('course.detail', $majorProgram->id)
                     ->withErrors([
                         'message' => 'Registred successfully.',
                         'class'   => 'alert-success'
