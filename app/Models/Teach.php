@@ -21,7 +21,4 @@ class Teach extends Model
     // }
 
     // the part where teacher create sessions for section
-    public function sessions() {
-        return $this->hasMany(Session::class);
-    }
 }

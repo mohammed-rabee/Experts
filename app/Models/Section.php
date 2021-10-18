@@ -26,6 +26,11 @@ class Section extends Model
         return $this->BelongsToMany(User::class, 'registers', 'section_id', 'student_id')->withTimestamps();
     }
 
+    // session
+    public function sessions() {
+        return $this->hasMany(Session::class);
+    }
+
     // document to upload
     public function resources() {
         return $this->hasMany(Resource::class);

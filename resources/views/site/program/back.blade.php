@@ -211,49 +211,49 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="border mb-4">
-                                        <div class="accordion" id="accordionadd___{{ $section->id }}">
-                                            <div class="card">
-                                                <div class="card-header" id="headingOneadd___{{ $section->id }}">
-                                                    <h5 class="accordion-title text-dark px-4 py-2 bg-light mb-0">
-                                                        <button class="btn btn-link d-flex align-items-center ml-auto"
-                                                            data-toggle="collapse"
-                                                            data-target="#collapseOneadd___{{ $section->id }}"
-                                                            aria-expanded="true"
-                                                            aria-controls="collapseOneadd___{{ $section->id }}">Section
-                                                            Documents
-                                                        </button>
-                                                    </h5>
-                                                </div>
-                                                @if (!$section->resources->isEmpty())
-                                                    @foreach ($section->resources as $resourse)
-                                                        <div id="collapseOneadd___{{ $section->id }}"
-                                                            class="collapse accordion-content"
-                                                            aria-labelledby="headingOneadd___{{ $section->id }}"
-                                                            data-parent="#accordionadd___{{ $section->id }}">
-                                                            <div class="card-body"
-                                                                style="padding-left: 7%; padding-right: 45%">
+                                <div class="border mb-4">
+                                    <div class="accordion" id="accordionadd___{{ $section->id }}">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOneadd___{{ $section->id }}">
+                                                <h5 class="accordion-title text-dark px-4 py-2 bg-light mb-0">
+                                                    <button class="btn btn-link d-flex align-items-center ml-auto"
+                                                        data-toggle="collapse"
+                                                        data-target="#collapseOneadd___{{ $section->id }}"
+                                                        aria-expanded="true"
+                                                        aria-controls="collapseOneadd___{{ $section->id }}">Section
+                                                        Documents
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            @if (!$section->resources->isEmpty())
+                                                @foreach ($section->resources as $resourse)
+                                                    <div id="collapseOneadd___{{ $section->id }}"
+                                                        class="collapse accordion-content"
+                                                        aria-labelledby="headingOneadd___{{ $section->id }}"
+                                                        data-parent="#accordionadd___{{ $section->id }}">
+                                                        <form action="/section/AddDoc/{{ $resourse->id }}" method="POST"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <a
-                                                                                href="{{ asset($resourse->url) }}">{{ $resourse->name }}.pdf</a>
-                                                                            <a style="float: right"
-                                                                                href="{{ route('resourse.delete', $resourse->id) }}">Delete
-                                                                                Document</a>
+                                                                            <a href="{{ asset($resourse->url) }}"
+                                                                                target="_blank">{{ $resourse->name }}</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                    <h6 style="padding-left: 7%; padding-top: 3%">No Documents for this
-                                                        Section</h6>
-                                                @endif
-                                                {{-- @endif --}}
-                                            </div>
+                                                            <button class="btn btn-primary" style="float: right"
+                                                                type="submit">Add
+                                                                file</button>
+                                                        </form>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <h6>No Documents for this Section</h6>
+                                            @endif
+                                            {{-- @endif --}}
                                         </div>
                                     </div>
                                 </div>

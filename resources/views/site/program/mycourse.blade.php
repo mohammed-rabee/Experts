@@ -14,7 +14,7 @@
                     <ol class="breadcrumb d-flex justify-content-center justify-content-md-end ml-auto">
                         <li class="breadcrumb-item"><a href="{{ route('site.index') }}"><i
                                     class="fas fa-home mr-1"></i>Home</a></li>
-                        <li class="breadcrumb-item active"><span>(){{ Auth::user()->fname }}) Registred Courses</span></li>
+                        <li class="breadcrumb-item active"><span>({{ Auth::user()->fname }}) Registred Courses</span></li>
                     </ol>
                 </div>
             </div>

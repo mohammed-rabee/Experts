@@ -16,9 +16,10 @@ class CreateSessionsTable extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('teaches_id')->unsigned();
-            $table->foreign('teaches_id')->references('id')->on('teaches')->onDelete('cascade');
+            $table->unsignedBigInteger('section_id')->unsigned();
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
+            $table->string('name');
             $table->date('time');
             $table->text('url');
             $table->text('annoncment');

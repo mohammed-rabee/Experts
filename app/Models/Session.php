@@ -8,8 +8,12 @@ class Session extends Model
 {
     //
 
-    public function teach() {
-        return $this->belongsTo(Teach::class);
+    protected $fillable = [
+        'name', 'time', 'url', 'annoncment', 'section_id'
+    ];
+
+    public function section() {
+        return $this->belongsTo(Section::class);
     }
 
 }
