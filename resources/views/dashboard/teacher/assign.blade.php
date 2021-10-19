@@ -39,7 +39,11 @@
                                         <td>
                                             <select class="form-control selectpicker col-md-12" data-style="btn btn-primary" multiple name="section_id[]" id="section_id">
                                                 @foreach($majorProgram->sections as $section)
+                                                @if (in_array($section->id,$sectionIds))
+                                                <option value="{{$section->id}}" disabled>{{ $section->name }}</option>
+                                                @else
                                                 <option value="{{$section->id}}">{{ $section->name }}</option>
+                                                @endif
                                                 @endforeach
                                             </select>
                                         </td>

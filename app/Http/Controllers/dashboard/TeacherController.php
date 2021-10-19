@@ -36,9 +36,11 @@ class TeacherController extends Controller
         
         $user = User::find($user->id);
 
+        $sectionIds = array_values($user->teach->modelKeys());
+
         $majorProgramsIDs = array_values($user->teach->values()->pluck('major_programs_id')->toArray());
 
-        $majorPrograms = MajorPrograms::whereNotIn('id',$majorProgramsIDs)->get();
+        $majorPrograms = MajorPrograms::all();
 
         $majorPrograms->transform(function ($item){
             $item->majorName     = Major::where('id', $item->major_id)->value('name');
@@ -47,7 +49,7 @@ class TeacherController extends Controller
             return $item;
         });
 
-        return view('dashboard.teacher.assign', compact('user', 'majorPrograms'));
+        return view('dashboard.teacher.assign', compact('user', 'sectionIds', 'majorPrograms'));
 
     }
 
