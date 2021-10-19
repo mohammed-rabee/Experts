@@ -100,7 +100,7 @@ class ProgramController extends Controller
                 $program->save();
             }
             
-            $program->majors()->attach(array_values($request->major_id));
+            $program->majors()->sync(array_values($request->major_id));
             return redirect()->route('program.index')
                 ->withErrors([
                     'message' => 'Program created successfully.',

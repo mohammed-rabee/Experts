@@ -24,8 +24,7 @@
     <section class="space-ptb course-details">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-xl-6 ">
-                    <img class="img-fluid  mb-4" src="{{ asset('assets/site/images/course/10.jpg') }}" alt="">
+                <div class="col-6 col-xl-6">
                     <img class="img-fluid  mb-4" src="{{asset($program->image)}}" alt="">
                     <!--- sessions -->
                     @if ($teacher == true)
@@ -82,9 +81,9 @@
                                                                             <div class="form-group">
                                                                                 <label
                                                                                     class="bmd-label-floating">time:</label>
-                                                                                <input class="form-control date" type="text"
-                                                                                    name="time"
-                                                                                    value="{{ $session->time }}">
+                                                                                <input class="form-control" type="datetime-local"
+                                                                                    name="time" min="{{$session->time}}"
+                                                                                    value="{{$session->time}}">
                                                                             </div>
                                                                         </div>
 
@@ -112,7 +111,7 @@
                                             </div>
                                         @endforeach
                                     @else
-                                        No Session Created yet
+                                    <p>No Session Created</p>
                                     @endif
                                 </div>
                                 <div class="accordion" id="accordionadd_{{ $section->id }}" style="padding-top: 4%">
@@ -151,7 +150,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="bmd-label-floating">time:</label>
-                                                                <input class="form-control date" type="text" name="time">
+                                                                <input class="form-control" type="datetime-local" name="time">
                                                             </div>
                                                         </div>
 
@@ -295,8 +294,8 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="bmd-label-floating">time:</label>
-                                                                    <input class="form-control date" type="text"
-                                                                        name="time" value="{{ $session->time }}"
+                                                                    <input class="form-control" type="text"
+                                                                        name="time" value="{{$session->time}}"
                                                                         disabled>
                                                                 </div>
                                                             </div>
@@ -317,7 +316,22 @@
                                     </div>
                                 @endforeach
                             @else
-                                No Session Created yet
+                            <div class="accordion" id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="accordion-title mb-0">
+                                            <button class="btn btn-link d-flex align-items-center ml-auto" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sessions:</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show accordion-content" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>No Session Created</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @endif
                             <!-- not active -->
                         @elseif ($registred == true && $registerButNotActive == true)
@@ -411,7 +425,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 

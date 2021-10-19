@@ -227,7 +227,7 @@ class CourseController extends Controller
         $session             = new Session;
         $session->name       = $request->name;
         $session->url        = $request->url;
-        $session->time       = Carbon::parse($request->time);
+        $session->time       = $request->time;
         $session->annoncment = $request->annoncment;
 
         $session = $section->sessions()->save($session);

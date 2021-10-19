@@ -167,7 +167,7 @@
                         <ul class="list-unstyled">
                             <ul class="list-unstyled">
                                 <li class="user"><i
-                                        class="fa fa-user pl-2 text-primary"></i>&nbsp;&nbsp;{{ Auth::user()->fname }}
+                                        class="fa fa-user pl-2 text-primary"></i>&nbsp;&nbsp;{{ Auth::user()->username }}
                                     <a onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                                         href="">&nbsp;&nbsp;Logout</a>
                                 </li>

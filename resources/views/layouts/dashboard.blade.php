@@ -319,7 +319,7 @@
                                     <p class="d-lg-none d-md-block">
                                         Account
                                     </p>
-                                    {{ Auth::user()->fname }}
+                                    {{ Auth::user()->username }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                     {{-- <a class="dropdown-item" href="#">Profile</a>
