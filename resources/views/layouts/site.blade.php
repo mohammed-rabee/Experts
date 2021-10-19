@@ -464,5 +464,10 @@
         showAnim: "fold"
     });
 </script>
+<script>
+    function myFunction() {
+      var x = document.getElementById("sessionModify").value = $session->time;
+    }
+</script>
 
 </html>
