@@ -37,11 +37,23 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         try {
+
+            if ($request->hasFile('image')) {
+                $file = $request->image;
+                $name = rand().time().$file->getClientOriginalName();
+                $file->move(public_path().'/img/', $name);
+                $path = "img/".$name;  
+            }
+
             $program = Program::create($request->all() + [
                 'student_number'                   => 0,
                 'student_previous_number_enrolled' => 0,
                 'rate'                             => 0
             ]);
+
+            $program->image = $path;
+            $program->save();
+
             $program->majors()->attach(array_values($request->major_id));
             return redirect()->route('program.index')
                 ->withErrors([
@@ -78,6 +90,16 @@ class ProgramController extends Controller
                 'student_previous_number_enrolled' => 0,
                 'rate'                             => 0
             ]);
+
+            if ($request->hasFile('image')) {
+                $file = $request->image;
+                $name = rand().time().$file->getClientOriginalName();
+                $file->move(public_path().'/img/', $name);
+                $path = "img/".$name;  
+                $program->image = $path;
+                $program->save();
+            }
+            
             $program->majors()->attach(array_values($request->major_id));
             return redirect()->route('program.index')
                 ->withErrors([

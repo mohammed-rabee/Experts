@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-6 col-xl-6 ">
                     <img class="img-fluid  mb-4" src="{{ asset('assets/site/images/course/10.jpg') }}" alt="">
-                    {{-- <img class="img-fluid  mb-4" src="{{asset('/images/'.$classes->image)}}" alt=""> --}}
+                    <img class="img-fluid  mb-4" src="{{asset($program->image)}}" alt="">
                     <!--- sessions -->
                     @if ($teacher == true)
                         @foreach ($sections as $section)

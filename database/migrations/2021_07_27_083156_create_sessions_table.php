@@ -20,7 +20,7 @@ class CreateSessionsTable extends Migration
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
             $table->string('name');
-            $table->date('time');
+            $table->dateTime('time');
             $table->text('url');
             $table->text('annoncment');
 

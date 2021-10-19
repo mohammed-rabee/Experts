@@ -69,6 +69,14 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Program image</label>
+                  <input class="form-control" type="file" name="image" id="image" placeholder="{{asset($program->image)}}">
+                </div>
+              </div>
+            </div>
             <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
@@ -114,7 +122,7 @@
               <span class="btn btn-light pull-left">Back</span>
             </a>
 
-            <button type="submit" class="btn btn-primary pull-right">Add Program</button>
+            <button type="submit" class="btn btn-primary pull-right">Edit Program</button>
             <div class="clearfix"></div>
           </form>
         </div>
