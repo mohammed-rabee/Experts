@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Major;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        $roles = Role::all();
-        return view('dashboard.user.create', compact('roles'));
+        $roles  = Role::all();
+        $majors = Major::all();
+        return view('dashboard.user.create', compact('roles', 'majors'));
 
     }
 
@@ -76,7 +78,8 @@ class UserController extends Controller
     {
         $userRoles = $user->roles->modelKeys();
         $allRoles = Role::all();
-        return view('dashboard.user.edit', compact('user', 'userRoles', 'allRoles'));
+        $majors = Major::all();
+        return view('dashboard.user.edit', compact('user', 'userRoles', 'allRoles', 'majors'));
     }
 
     public function update(Request $request, User $user)

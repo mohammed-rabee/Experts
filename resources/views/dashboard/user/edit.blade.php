@@ -76,6 +76,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
+                  <label for="">Gender:</label>
                 {{-- <label class="bmd" style="padding-top: 2%">Gander :</label><br/> --}}
                 <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
                   {{-- <option disabled selected> -- Select Gender -- </option> --}}
@@ -87,17 +88,38 @@
                     <option value="Female" selected>Female</option>
                   @endif
                 </select>
-                <select class="selectpicker" data-style="btn btn-primary" name="role" id="role" >
-                  <option value="" disabled selected>Role</option>
-                  @foreach($allRoles as $role)
-                  @if (in_array($role->id, $userRoles))
-                  <option value="{{ $role->name }}" selected>{{ $role->name }}</option>
-                  @else
-                  <option value="{{ $role->name }}">{{ $role->name }}</option>
-                  @endif
-                  
-                  @endforeach
-                </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="padding-top: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Major:</label>
+                  <select class="selectpicker" data-style="btn btn-primary" name="major_id" id="major_id">
+                    {{-- <option disabled selected> -- Select User Type -- </option> --}}
+                    @foreach($majors as $major)
+                    @if ($major->id == $user->major_id)
+                    <option value="{{ $major->id }}" selected>{{ $major->name }}</option>
+                    @else
+                    <option value="{{ $major->id }}">{{ $major->name }}</option>
+                    @endif                    
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Role:</label>
+                  <select class="selectpicker" data-style="btn btn-primary" name="role" id="role" >
+                    @foreach($allRoles as $role)
+                    @if (in_array($role->id, $userRoles))
+                    <option value="{{ $role->name }}" selected>{{ $role->name }}</option>
+                    @else
+                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    @endif
+                    @endforeach
+                  </select>
                 </div>
               </div>
             </div>

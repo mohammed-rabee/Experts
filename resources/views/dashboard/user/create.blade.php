@@ -27,68 +27,88 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">User Name :</label>
-                  <input class="form-control" type="text" minlength="4" maxlength="10" name="username" id="username" value="{{ old('username') }}" >
+                  <input class="form-control" type="text" minlength="4" maxlength="10" name="username" id="username" value="{{ old('username') }}" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Password :</label>
-                  <input class="form-control" type="password" minlength="4" maxlength="10" name="password" id="password" value="{{ old('password') }}" >
+                  <input class="form-control" type="password" minlength="4" maxlength="10" name="password" id="password" value="{{ old('password') }}" required>
                 </div>
               </div>
             </div>
+
             <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">First Name :</label>
-                  <input class="form-control" type="text" minlength="4" maxlength="20" name="fname" id="fname" value="{{ old('fname') }}" >
+                  <input class="form-control" type="text" minlength="4" maxlength="20" name="fname" id="fname" value="{{ old('fname') }}" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Last Name :</label>
-                  <input class="form-control" type="text" minlength="4" maxlength="20" name="lname" id="lname" value="{{ old('lname') }}" >
+                  <input class="form-control" type="text" minlength="4" maxlength="20" name="lname" id="lname" value="{{ old('lname') }}" required>
                 </div>
               </div>
             </div>
+
             <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Email :</label>
-                  <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" >
+                  <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Phone :</label>
-                  <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone') }}" >
+                  <input class="form-control" type="text" name="phone" id="phone" value="{{ old('phone') }}" required>
                 </div>
               </div>
-              
             </div>
+
             <div class="row" style="padding-top: 1.5%">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Birthday :</label>
-                  <input class="form-control date" type="text" name="birthDate" id="birthDate" >
+                  <input class="form-control date" type="text" name="birthDate" id="birthDate" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                 {{-- <label class="bmd" style="padding-top: 2%">Gander :</label><br/> --}}
-                <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
+                <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" required>
                   {{-- <option disabled selected> -- Select Gender -- </option> --}}
                   <option value="" disabled selected>Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
-                <select class="selectpicker" data-style="btn btn-primary" name="role" id="role" >
-                  {{-- <option disabled selected> -- Select User Type -- </option> --}}
-                  <option value="" disabled selected>Role</option>
-                  @foreach($roles as $role)
-                  <option value="{{ $role->name }}">{{ $role->name }}</option>
-                  @endforeach
-                </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="padding-top: 1.5%">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <select class="selectpicker" data-style="btn btn-primary" name="major_id" id="major_id">
+                    {{-- <option disabled selected> -- Select User Type -- </option> --}}
+                    <option value="0" disabled selected>Major</option>
+                    @foreach($majors as $major)
+                    <option value="{{ $major->id }}">{{ $major->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <select class="selectpicker" data-style="btn btn-primary" name="role" id="role" required>
+                    {{-- <option disabled selected> -- Select User Type -- </option> --}}
+                    <option value="" disabled selected>Role</option>
+                    @foreach($roles as $role)
+                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
             </div>
