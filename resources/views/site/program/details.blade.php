@@ -149,16 +149,21 @@
                                                                                     <div class="col-md-6">
                                                                                         <div class="form-group">
                                                                                             <label
-                                                                                                class="bmd-label-floating">time:</label>
+                                                                                                class="bmd-label-floating">Current time:</label>
                                                                                             <input class="form-control"
-                                                                                                type="datetime-local"
-                                                                                                name="time"
-                                                                                                id="sessionModify"
-                                                                                                onload="myFunction()"
-                                                                                                value="{{ $session->time }}">
+                                                                                                type="text"
+                                                                                                value="{{ $session->time }}" disabled>
                                                                                         </div>
                                                                                     </div>
-
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="bmd-label-floating">New time:</label>
+                                                                                        <input class="form-control"
+                                                                                            type="datetime-local"
+                                                                                            name="time">
+                                                                                    </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
