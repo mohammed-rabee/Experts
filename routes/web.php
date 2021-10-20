@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\TeacherController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\Site\CourseController;
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Site\SiteTeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -117,8 +118,8 @@ Route::get('/mycourses'                                  , [CourseController::cl
 
 Route::get('/course/{id}'                                , [CourseController::class, 'details'])->name('course.detail');
 Route::get('/program/register/{id}'                      , [CourseController::class, 'register'])->name('program.register');
-Route::post('/session/store/{id}'                        , [CourseController::class, 'sessionStore'])->name('session.store');
-Route::post('/session/modify/{id}'                       , [CourseController::class, 'sessionModify'])->name('session.modify');
-Route::get('/session/delete/{id}'                        , [CourseController::class, 'sessionDelete'])->name('session.delete');
-Route::post('/section/AddDoc/{id}'                       , [CourseController::class, 'sectionAddDoc'])->name('section.addDoc');
-Route::get('/resourse/delete/{id}'                       , [CourseController::class, 'resourseDelete'])->name('resourse.delete');
+Route::post('/session/store/{id}'                        , [SiteTeacherController::class, 'sessionStore'])->name('session.store');
+Route::post('/session/modify/{id}'                       , [SiteTeacherController::class, 'sessionModify'])->name('session.modify');
+Route::get('/session/delete/{id}'                        , [SiteTeacherController::class, 'sessionDelete'])->name('session.delete');
+Route::post('/section/AddDoc/{id}'                       , [SiteTeacherController::class, 'sectionAddDoc'])->name('section.addDoc');
+Route::get('/resourse/delete/{id}'                       , [SiteTeacherController::class, 'resourseDelete'])->name('resourse.delete');
