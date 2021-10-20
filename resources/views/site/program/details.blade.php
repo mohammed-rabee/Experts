@@ -365,101 +365,128 @@
                         <!-- active -->
                         @if ($registred == true && $registerButNotActive == false)
                             @if (!$sessions->isEmpty())
-                            <div class="border mb-4">
-                                <h6 class="text-dark px-4 py-2 bg-light mb-0">You are at {{ $section->name }}</h6>
-                                <div class="p-4 border-top">
-                                    <div class="accordion" id="accordion_session" style="padding-top: 4%">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne_session">
-                                                <h5 class="accordion-title mb-0">
-                                                    <button class="btn btn-link d-flex align-items-center ml-auto collapsed"
-                                                        data-toggle="collapse" data-target="#collapseOne_session"
-                                                        aria-expanded="true" aria-controls="collapseOne_session">Browse
-                                                        {{ $section->name }} Sessions
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseOne_session" class="collapse accordion-content"
-                                                aria-labelledby="headingOne_session" data-parent="#accordion_session">
-                                                <div class="card-body">
-                                                    @foreach ($sessions as $session)
-                                                        <div class="accordion" id="accordion_{{ $session->id }}"
-                                                            style="padding-top: 4%">
-                                                            <div class="card">
-                                                                <div class="card-header"
-                                                                    id="headingOne_{{ $session->id }}">
-                                                                    <h5 class="accordion-title mb-0">
-                                                                        <button
-                                                                            class="btn btn-link d-flex align-items-center ml-auto"
-                                                                            data-toggle="collapse"
-                                                                            data-target="#collapseOne_{{ $session->id }}"
-                                                                            aria-expanded="true"
-                                                                            aria-controls="collapseOne_{{ $session->id }}">{{ $session->name }}
-                                                                        </button>
-                                                                    </h5>
-                                                                </div>
-                                                                <div id="collapseOne_{{ $session->id }}"
-                                                                    class="collapse accordion-content"
-                                                                    aria-labelledby="headingOne_{{ $session->id }}"
-                                                                    data-parent="#accordion_{{ $session->id }}">
-                                                                    <div class="card-body">
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
+                                <div class="border mb-4">
+                                    <h6 class="text-dark px-4 py-2 bg-light mb-0">You are at {{ $section->name }}</h6>
+                                    <div class="p-4 border-top">
+                                        <div class="accordion" id="accordion_session" style="padding-top: 4%">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne_session">
+                                                    <h5 class="accordion-title mb-0">
+                                                        <button
+                                                            class="btn btn-link d-flex align-items-center ml-auto"
+                                                            data-toggle="collapse" data-target="#collapseOne_session"
+                                                            aria-expanded="true" aria-controls="collapseOne_session">Browse
+                                                            {{ $section->name }} Sessions
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne_session" class="collapse show accordion-content"
+                                                    aria-labelledby="headingOne_session" data-parent="#accordion_session">
+                                                    <div class="card-body">
+                                                        @foreach ($sessions as $session)
+                                                            <div class="accordion"
+                                                                id="accordion_{{ $session->id }}"
+                                                                style="padding-top: 4%">
+                                                                <div class="card">
+                                                                    <div class="card-header"
+                                                                        id="headingOne_{{ $session->id }}">
+                                                                        <h5 class="accordion-title mb-0">
+                                                                            <button
+                                                                                class="btn btn-link d-flex align-items-center ml-auto collapsed"
+                                                                                data-toggle="collapse"
+                                                                                data-target="#collapseOne_{{ $session->id }}"
+                                                                                aria-expanded="true"
+                                                                                aria-controls="collapseOne_{{ $session->id }}">{{ $session->name }}
+                                                                            </button>
+                                                                        </h5>
+                                                                    </div>
+                                                                    <div id="collapseOne_{{ $session->id }}"
+                                                                        class="collapse accordion-content"
+                                                                        aria-labelledby="headingOne_{{ $session->id }}"
+                                                                        data-parent="#accordion_{{ $session->id }}">
+                                                                        <div class="card-body">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="bmd-label-floating">Url:</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text" name="url" id="url"
+                                                                                            value="{{ $session->url }}"
+                                                                                            disabled>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="bmd-label-floating">time:</label>
+                                                                                        <input class="form-control"
+                                                                                            type="text" name="time"
+                                                                                            value="{{ $session->time }}"
+                                                                                            disabled>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
                                                                                 <div class="form-group">
-                                                                                    <label
-                                                                                        class="bmd-label-floating">Url:</label>
-                                                                                    <input class="form-control" type="text"
-                                                                                        name="url" id="url"
-                                                                                        value="{{ $session->url }}" disabled>
+                                                                                    <label>Annoncment:</label>
+                                                                                    <textarea class="form-control"
+                                                                                        rows="8" minlength="10"
+                                                                                        maxlength="100" name="annoncment"
+                                                                                        id="annoncment"
+                                                                                        disabled>{{ $session->annoncment }}</textarea>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label
-                                                                                        class="bmd-label-floating">time:</label>
-                                                                                    <input class="form-control" type="text"
-                                                                                        name="time"
-                                                                                        value="{{ $session->time }}"
-                                                                                        disabled>
-                                                                                </div>
-                                                                            </div>
-    
                                                                         </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
-                                                                                <label>Annoncment:</label>
-                                                                                <textarea class="form-control" rows="8"
-                                                                                    minlength="10" maxlength="100"
-                                                                                    name="annoncment" id="annoncment"
-                                                                                    disabled>{{ $session->annoncment }}</textarea>
-                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    @if (isset($sessions))
+                                                        <div class="d-flex justify-content-center">
+                                                            {{ $sessions->withQueryString()->links() }}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion" id="accordionadd___{{ $section->id }}"
+                                            style="padding-top: 4%">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOneadd___{{ $section->id }}">
+                                                    <h5 class="accordion-title mb-0">
+                                                        <button
+                                                            class="btn btn-link d-flex align-items-center ml-auto collapsed"
+                                                            data-toggle="collapse"
+                                                            data-target="#collapseOneadd___{{ $section->id }}"
+                                                            aria-expanded="true"
+                                                            aria-controls="collapseOneadd___{{ $section->id }}">Browse
+                                                            Section
+                                                            Documents
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                @if (!$section->resources->isEmpty())
+                                                    @foreach ($section->resources as $resourse)
+                                                        <div id="collapseOneadd___{{ $section->id }}"
+                                                            class="collapse accordion-content"
+                                                            aria-labelledby="headingOneadd___{{ $section->id }}"
+                                                            data-parent="#accordionadd___{{ $section->id }}">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <a
+                                                                                href="{{ asset($resourse->url) }}">{{ $resourse->name }}</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion" id="accordionadd___{{ $section->id }}"
-                                        style="padding-top: 4%">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOneadd___{{ $section->id }}">
-                                                <h5 class="accordion-title mb-0">
-                                                    <button class="btn btn-link d-flex align-items-center ml-auto collapsed"
-                                                        data-toggle="collapse"
-                                                        data-target="#collapseOneadd___{{ $section->id }}"
-                                                        aria-expanded="true"
-                                                        aria-controls="collapseOneadd___{{ $section->id }}">Browse
-                                                        Section
-                                                        Documents
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            @if (!$section->resources->isEmpty())
-                                                @foreach ($section->resources as $resourse)
+                                                @else
                                                     <div id="collapseOneadd___{{ $section->id }}"
                                                         class="collapse accordion-content"
                                                         aria-labelledby="headingOneadd___{{ $section->id }}"
@@ -468,42 +495,26 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <a
-                                                                            href="{{ asset($resourse->url) }}">{{ $resourse->name }}</a>
+                                                                        <h6 style="padding-left: 7%; padding-top: 3%">No
+                                                                            Documents
+                                                                            for this
+                                                                            Section yet</h6>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endforeach
-                                            @else
-                                                <div id="collapseOneadd___{{ $section->id }}"
-                                                    class="collapse accordion-content"
-                                                    aria-labelledby="headingOneadd___{{ $section->id }}"
-                                                    data-parent="#accordionadd___{{ $section->id }}">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <h6 style="padding-left: 7%; padding-top: 3%">No Documents
-                                                                        for this
-                                                                        Section yet</h6>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             @else
                                 <div class="accordion" id="accordion">
                                     <div class="card">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="accordion-title mb-0">
-                                                <button class="btn btn-link d-flex align-items-center ml-auto"
+                                                <button class="btn btn-link d-flex align-items-center ml-auto collapsed"
                                                     data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                                     aria-controls="collapseOne">Sessions:</button>
                                             </h5>
@@ -523,7 +534,7 @@
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <h5 class="accordion-title mb-0">
-                                            <button class="btn btn-link d-flex align-items-center ml-auto"
+                                            <button class="btn btn-link d-flex align-items-center ml-auto collapsed"
                                                 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                                 aria-controls="collapseOne">You need
                                                 to activate your registration on
@@ -554,12 +565,6 @@
                         @if (isset($sections))
                             <div class="d-flex justify-content-center">
                                 {{ $sections->withQueryString()->links() }}
-                            </div>
-                        @endif
-                    @else
-                        @if (isset($sessions))
-                            <div class="d-flex justify-content-center">
-                                {{ $sessions->withQueryString()->links() }}
                             </div>
                         @endif
                     @endif

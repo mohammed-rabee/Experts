@@ -41,13 +41,15 @@
             <div class="container-fluid position-relative px-0">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"><i
                         class="fas fa-align-left"></i></button>
-                <!-- <a class="navbar-brand" href="index.html">
-            <img class="img-fluid" src="images/logo.svg" alt="logo">
-          </a>
-          <a class="navbar-brand navbar-brand-sticky" href="index.html">
-            <img class="img-fluid" src="images/logo.svg" alt="logo">
-          </a> -->
-                <div style="padding-right: 6%">
+
+                <a class="navbar-brand" href="{{ route('site.index') }}">
+                    <img class="img-fluid" src="{{ asset('/assets/site/images/logos/HQ_4.svg') }}" alt="logo">
+                </a>
+                <a class="navbar-brand navbar-brand-sticky" href="{{ route('site.index') }}">
+                    <img class="img-fluid" src="{{ asset('/assets/site/images/logos/HQ_4.svg') }}" alt="logo">
+                </a>
+
+                {{-- <div style="padding-right: 6%">
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('site.index') }}">
@@ -56,7 +58,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
                 @if (!Auth::check())
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -466,7 +468,7 @@
 </script>
 <script>
     function myFunction() {
-      var x = document.getElementById("sessionModify").value = $session->time;
+        var x = document.getElementById("sessionModify").value = $session - > time;
     }
 </script>
 <script type="text/javascript">

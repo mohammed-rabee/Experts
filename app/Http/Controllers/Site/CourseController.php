@@ -159,7 +159,7 @@ class CourseController extends Controller
                         $registerButNotActive = true;
 
                     if ($register != null){
-                        $sessions  = Session::where('section_id', $userSection)->orderBy('time', 'DESC')->paginate(5);
+                        $sessions  = Session::where('section_id', $userSection)->orderBy('time', 'DESC')->paginate(1);
                     } 
                     break;
                 }

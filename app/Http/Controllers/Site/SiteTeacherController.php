@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Resource;
+use App\Models\Section;
+use App\Models\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SiteTeacherController extends Controller
 {
@@ -29,8 +33,6 @@ class SiteTeacherController extends Controller
 
     public function sessionModify(Request $request, $id) {
 
-        $teacher = true;
-
         $session = Session::where('id', $id)->first();
 
         $section = Section::where('id', $session->section_id)->first();
@@ -41,8 +43,6 @@ class SiteTeacherController extends Controller
     }
 
     public function sessionDelete($id) {
-
-        $teacher = true;
 
         $session = Session::where('id', $id)->first();
 
