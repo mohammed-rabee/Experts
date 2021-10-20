@@ -23,6 +23,10 @@ class MajorPrograms extends Model
     //     return $this->hasMany(Student::class);
     // }
 
+    public function weeks() {
+        return $this->hasMany(Week::class);
+    }
+
     // section
     public function sections() {
         return $this->hasMany(Section::class);

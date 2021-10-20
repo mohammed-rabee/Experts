@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <h6 class="text-dark px-4 py-2 bg-light mb-0">Student Rate</h6>
                             <div class="p-4 border-top">
                                 <div class="d-flex align-items-center mb-2">
@@ -149,17 +149,20 @@
                                                                                     <div class="col-md-6">
                                                                                         <div class="form-group">
                                                                                             <label
-                                                                                                class="bmd-label-floating">Current time:</label>
+                                                                                                class="bmd-label-floating">Current
+                                                                                                time:</label>
                                                                                             <input class="form-control"
                                                                                                 type="text"
-                                                                                                value="{{ $session->time }}" disabled>
+                                                                                                value="{{ $session->time }}"
+                                                                                                disabled>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
                                                                                         <label
-                                                                                            class="bmd-label-floating">New time:</label>
+                                                                                            class="bmd-label-floating">New
+                                                                                            time:</label>
                                                                                         <input class="form-control"
                                                                                             type="datetime-local"
                                                                                             name="time">
@@ -377,11 +380,10 @@
                                             <div class="card">
                                                 <div class="card-header" id="headingOne_session">
                                                     <h5 class="accordion-title mb-0">
-                                                        <button
-                                                            class="btn btn-link d-flex align-items-center ml-auto"
+                                                        <button class="btn btn-link d-flex align-items-center ml-auto"
                                                             data-toggle="collapse" data-target="#collapseOne_session"
                                                             aria-expanded="true" aria-controls="collapseOne_session">Browse
-                                                            {{ $section->name }} Sessions
+                                                            Sessions:
                                                         </button>
                                                     </h5>
                                                 </div>
@@ -468,8 +470,7 @@
                                                             data-target="#collapseOneadd___{{ $section->id }}"
                                                             aria-expanded="true"
                                                             aria-controls="collapseOneadd___{{ $section->id }}">Browse
-                                                            Section
-                                                            Documents
+                                                            Documents:
                                                         </button>
                                                     </h5>
                                                 </div>
@@ -561,6 +562,104 @@
                             </div>
                             <!-- not registered -->
                         @elseif ($registred == false)
+                            {{-- <div class="row">
+                                <div class="col-md-12">
+                                    <div class="accordion" id="accordion_{{ $program->id }}"
+                                        style="padding-top: 4%;padding-bottom: 10%">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne_{{ $program->id }}">
+                                                <h5 class="accordion-title mb-0">
+                                                    <button
+                                                        class="btn btn-link d-flex align-items-center ml-auto collapsed"
+                                                        data-toggle="collapse"
+                                                        data-target="#collapseOne_{{ $program->id }}"
+                                                        aria-expanded="true"
+                                                        aria-controls="collapseOne_{{ $program->id }}">Course
+                                                        Timeline
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseOne_{{ $program->id }}" class="collapse accordion-content"
+                                                aria-labelledby="headingOne_{{ $program->id }}"
+                                                data-parent="#accordion_{{ $program->id }}">
+                                                <div class="card-body">
+                                                    <div class="p-4 border-top">
+                                                        @if (!$majorProgram->weeks->isEmpty())
+                                                            @foreach ($majorProgram->weeks as $week)
+                                                                <div>
+                                                                    <div class="accordion"
+                                                                        id="accordion_{{ $week->id }}"
+                                                                        style="padding-top: 4%">
+                                                                        <div class="card">
+                                                                            <div class="card-header"
+                                                                                id="headingOne_{{ $week->id }}">
+                                                                                <h5 class="accordion-title mb-0">
+                                                                                    <button
+                                                                                        class="btn btn-link d-flex align-items-center ml-auto collapsed"
+                                                                                        data-toggle="collapse"
+                                                                                        data-target="#collapseOne_{{ $week->id }}"
+                                                                                        aria-expanded="true"
+                                                                                        aria-controls="collapseOne_{{ $week->id }}">{{ $week->name }}
+                                                                                    </button>
+                                                                                </h5>
+                                                                            </div>
+                                                                            <div id="collapseOne_{{ $week->id }}"
+                                                                                class="collapse accordion-content"
+                                                                                aria-labelledby="headingOne_{{ $week->id }}"
+                                                                                data-parent="#accordion_{{ $week->id }}">
+                                                                                <div class="card-body">
+                                                                                    <div class="p-4 border-top">
+                                                                                        @if ($week->luctures->isEmpty())
+                                                                                            @foreach ($week->lectures as $lecture)
+                                                                                                <ul
+                                                                                                    class="list-unstyled mt-3">
+                                                                                                    <li
+                                                                                                        class="d-sm-flex align-items-center border-bottom pb-3 mb-3">
+                                                                                                        <i
+                                                                                                            class="flaticon-list-1 fa-sm mr-2 text-primary"></i>
+                                                                                                        <span
+                                                                                                            class="mr-4">Lecture
+                                                                                                            {{ $lecture->id }}
+                                                                                                            :</span>
+                                                                                                        <span>{{ $lecture->name }}</span>
+                                                                                                        <div
+                                                                                                            class="ml-auto">
+                                                                                                            <i
+                                                                                                                class="far fa-clock text-primary mr-2"></i>
+                                                                                                            <span>{{ $lecture->time }}</span>
+                                                                                                        </div>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            @endforeach
+                                                                                        @else
+                                                                                            <ul class="list-unstyled mt-3">
+                                                                                                <li
+                                                                                                    class="d-sm-flex align-items-center border-bottom pb-3 mb-3">
+                                                                                                    <i
+                                                                                                        class="flaticon-list-1 fa-sm mr-2 text-primary"></i>
+                                                                                                    <span
+                                                                                                        class="mr-4">No
+                                                                                                        Lectures</span>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        @endif
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @else
+                                                            <p>No Weeks Created</p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
                             <div class="col-6 col-xl-6">
                                 <a class="btn btn-primary" href="/program/register/{{ $program->id }}">Register</a>
                             </div>

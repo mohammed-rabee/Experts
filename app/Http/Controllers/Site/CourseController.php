@@ -129,7 +129,7 @@ class CourseController extends Controller
             // $sections = Section::whereIn('id', $userSections)->where('major_programs_id',$id)->get();
             // dd($sections[0]->sessions);
 
-            return view('site.program.details', compact('program', 'teacher', 'sections'));
+            return view('site.program.details', compact('program', 'majorProgram', 'teacher', 'sections'));
 
         } else {
 
@@ -166,7 +166,7 @@ class CourseController extends Controller
             }
 
 
-            return view('site.program.details', compact('program', 'teacher', 'registred', 'registerButNotActive', 'section', 'sessions'));
+            return view('site.program.details', compact('program', 'majorProgram', 'teacher', 'registred', 'registerButNotActive', 'section', 'sessions'));
         }
     }
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\StudentController;
 use App\Http\Controllers\Dashboard\TeacherController;
 use App\Http\Controllers\dashboard\UserController;
+use App\Http\Controllers\Dashboard\WeekController;
 use App\Http\Controllers\Site\CourseController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Site\SiteTeacherController;
@@ -75,7 +76,8 @@ Route::get('/pendingResgiter/confirm/{id}'               , [ProgramController::c
 Route::get('/pendingResgiter/delete/{id}'                , [ProgramController::class, 'pendingApprovelDelete'])->name('program.pendingApprovelDelete');
 Route::get('/disableRegister'                            , [ProgramController::class, 'disableList'])->name('program.disableRegister');
 Route::get('/disableRegistration/{id}'                   , [ProgramController::class, 'disableRegistration'])->name('program.disableRegistration');
-     
+Route::get('/week/{program}'                                       , [WeekController::class, 'index'])->name('week.index');  
+
      
 Route::get('/section'                                    , [SectionController::class, 'index'])->name('section.index');
 Route::get('/section/create'                             , [SectionController::class, 'create'])->name('section.create');
