@@ -371,6 +371,9 @@
     @endif
 
     @yield('content')
+    {{-- <script type="text/javascript">
+        window.$crisp=[];window.CRISP_WEBSITE_ID="08ddb22a-327c-45c0-81b0-6a2db6fd8c9e";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+    </script> --}}
 
     <!--=================================
     footer-->
@@ -426,7 +429,7 @@
 
     <!--=================================
       Back To Top -->
-    <div id="back-to-top" class="back-to-top">
+    <div id="back-to-top" class="back-to-top" style="left: 0%;">
         <a href="#"><i class="fas fa-chevron-up"></i></a>
     </div>
     <!--=================================
@@ -465,11 +468,6 @@
         changeMonth: true,
         showAnim: "fold"
     });
-</script>
-<script>
-    function myFunction() {
-        var x = document.getElementById("sessionModify").value = $session - > time;
-    }
 </script>
 <script type="text/javascript">
     $('.show_confirm').click(function(e) {
