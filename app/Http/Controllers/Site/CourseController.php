@@ -153,6 +153,7 @@ class CourseController extends Controller
                 if (in_array($userSection, $section)) {
                     $registred = true;
                     $register = Register::where('section_id', $userSection)->where('student_id', Auth::user()->id)->where('active', true)->first();
+                    $section  = Section::where('id', $userSection)->first();
                      
                     if ($register == null)
                         $registerButNotActive = true;
@@ -165,7 +166,7 @@ class CourseController extends Controller
             }
 
 
-            return view('site.program.details', compact('program', 'teacher', 'register', 'sessions', 'registred', 'registerButNotActive'));
+            return view('site.program.details', compact('program', 'teacher', 'registred', 'registerButNotActive', 'section', 'sessions'));
         }
     }
 

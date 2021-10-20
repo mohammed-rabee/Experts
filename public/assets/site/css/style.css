@@ -1421,8 +1421,7 @@ a.text-dark:hover {
       transition: all 0.3s ease-in-out;
       content: "\f068"; }
   .accordion > .card .card-header .btn.collapsed {
-    background: none;
-    color: #1c1a1f; }
+    background: #217ac8; }
     .accordion > .card .card-header .btn.collapsed:after {
       content: "\f067"; }
 

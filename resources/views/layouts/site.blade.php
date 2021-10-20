@@ -469,5 +469,12 @@
       var x = document.getElementById("sessionModify").value = $session->time;
     }
 </script>
+<script type="text/javascript">
+    $('.show_confirm').click(function(e) {
+        if (!confirm('Are you sure you want to delete this?')) {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </html>
