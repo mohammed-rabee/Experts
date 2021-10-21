@@ -32,7 +32,7 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
-                                <th>BirthDate</th>
+                                <th>Username</th>
 
                                 {{-- <th>Type</th> --}}
                                 
@@ -44,7 +44,7 @@
                                     <td>{{ $user->fname }}</td>
                                     <td>{{ $user->lname }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->birthDate }}</td>
+                                    <td>{{ $user->username }}</td>
                                 
                                     <td>
                                         <form action="{{ route('user.delete',$user->id) }}" method="POST">

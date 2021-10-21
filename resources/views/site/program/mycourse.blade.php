@@ -49,6 +49,43 @@
                                 </a></li>
                         </ul> --}}
                     </div>
+                    @if ($teacher == true)
+                    <div class="course">
+                        @foreach ($programs as $majorProgram)
+                            <a class="text-dark" href="/course/{{$majorProgram->id}}">
+                                <div class="row no-gutters box-shadow mb-4">
+                                    <div class="col-sm-5">
+                                        <div class="course-img h-100">
+                                            <img class="img-fluid"
+                                                src="{{ asset($majorProgram->program->image) }}" alt="">
+                                            <p class="course-category"><i class="far fa-bookmark"></i>{{ $majorProgram->major->name }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="course-info p-0 h-100">
+                                            <div class="px-4 pt-4">
+                                                <div class="course-title">
+                                                    {{ $majorProgram->program->name }}
+                                                </div>
+                                                <div class="course-instructor mb-2" style="color: blue">
+                                                    Description:
+                                                </div>
+                                                <p class="mb-0">{{ $majorProgram->program->description }}</p>
+                                            </div>
+                                            <div class="course-rate-price px-4 pb-3">
+                                                <div class="rating">
+                                                    <span>{{ $majorProgram->program->rate_fake }}</span>
+                                                    Ratings
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                    @else
                     <div class="course">
                         @foreach ($programs as $majorProgram)
                             <a class="text-dark" href="/course/{{$majorProgram->id}}">
@@ -85,6 +122,7 @@
                             </a>
                         @endforeach
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-12 text-center mt-4 mt-md-5">
                             <nav>

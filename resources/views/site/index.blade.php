@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-sm-8 col-md-7 ">
               <div class="space-ptb">
-                <h2 class="mb-3 display-4 fw-7 text-white">We make your children’s future better </h2>
+                <h2 class="mb-3 display-4 fw-7 text-white">Experts+ Success Partners</h2>
                 <h6 class="mb-0 text-white">A best and cheapest way of getting know learning to make a better tomorrow .</h6>
                 <a class="btn btn-md btn-primary mt-4 " data-toggle="modal" data-target="#loginModal" href="#">Join for free</a>
               </div>

@@ -70,6 +70,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Role::create([
+            'name'          => 'Experts+',
+        ]);
+
+        Role::create([
             'name'          => 'admin',
         ]);
 
@@ -79,6 +83,20 @@ class DatabaseSeeder extends Seeder
 
         Role::create([
             'name'          => 'student',
+        ]);
+
+        $user = User::create([
+            'fname'     => 'Experts+',
+            'lname'     => 'Experts+',
+            'username'  => 'Experts+',
+            'password'  => Hash::make('123456789'),
+            'email'     => 'Experts+@admin.com',
+            'birthDate' => Carbon::parse('12-05-1995'),
+            'age'       => 26,
+            'phone'     => '456465456448',
+            'gander'    => 'male',
+            'major_id'  => null,
+            'active'    => true,
         ]);
 
         $user = User::create([

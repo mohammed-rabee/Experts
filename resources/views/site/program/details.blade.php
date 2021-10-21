@@ -153,6 +153,7 @@
                                                                                                 time:</label>
                                                                                             <input class="form-control"
                                                                                                 type="text"
+                                                                                                name="alt_time"
                                                                                                 value="{{ $session->time }}"
                                                                                                 disabled>
                                                                                         </div>
@@ -335,8 +336,8 @@
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
                                                                         <a
-                                                                            href="{{ asset($resourse->url) }}">{{ $resourse->name }}</a>
-                                                                        <a class="" style="float: right"
+                                                                            href="{{ asset($resourse->url) }}" target="_blank">{{ $resourse->name }}</a>
+                                                                        <a class="show_confirm" style="float: right"
                                                                             href="{{ route('resourse.delete', $resourse->id) }}">Delete
                                                                             Document</a>
                                                                     </div>
@@ -445,6 +446,10 @@
                                                                                         disabled>{{ $session->annoncment }}</textarea>
                                                                                 </div>
                                                                             </div>
+                                                                            <a class="btn btn-primary"
+                                                                                style="float: right"
+                                                                                href="{{ $session->url }}" target="_blank">Start
+                                                                                Session</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -485,7 +490,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <a
-                                                                                href="{{ asset($resourse->url) }}">{{ $resourse->name }}</a>
+                                                                                href="{{ asset($resourse->url) }}" target="_blank">{{ $resourse->name }}</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -60,8 +60,11 @@ class CourseController extends Controller
     {
 
         $user = User::find(Auth::user()->id);
+        $teacher = false;
 
         if ($user->hasRole('teacher')) {
+
+            $teacher = true;
 
             $courses = Auth::user()->teach->modelKeys();
 
@@ -79,9 +82,11 @@ class CourseController extends Controller
                 return $item;
             });
 
-            return view('site.program.mycourse', compact('programs'));
+            return view('site.program.mycourse', compact('programs', 'teacher'));
 
         } else {
+
+            $teacher = false;
 
             $major_id = Auth::user()->major_id;
 
@@ -99,7 +104,7 @@ class CourseController extends Controller
                 return $item;
             });
 
-            return view('site.program.mycourse', compact('programs'));
+            return view('site.program.mycourse', compact('programs', 'teacher'));
         }
     }
 

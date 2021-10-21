@@ -34,7 +34,6 @@
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Username</th>
-                                <th>BirthDate</th>
 
                                 {{-- <th>Type</th> --}}
                                 
@@ -48,7 +47,6 @@
                                     <td>{{ $user->lname }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->username }}</td>
-                                    <td>{{ $user->birthDate }}</td>
                                     {{-- <td>
                                         <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
                                             @foreach($user->roles as $role)

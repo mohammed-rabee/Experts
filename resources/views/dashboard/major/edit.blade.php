@@ -27,7 +27,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Major Name</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ $major->name }}" required>
+                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ $major->name }}">
                 </div>
               </div>
             </div>
@@ -35,7 +35,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Discount</label>
-                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ $major->discount }}" required>
+                  <input class="form-control" type="number" min="0" max="100" name="discount" id="discount" value="{{ $major->discount }}">
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Number of Years</label>
-                  <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ $major->numberOfYears }}" required>
+                  <input class="form-control" type="number" min="0" max="6" name="numberOfYears" id="numberOfYears" value="{{ $major->numberOfYears }}">
                 </div>
               </div>
             </div>

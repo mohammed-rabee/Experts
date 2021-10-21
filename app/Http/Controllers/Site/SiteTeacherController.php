@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Resource;
 use App\Models\Section;
 use App\Models\Session;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -33,9 +34,13 @@ class SiteTeacherController extends Controller
 
     public function sessionModify(Request $request, $id) {
 
+        
+
         $session = Session::where('id', $id)->first();
 
         $section = Section::where('id', $session->section_id)->first();
+
+        $request['time'] = Carbon::parse($request->input('time', $session->time));
 
         $session->update($request->all());
 

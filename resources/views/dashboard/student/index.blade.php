@@ -31,10 +31,8 @@
                             <thead class=" text-primary">
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>BirthDate</th>
                                 <th>Email</th>
-
-                                {{-- <th>Type</th> --}}
+                                <th>Username</th>
                                 
                                 <th>Control</th>
                                 <th>Program assgin</th>
@@ -44,8 +42,8 @@
                                 <tr>
                                     <td>{{ $user->fname }}</td>
                                     <td>{{ $user->lname }}</td>
-                                    <td style="width: 10%">{{ $user->birthDate }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->username }}</td>
                                     {{-- <td>
                                         <select class="selectpicker" data-style="btn btn-primary" name="gander" id="gander" >
                                             @foreach($user->roles as $role)

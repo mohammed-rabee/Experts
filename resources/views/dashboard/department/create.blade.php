@@ -27,7 +27,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Department Name</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ old('name') }}" required>
+                  <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}" required>
                 </div>
               </div>
             </div>

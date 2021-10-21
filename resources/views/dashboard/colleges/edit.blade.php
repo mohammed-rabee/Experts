@@ -27,7 +27,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label class="bmd-label-floating">College Name</label>
-                  <input class="form-control" type="text" minlength="8" maxlength="50" name="name" id="name" value="{{ $college->name }}" required>
+                  <input class="form-control" type="text" name="name" id="name" value="{{ $college->name }}" required>
                 </div>
               </div>
             </div>
